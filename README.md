@@ -9,3 +9,4 @@ Our CMPT 276 group project repository.
 - Tommy Duong
 - Shanglin Zhuang
 - Allen(Yuhao) Gao
+- Christine Song
