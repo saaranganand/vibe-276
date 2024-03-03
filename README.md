@@ -1,5 +1,9 @@
-# 276-repo
-Our CMPT 276 group project repository.
+# Vibe
+
+CMPT276 - Project Proposal
+Group 8
+
+Find musicians in your area to collaborate with through Vibe!
 
 ---
 
