@@ -10,9 +10,14 @@
 <body>
     <h1>TEST</h1>
     <div class="whatever">
-        <!-- <form action="/submit-feedback" method="post">
-            <input type="text">
-        </form> -->
+        <form action="/feedback/submit-feedback" method="post">
+            <!-- <input type="hidden" id="uid" name="uid" th:value="${feedback.uid}" placeholder="user-feedback" > -->
+            <input type="text" id="user-feedback" name="user-feedback">
+
+            <div class="button">
+                <input class="btn btn-primary" type="submit" value="SEND"></input>
+            </div>
+        </form>
     </div>
     
 </body>
