@@ -52,10 +52,9 @@ main {
 }
 
 .barlink-text {
-    display: none;
-    /* opacity: 0;
-    transition: opacity 0.3s ease;
-    margin-top: 20px; */
+    color: beige;
+    opacity: 0;
+    transition: transform 0.3s ease, opacity 200ms ease;
 }
 
 .nav-link i {
@@ -68,17 +67,23 @@ main {
     width: 8rem;
 }
 
-/* .navbar:hover .barlink-text {
+.navbar:hover .barlink-text {
     opacity: 1;
-} */
+    transform: translateX(1.4rem);
+}
 
 .navbar:hover .nav-link i {
     transform: translateX(1.5rem);
 }
 
+.nav-link:hover i, .nav-link:hover .barlink-text {
+    color: black;
+}
+
 body {
+    min-height: 100vh;
     font-family: Arial, sans-serif;
-    background-color: beige;
+    background-image: linear-gradient(beige, rgb(213, 213, 191));
     color: #000000;
     text-align: center;
 }
@@ -167,9 +172,19 @@ a {
     width: 200px;
 }
 
+#login:hover, #register:hover {
+    color: var(--bg-secondary)
+}
+
 #explorebutton {
     font-size: 30px;
     color: white;
+    transition: background-color 0.3s ease, border 0.3s ease, box-shadow 0.3s ease;
+}
+#explorebutton:hover {
+    background-color: transparent;
+    color: var(--bg-secondary);
+    box-shadow: 0 0 0 10px var(--bg-secondary);
 }
 
 @media screen and (max-width: 861px) {
