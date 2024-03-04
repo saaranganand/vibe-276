@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Explore Page</title>
+</head>
+<body>
+    <!-- filter button -->
+    <!-- search bar -->
+    <form>
+        <input type="search" placeholder="Search Profiles">
+        <button type="submit">Search</button>
+    </form>
+
+    <div id="nav">
+        <a href="/explore">Explore</a>
+        <a href="">Your Profile</a>
+        <a href="">Hosts Map</a>
+        <a href="">Messages</a>
+        <a href="">Feedback</a>
+        <a href="">Team</a>
+        <a href="">Private Policy</a>
+        <button type="submit">Logout</button>
+    </div>
+    
+    <h1>Explore Musicians</h1>
+
+    <h2>Musician Profiles</h2>
+    <div id="explore-page">
+        <div id="profiles-container">
+            <!-- dynamically displays profile info -->
+            <div th:each="musician" : ${musicians} class="profile-box">
+                <h3 th:text="${musician.name}"> <!-- username --></h3>
+                <p th:text="${musician.city}"></p>
+                <p th:text="${musician.instruments}"></p>
+                <p>Top 3 Albums: </p>
+                <p>Host:</p>
+
+            </div>
+        </div>
+    </div>
+
+    
+</body>
+</html>
