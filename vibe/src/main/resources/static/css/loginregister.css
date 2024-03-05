@@ -1,0 +1,57 @@
+:root {
+    font-size: 16px;
+    --bg-primary: beige;
+    --bg-secondary: #8a7cc5;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    font-family: Arial, sans-serif;
+    background-image: linear-gradient(beige, rgb(213, 213, 191));
+    background-color: beige;
+    color: #000000;
+    text-align: center;
+}
+
+body::-webkit-scrollbar {
+    width: 0.25rem;
+}
+body::-webkit-scrollbar-track {
+    background: #1e1e24;
+}
+body::-webkit-scrollbar-thumb {
+    background: #6649b8;
+}
+
+header {
+    padding: 20px;
+}
+
+a {
+    text-decoration: none;
+}
+
+footer {
+    height: 30px;
+    background: white;
+    border: 3px solid black;
+    border-style: solid none none none;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
+.btn {
+    background-color: var(--bg-secondary);
+    border-style: none;
+}
+  
+.btn:hover {
+    background-color: #6b5f98;
+}
