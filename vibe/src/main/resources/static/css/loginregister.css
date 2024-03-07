@@ -49,9 +49,35 @@ footer {
 
 .btn {
     background-color: var(--bg-secondary);
+    color: white;
     border-style: none;
 }
   
 .btn:hover {
     background-color: #6b5f98;
+    color: white;
+}
+
+.input-control {
+    display: flex;
+    flex-direction: column;
+}
+
+.input-control.success input {
+    border-color: #09c372;
+}
+
+.input-control.error input {
+    border-color: #ff3860;
+}
+
+.input-control .btn:active {
+    background-color: #524874;
+    color: white;
+}
+
+.input-control .error {
+    color: #ff3860;
+    font-size: 13px;
+    height: 13px;
 }
