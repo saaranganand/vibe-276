@@ -71,7 +71,7 @@ footer {
     border-color: #ff3860;
 }
 
-.input-control .btn:active {
+#submitbtn:active {
     background-color: #524874;
     color: white;
 }
