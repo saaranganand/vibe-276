@@ -85,3 +85,7 @@ footer {
 #registerfailed {
     color: red;
 }
+
+#registersuccess {
+    color: green;
+}

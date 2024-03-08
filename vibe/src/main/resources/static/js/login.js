@@ -37,7 +37,6 @@ const validateInputs = () => {
         isValid = false;
     } else {
         setSuccess(nameoremail);
-        isValid = true;
     }
 
     if(passwordValue === '') {
@@ -57,7 +56,6 @@ const validateInputs = () => {
         isValid = false;
     } else {
         setSuccess(password);
-        isValid = true;
     }
 
     if(isValid === true)

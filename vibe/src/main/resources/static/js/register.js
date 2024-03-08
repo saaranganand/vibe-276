@@ -46,7 +46,6 @@ const validateInputs = () => {
         isValid = false;
     } else {
         setSuccess(username);
-        isValid = true;
     }
 
     if(emailValue === '') {
@@ -57,7 +56,6 @@ const validateInputs = () => {
         isValid = false;
     } else {
         setSuccess(email);
-        isValid = true;
     }
 
     if(passwordValue === '') {
@@ -77,7 +75,6 @@ const validateInputs = () => {
         isValid = false;
     } else {
         setSuccess(password);
-        isValid = true;
     }
 
     if(password2Value === '') {
@@ -88,7 +85,6 @@ const validateInputs = () => {
         isValid = false;
     } else {
         setSuccess(password2);
-        isValid = true;
     }
 
     if(isValid === true)
