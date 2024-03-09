@@ -81,3 +81,11 @@ footer {
     font-size: 13px;
     height: 13px;
 }
+
+#registerfailed {
+    color: red;
+}
+
+#registersuccess {
+    color: green;
+}

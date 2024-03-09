@@ -27,29 +27,7 @@ public class UsersController {
     @Autowired
     private UserRepository userRepo;
 
-    // @GetMapping("/")
-    // public RedirectView process() {
-    // return new RedirectView("login");
-    // }
-
-    // @PostMapping("/users/register")
-    // public String addUser(@RequestParam Map<String, String> newuser, HttpServletResponse response) {
-    //     System.out.println("ADD new user");
-    //     String newEmail = newuser.get("email");
-    //     String newName = newuser.get("username");
-    //     String newPassword = newuser.get("password");
-    //     if(!(newEmail.isEmpty() || newName.isEmpty() || newPassword.isEmpty() || (userRepo.findByEmail(newEmail) != null) || (userRepo.findByName(newName) != null)))
-    //     {
-    //         userRepo.save(new User(newName, newPassword, newEmail));
-    //         response.setStatus(201);
-    //         return "/users/registerSuccess";
-    //     }
-    //     else {
-    //         response.setStatus(201);
-    //         return "/users/registerFailed";
-    //     }
-    // }
-
+    // registration form validation and account creation
     @PostMapping("/users/register")
     public String addUser(@RequestParam Map<String, String> newuser, HttpServletResponse response) {
         System.out.println("ADD new user");
@@ -71,16 +49,45 @@ public class UsersController {
         }
     }
 
-    @GetMapping("/login")
+    @GetMapping("/users/login")
     public String getLogin(Model model, HttpServletRequest request, HttpSession session) {
         User user = (User) session.getAttribute("session_user");
-        if (user != null) {
-            return "login";
+        if (user == null) { // not logged in
+            return "/login";
         }
-        else {
+        else { // logged in
             model.addAttribute("user", user);
-            return "users/protected";
+            return "/users/home-loggedin";
         }
     }
-    
+
+    @PostMapping("/users/login")
+    public String login(@RequestParam Map<String, String> formData, Model model, HttpServletRequest request, HttpServletResponse response, HttpSession session) {
+        // processing login
+        String nameOrEmail = formData.get("nameoremail");
+        String password = formData.get("password");
+
+        User user = userRepo.findByNameAndPassword(nameOrEmail, password);
+        if (user == null) {
+            user = userRepo.findByEmailAndPassword(nameOrEmail, password);
+        }
+
+        if (user == null) {
+            response.setStatus(409);
+            return "/login";
+        } else {
+            // login success
+            request.getSession().setAttribute("session_user", user);
+            model.addAttribute("user", user);
+            response.setStatus(201);
+            return "/users/home-loggedin";
+        }
+    }
+
+    // logout
+    @GetMapping("/logout")
+    public String destroySession(HttpServletRequest request) {
+        request.getSession().invalidate();
+        return "/users/login";
+    }
 }

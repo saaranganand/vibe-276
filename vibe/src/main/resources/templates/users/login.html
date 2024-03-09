@@ -6,11 +6,12 @@
     <title>Login</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="/css/loginregister.css">
+    <script defer src="/js/login.js"></script>
 </head>
 <body>
     <main>
         <header>
-            <a href="home.html">
+            <a href="/users/login">
                 <img src="img/vibelogo.png" alt="Vibe Logo" id="vibelogo">
             </a>
             <h1><b>Welcome to Vibe!</b></h1>
@@ -21,25 +22,19 @@
             <div class="row justify-content-center">
                 <div class="col-md-4">
                     <h1 class="text-center mt-5 mb-4">LOGIN</h1>
-                    <form action="/users/login" method="post">
+                    <form action="/users/login" method="post" id="loginform">
             
-                        <div class="mb-3">
-                            <input type="text" id="username" name="username" class="form-control form-control-lg"
-                                placeholder="Username">
+                        <div class="input-control mb-3">
+                            <input id="nameoremail" name="nameoremail" type="text" placeholder="Username or Email Address" class="form-control form-control-lg">
+                            <div class="error"></div>
                         </div>
-                        <div class="mb-3">
-                            <input type="password" id="password" name="password" class="form-control form-control-lg"
-                                placeholder="Password">
+                        <div class="input-control mb-3">
+                            <input id="password" name="password" type="password" placeholder="Password" class="form-control form-control-lg">
+                            <div class="error"></div>
                         </div>
-                        <div>
-                            <input type="checkbox" id="rememberme" name="rememberme" value="rememberme">
-                            <label for="rememberme">Remember me</label>
-                        </div>
-
-                        <br>
 
                         <div class="d-grid gap-2">
-                            <input class="btn btn-primary" type="submit" value="Login"></input>
+                            <input class="btn" id="submitbtn" type="submit" value="Login"></input>
                         </div>
                     </form>
                     <br>
