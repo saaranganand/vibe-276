@@ -20,7 +20,7 @@ body {
 }
 
 body::-webkit-scrollbar {
-    width: 0.25rem;
+    width: 0.5rem;
 }
 body::-webkit-scrollbar-track {
     background: #1e1e24;
@@ -47,6 +47,17 @@ footer {
     width: 100%;
 }
 
+#vibelogo {
+    display: block;
+    margin: 0 auto;
+    margin-bottom: 10px;
+    transition: width 0.3s ease;
+    min-width: 250px;
+}
+#vibelogo:hover {
+    transform: scale(1.15);
+}
+
 .btn {
     background-color: var(--bg-secondary);
     color: white;
@@ -71,7 +82,7 @@ footer {
     border-color: #ff3860;
 }
 
-#submitbtn:active {
+#submitbtn:active, #forgotbtn:active, #teambackbtn:active, #privbackbtn:active {
     background-color: #524874;
     color: white;
 }
@@ -88,4 +99,9 @@ footer {
 
 #registersuccess {
     color: green;
+}
+
+.my-list {
+    list-style-position: inside;
+    padding-left: 0;
 }
