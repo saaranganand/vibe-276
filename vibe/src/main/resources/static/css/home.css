@@ -172,6 +172,11 @@ a {
     width: 200px;
 }
 
+#loginorregister p {
+    margin: auto;
+    text-align: center;
+}
+
 #login:hover, #register:hover {
     color: var(--bg-secondary)
 }
@@ -209,6 +214,6 @@ a {
 
 /* font awesome */
 
-.fa-house, .fa-star, .fa-people-group, .fa-shield-halved, .fa-right-from-bracket{
+.fa-house, .fa-circle-user, .fa-star, .fa-people-group, .fa-shield-halved, .fa-right-from-bracket{
     color:beige;
 }

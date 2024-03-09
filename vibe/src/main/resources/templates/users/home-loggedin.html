@@ -19,6 +19,13 @@
                     <span class="barlink-text">Home</span>
                 </a>
             </li>
+            <li class="nav-item">
+                <a href="/users/editprofile" class="nav-link">
+                    <i class="fa-solid fa-circle-user fa-2xl"></i>
+                    <br>
+                    <span class="barlink-text">Profile</span>
+                </a>
+            </li>
             <div class="nav-items-bottom">
                 <li class="nav-item">
                     <a href="feedback.html" class="nav-link">
@@ -72,8 +79,8 @@
                     </p>
                 </div>
                 <div class="container-fluid" id="buttoncontainer">
-                    <div id="loginorregister">
-                        <p>You are logged in!</p>
+                    <div id="loginorregister" th:each="user:${user}">
+                        <p>Welcome, <span th:text="${user.name}"></span>!</p>
                     </div>
 
                     <div id="explorediv">

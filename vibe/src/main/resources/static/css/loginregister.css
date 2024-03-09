@@ -82,7 +82,7 @@ footer {
     height: 13px;
 }
 
-#registerfailed {
+#registerfailed, #loginfailed {
     color: red;
 }
 

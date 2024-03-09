@@ -9,7 +9,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.servlet.view.RedirectView;
 
 import com.vibeapp.vibe.models.User;
 import com.vibeapp.vibe.models.UserRepository;
@@ -17,9 +16,6 @@ import com.vibeapp.vibe.models.UserRepository;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
-
-import org.springframework.web.bind.annotation.RequestBody;
-
 
 @Controller
 public class UsersController {
@@ -74,7 +70,7 @@ public class UsersController {
 
         if (user == null) {
             response.setStatus(409);
-            return "/login";
+            return "/users/loginFailed";
         } else {
             // login success
             request.getSession().setAttribute("session_user", user);
