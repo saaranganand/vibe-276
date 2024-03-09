@@ -1,0 +1,20 @@
+
+footer {
+    height: 30px;
+    background: white;
+    border: 3px solid black;
+    border-style: solid none none none;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
+.profile-box {
+    display: inline-block; 
+    margin-right: 10px; 
+    text-align: left;
+    background-color: blanchedalmond; 
+    border: 2px solid black; 
+    padding: 15px;
+}
+
