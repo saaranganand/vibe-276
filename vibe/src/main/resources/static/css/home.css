@@ -197,6 +197,10 @@ a {
     box-shadow: 0 0 0 10px var(--bg-secondary);
 }
 
+#loginname {
+    color: var(--bg-secondary);
+}
+
 @media screen and (max-width: 861px) {
     #homebody {
         margin-bottom: 30px;

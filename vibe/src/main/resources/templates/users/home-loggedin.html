@@ -80,7 +80,11 @@
                 </div>
                 <div class="container-fluid" id="buttoncontainer">
                     <div id="loginorregister" th:each="user:${user}">
-                        <p>Welcome, <span th:text="${user.name}"></span>!</p>
+                        <p>Welcome, 
+                            <a href="/users/editprofile">
+                                <span th:text="${user.name}" id="loginname"></span>
+                            </a>
+                        !</p>
                     </div>
 
                     <div id="explorediv">
