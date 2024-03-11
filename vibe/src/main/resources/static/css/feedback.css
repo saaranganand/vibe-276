@@ -1,0 +1,171 @@
+:root {
+    font-size: 16px;
+    --bg-primary: beige;
+    --bg-secondary: #8a7cc5;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+main {
+    margin-left: 5rem;
+}
+
+.navbar {
+    width: 5rem;
+    height: 100vh;
+    position: fixed;
+    background-color: var(--bg-secondary);
+    transition: width 200ms ease;
+    z-index: 1000;
+}
+
+.navbar-nav {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100%;
+}
+
+.nav-item {
+    width: 100%;
+}
+
+.nav-items-bottom {
+    margin-top: auto;
+}
+
+.nav-link {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 5rem;
+    color: var(--text-primary);
+    text-decoration: none;
+}
+
+.barlink-text {
+    color: beige;
+    opacity: 0;
+    transition: transform 0.3s ease, opacity 200ms ease;
+}
+
+.nav-link i {
+    min-width: 2rem;
+    margin: 0 1.5rem;
+    transition: transform 200ms ease;
+}
+
+.navbar:hover {
+    width: 8rem;
+}
+
+.navbar:hover .barlink-text {
+    opacity: 1;
+    transform: translateX(1.4rem);
+}
+
+.navbar:hover .nav-link i {
+    transform: translateX(1.5rem);
+}
+
+.nav-link:hover i, .nav-link:hover .barlink-text {
+    color: black;
+}
+
+body {
+    min-height: 100vh;
+    font-family: Arial, sans-serif;
+    background-image: linear-gradient(beige, rgb(213, 213, 191));
+    color: #000000;
+    text-align: center;
+}
+
+body::-webkit-scrollbar {
+    width: 0.25rem;
+}
+body::-webkit-scrollbar-track {
+    background: #1e1e24;
+}
+body::-webkit-scrollbar-thumb {
+    background: #6649b8;
+}
+
+header {
+    padding: 20px;
+}
+
+
+p {
+    font-size: 1.2rem;
+}
+
+footer {
+    height: 30px;
+    background: white;
+    border: 3px solid black;
+    border-style: solid none none none;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
+
+.btn {
+    display: inline-block;
+    padding: 10px 60px;
+    margin: 10px;
+    border-radius: 30px;
+    background: #8a7cc5;
+    border-color: #7059ca;
+    color: #fff;
+    text-decoration: none;
+    transition: background 0.3s ease;
+}
+
+.btn:hover {
+    background: #6e639d;
+    border-color: #4a2aca;
+}
+
+/* font awesome */
+
+.fa-house, .fa-star, .fa-people-group, .fa-shield-halved, .fa-right-from-bracket{
+    color:beige;
+}
+
+h1 {
+    padding-top: 30px;
+    color: white;
+    text-shadow: 1px 1px 2px black, 0 0 25px #6e639d, 0 0 5px #350bdc;
+}
+
+.container {
+    width: 50%;
+    border-radius: 5px ; 
+    padding: 25px;
+}
+
+.form-group {
+    padding: 15px;
+    border-radius: 30px;
+    border-color: black;
+}
+
+input, textarea {
+    box-shadow: 5px 5px;
+}
+
+label {
+    text-shadow: 2px 2px black;
+    font-size: x-large;
+    color: whitesmoke;
+    margin: 10px;
+}
