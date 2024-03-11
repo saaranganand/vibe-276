@@ -8,10 +8,10 @@
 		<version>3.2.2</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.276asn2</groupId>
-	<artifactId>asn2</artifactId>
+	<groupId>com.vibeapp</groupId>
+	<artifactId>vibe</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>asn2</name>
+	<name>vibe</name>
 	<description>Demo project for Spring Boot</description>
 	<properties>
 		<java.version>17</java.version>
