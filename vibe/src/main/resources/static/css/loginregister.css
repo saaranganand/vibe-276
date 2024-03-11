@@ -82,7 +82,7 @@ footer {
     border-color: #ff3860;
 }
 
-#submitbtn:active, #forgotbtn:active, #teambackbtn:active, #privbackbtn:active {
+#submitbtn:active, #forgotbtn:active, #teambackbtn:active, #privbackbtn:active, #logoutbtn:active {
     background-color: #524874;
     color: white;
 }
@@ -93,7 +93,7 @@ footer {
     height: 13px;
 }
 
-#registerfailed, #loginfailed {
+#registerfailed, #loginfailed, #deletionfailed {
     color: red;
 }
 
@@ -104,4 +104,15 @@ footer {
 .my-list {
     list-style-position: inside;
     padding-left: 0;
+}
+
+.btn-danger {
+    background-color: #b62945;
+    color: white;
+    border-style: none;
+}
+.btn-danger:hover {
+    background-color: #891e34;
+    color: white;
+    border-style: none;
 }
