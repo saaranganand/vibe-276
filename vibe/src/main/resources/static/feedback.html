@@ -59,14 +59,14 @@
             <form action="mailto:vibemusicwebsite@gmail.com" method="GET">
                 <div class="form-group">
                     <label for="subject">Subject</label> <br>
-                    <input type="text" class="form-control" name="subject">
+                    <input type="text" class="form-control" name="subject" id="subject">
                 </div>
                 <div class="form-group">
                     <label for="body">Enter your thoughts below!</label> <br>
                     <textarea class="form-control" name="body" id ="body" rows="6"></textarea>
                 </div>
-                <button type="submit" class="btn btn-primary">Submit</button>
-                <!-- <button type="button" class="btn btn-primary" onclick="encodeSpaces()">Submit</button> --> 
+                <!-- <button type="submit" class="btn btn-primary">Submit</button> -->
+                <button type="button" class="btn btn-primary" onclick="encodeSpaces()">Submit</button> 
             </form>
         </div>
     </div>
@@ -77,14 +77,17 @@
 </body>
 
 <script>
-    console.log("START");
     function encodeSpaces() {
         console.log("TEST");
-        var subjectInput = document.getElementById("body");
-        subjectInput.value = subjectInput.value.replace(/ /g, ' ');
+        var subjectInput = document.getElementById("subject");
+        var bodyInput = document.getElementById("body");
+        console.log(bodyInput.value);
+        subjectInput.value = encodeURIComponent(subjectInput.value);
+        bodyInput.value = encodeURIComponent(bodyInput.value);
+
+        // bodyInput.value = decodeURIComponent(bodyInput.value.replace(/ /g, '%20'));
 
         document.querySelector('form').submit();
-
     }
 </script>
 
