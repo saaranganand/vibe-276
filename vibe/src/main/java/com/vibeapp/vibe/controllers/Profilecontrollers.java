@@ -7,13 +7,13 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.vibeapp.vibe.models.User;
-import com.vibeapp.vibe.models.Userrepository;
+import com.vibeapp.vibe.models.Profile;
+import com.vibeapp.vibe.models.Profilerepository;
 
 @Controller
-public class usercontrollers{
+public class Profilecontrollers{
     @Autowired
-    private Userrepository Userrepo;
+    private Profilerepository Profilerepo;
 
     @PostMapping("/submit-user-info")
     public String addUser(@RequestParam Map<String,String> newUser){
@@ -26,7 +26,7 @@ public class usercontrollers{
         String newTop3artist = newUser.get("top3Artist");
         String newGenres = newUser.get("genres");
         Boolean host = Boolean.parseBoolean(newUser.get("host"));
-        Userrepo.save(new User(newName, newCityName, newInstrument, newAge, newTop1artist, newTop2artist, newTop3artist, newGenres, host));
+        Profilerepo.save(new Profile(newName, newCityName, newInstrument, newAge, newTop1artist, newTop2artist, newTop3artist, newGenres, host));
 
 
         return "redirect:/home.html";

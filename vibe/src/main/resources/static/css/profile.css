@@ -1,0 +1,60 @@
+.container-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 50vh;
+    padding-top: 10px; /* To avoid overlapping with the navbar if it's fixed */
+    padding-bottom: 60px; /* If you have a footer or want some space at the bottom */
+   
+}
+
+.container {
+    width: 50%; /* Adjust width as needed */
+    padding: 20px; /* Padding inside the container */
+    /* Your other styles for .container */
+    background-color: aqua;
+    border-radius: 30px; 
+}
+
+.group{
+    text-align: left;
+}
+
+
+.info{
+    display: block;
+    margin-bottom: 5px;
+}
+
+.profileimage{
+    text-align: left;
+}
+
+.group img{
+    width: 180px;
+    height: 180px;
+    border-radius: 50% ;
+    margin-top: 40px;
+    /* margin-right: 5px; */
+}
+
+.uploadimage{
+
+    width: 200px;
+    background: #e3362c;
+    color: #fff;
+    padding: 12px;
+    margin: 10px auto;
+    border-radius: 5px;
+    cursor: pointer;
+    text-align: center; 
+}
+
+.imagefile{
+    display: none;
+}
+
+
+
+
+
