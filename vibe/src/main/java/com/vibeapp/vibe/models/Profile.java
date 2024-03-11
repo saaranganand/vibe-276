@@ -3,8 +3,8 @@ package com.vibeapp.vibe.models;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name="users")
-public class User {
+@Table(name="profile")
+public class Profile {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int uId;
@@ -18,10 +18,10 @@ public class User {
     private String genres;
     private Boolean host;
     // private String image; 
-    public User(){
+    public Profile(){
     }
 
-    public User(String name, String cityName,String instrument,int age,String top1Artist,
+    public Profile(String name, String cityName,String instrument,int age,String top1Artist,
     String top2Artist,String top3Artist,String genres,Boolean host){
         this.name = name;
         this.cityName = cityName;
