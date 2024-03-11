@@ -16,7 +16,7 @@ main {
 
 .navbar {
     width: 5rem;
-    height: 120vh;
+    height: 100vh;
     position: fixed;
     background-color: var(--bg-secondary);
     transition: width 200ms ease;
