@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Extended View Page</title>
+</head>
+<body>
+<main class="container-fluid">
+    <form action="/user/extendedViewPage" method="post"></form>
+    <div class="profile-container">
+        <div class="profile-header">
+            <!--img src="{{user.profileImage}}" alt="{{extendedUser.username}}'s profile image" class="profile-image"/-->
+            <span th:text="${user.name}"></span>
+            <span th:text="${user.cityName}"></span>
+            <button id='message-button'>Message</button>
+        </div>
+        <div class="instruments">
+            <h4>Instruments</h4>
+            <div class="instrument-container">
+                <span th:text="${user.instrument}"></span>
+            </div>
+        </div>
+    
+    
+        <!-- Genres -->
+        <div class="genre">
+            <h3>Genres</h3>
+            <div class="genre-container">
+                <span th:text="${user.genres}"></span>
+            </div>
+        </div>
+         
+         <!-- Top 3 Albums -->
+         <div class="topArtist">
+            <h3>Top 3 Artists</h3>
+            <div class="artist1">
+                <span th:text="${user.top1Artist}"></span>
+            </div>
+            <div class="artist2">
+                <span th:text="${user.top2Artist}"></span>
+            </div>
+            <div class="artist3">
+                <span th:text="${user.top3Artist}"></span>
+            </div>
+         <!-- Host Information -->
+         ...
+         <div class="host">
+            <h3>Host</h3>
+            <div class="genre-container">
+                <span th:text="${user.host}"></span>
+            </div>
+        </div>
+    
+    </div>
+</main>
+
+
+</body>
+</html>
