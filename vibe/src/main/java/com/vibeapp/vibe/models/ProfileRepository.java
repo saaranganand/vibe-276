@@ -5,6 +5,4 @@ import java.util.List;
 
 public interface ProfileRepository extends JpaRepository<Profile, Integer> {
     Profile findByUId(int uId);
-    List<Profile> findByName(String name);
-    List<Profile> findByCityName(String cityName);
 }

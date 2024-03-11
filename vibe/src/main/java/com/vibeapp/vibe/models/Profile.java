@@ -17,7 +17,7 @@ public class Profile {
     private String top3Artist;
     private String genres;
     private Boolean host;
-    // private String image; 
+    // private String image;
     public Profile(){
     }
 
