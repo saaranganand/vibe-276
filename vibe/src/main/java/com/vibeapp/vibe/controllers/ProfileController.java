@@ -11,7 +11,7 @@ import com.vibeapp.vibe.models.Profile;
 import com.vibeapp.vibe.models.ProfileRepository;
 
 @Controller
-public class Profilecontrollers{
+public class ProfileController{
     @Autowired
     private ProfileRepository Profilerepo;
 

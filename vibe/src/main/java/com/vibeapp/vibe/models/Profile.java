@@ -7,7 +7,7 @@ import jakarta.persistence.*;
 public class Profile {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int uId;
+    private int uid;
     private String name;
     private String cityName;
     private String instrument; // Assuming one instrument
@@ -34,11 +34,11 @@ public class Profile {
         this.host = host;
     }
 
-    public int getuId() {
-        return uId;
+    public int getUid() {
+        return uid;
     }
-    public void setuId(int uId) {
-        this.uId = uId;
+    public void setUid(int uid) {
+        this.uid = uid;
     }
     public String getName() {
         return name;

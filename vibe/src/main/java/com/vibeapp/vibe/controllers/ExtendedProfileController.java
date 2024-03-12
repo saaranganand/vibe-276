@@ -13,15 +13,15 @@ import org.springframework.web.bind.annotation.PathVariable;
 public class ExtendedProfileController {
 
     @Autowired
-    private final ProfileRepository profileRepository;
+    private ProfileRepository profileRepository;
 
     public ExtendedProfileController(ProfileRepository profileRepository) {
         this.profileRepository = profileRepository;
     }
 
     @GetMapping("/profiles/{uId}")
-    public String getProfilePage(@PathVariable int uId, Model model) {
-        Profile profile = profileRepository.findByuId(uId);
+    public String getProfilePage(@PathVariable int Uid, Model model) {
+        Profile profile = profileRepository.findByUid(Uid);
         model.addAttribute("profile", profile);
         return "user/extendedViewPage";
     }
