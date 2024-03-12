@@ -32,10 +32,10 @@ public class AdminsController {
     public String getAdminLogin(Model model, HttpServletRequest request, HttpSession session) {
         Admin admin = (Admin) session.getAttribute("session_admin");
         if (admin == null) { // not logged in
-            return "/admin";
+            return "admin";
         } else { // logged in
             model.addAttribute("admin", admin);
-            return "/admins/view";
+            return "admins/view";
         }
     }
 
@@ -53,7 +53,7 @@ public class AdminsController {
 
         if (admin == null) {
             response.setStatus(409);
-            return "/admins/loginFailed";
+            return "admins/loginFailed";
         } else {
             // login success
             request.getSession().setAttribute("session_admin", admin);
@@ -63,7 +63,7 @@ public class AdminsController {
             List<User> users = userRepo.findAllByOrderByUidAsc();
             model.addAttribute("user", users);
             response.setStatus(201);
-            return "/admins/view";
+            return "admins/view";
         }
     }
 
@@ -71,12 +71,12 @@ public class AdminsController {
     public String delStudents(@RequestParam("userIds") List<Integer> userIds, HttpServletResponse response) {
         if (userIds == null) {
             response.setStatus(400);
-            return "/admins/noUsersSelected";
+            return "admins/noUsersSelected";
         } else {
             System.out.println("Delete user");
             userRepo.deleteAllById(userIds);
             response.setStatus(201);
-            return "/admins/deleted";
+            return "admins/deleted";
         }
     }
 
@@ -87,13 +87,13 @@ public class AdminsController {
         List<User> users = userRepo.findAllByOrderByUidAsc();
         model.addAttribute("user", users);
         response.setStatus(201);
-        return "/admins/view";
+        return "admins/view";
     }
 
     // logout
     @GetMapping("/admins/logout")
     public String destroyAdminSession(HttpServletRequest request) {
         request.getSession().invalidate();
-        return "/admins/login";
+        return "admins/login";
     }
 }
