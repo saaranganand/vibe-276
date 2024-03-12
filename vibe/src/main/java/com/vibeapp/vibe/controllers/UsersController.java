@@ -48,11 +48,11 @@ public class UsersController {
     public String getLogin(Model model, HttpServletRequest request, HttpSession session) {
         User user = (User) session.getAttribute("session_user");
         if (user == null) { // not logged in
-            return "/login";
+            return "login";
         }
         else { // logged in
             model.addAttribute("user", user);
-            return "/users/home-loggedin";
+            return "users/home-loggedin";
         }
     }
 
@@ -69,13 +69,13 @@ public class UsersController {
 
         if (user == null) {
             response.setStatus(409);
-            return "/users/loginFailed";
+            return "users/loginFailed";
         } else {
             // login success
             request.getSession().setAttribute("session_user", user);
             model.addAttribute("user", user);
             response.setStatus(201);
-            return "/users/home-loggedin";
+            return "users/home-loggedin";
         }
     }
 
@@ -83,6 +83,6 @@ public class UsersController {
     @GetMapping("/logout")
     public String destroySession(HttpServletRequest request) {
         request.getSession().invalidate();
-        return "/users/login";
+        return "users/login";
     }
 }
