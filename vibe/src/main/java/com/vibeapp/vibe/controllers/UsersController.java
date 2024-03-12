@@ -35,12 +35,12 @@ public class UsersController {
     
         if (existingUserByEmail != null || existingUserByUsername != null) {
             response.setStatus(409);
-            return "/users/registerFailed";
+            return "users/registerFailed";
         }
         else {
             userRepo.save(new User(newName, newPassword, newEmail));
             response.setStatus(201);
-            return "/users/registerSuccess";
+            return "users/registerSuccess";
         }
     }
 
