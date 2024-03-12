@@ -56,15 +56,16 @@
     <h1>Feedback</h1>
     <div class="container">
         <div class ="form-group rounded" style="background-color: gray;">
-            <form>
+            <form action="mailto:vibemusicwebsite@gmail.com" method="GET">
                 <div class="form-group">
                     <label for="subject">Subject</label> <br>
-                    <input type="text" class="form-control" name="subject">
+                    <input type="text" class="form-control" name="subject" id="subject">
                 </div>
                 <div class="form-group">
                     <label for="body">Enter your thoughts below!</label> <br>
                     <textarea class="form-control" name="body" id ="body" rows="6"></textarea>
                 </div>
+                <!-- <button type="submit" class="btn btn-primary">Submit</button> -->
                 <button type="button" class="btn btn-primary" onclick="encodeSpaces()">Submit</button> 
             </form>
         </div>
@@ -77,19 +78,17 @@
 
 <script>
     function encodeSpaces() {
-    var subject = document.getElementById('subject').value;
-    var body = document.getElementById('body').value;
+        console.log("TEST");
+        var subjectInput = document.getElementById("subject");
+        var bodyInput = document.getElementById("body");
+        console.log(bodyInput.value);
+        subjectInput.value = encodeURIComponent(subjectInput.value);
+        bodyInput.value = encodeURIComponent(bodyInput.value);
 
-    // Encoding the subject and body to ensure proper formatting in the mailto link
-    subject = encodeURIComponent(subject);
-    body = encodeURIComponent(body);
+        // bodyInput.value = decodeURIComponent(bodyInput.value.replace(/ /g, '%20'));
 
-    // Creating the mailto link with the encoded subject and body
-    var mailtoLink = 'mailto:vibemusicwebsite@gmail.com?subject=' + subject + '&body=' + body;
-
-    // Opening the mail client with the mailto link
-    window.location.href = mailtoLink;
-}
+        document.querySelector('form').submit();
+    }
 </script>
 
 </html>
