@@ -1,9 +1,8 @@
-# Vibe
+# 🎵🎸 [Vibe](https://vibe-music.onrender.com/) 🥁🎶
 
-CMPT276 - Project Proposal
-Group 8
+Find musicians in your area to jam with through Vibe! 
 
-Find musicians in your area to collaborate with through Vibe!
+Create an account, customize your musician profile, view other profiles and filter musicians by specific instruments to find certain bandmate roles.
 
 ---
 
@@ -14,3 +13,6 @@ Find musicians in your area to collaborate with through Vibe!
 - Shanglin Zhuang
 - Allen (Yuhao) Gao
 - Christine Song
+
+CMPT276 <br>
+Group 8
