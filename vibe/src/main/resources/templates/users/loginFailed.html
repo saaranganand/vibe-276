@@ -12,7 +12,7 @@
     <main>
         <header>
             <a href="/">
-                <img src="img/vibelogo.png" alt="Vibe Logo" id="vibelogo">
+                <img src="/img/vibelogo.png" alt="Vibe Logo" id="vibelogo">
             </a>
             <h1><b>Welcome to Vibe!</b></h1>
             <p><b>Helping musicians since '24.</b></p>
@@ -21,7 +21,8 @@
         <div class="container-fluid">
             <div class="row justify-content-center">
                 <div class="col-md-4">
-                    <h1 class="text-center mt-5 mb-4">LOGIN</h1>
+                    <h1 class="text-center mt-5 mb-4" id="loginfailed">LOGIN FAILED</h1>
+                    <p>Try again.</p>
                     <form action="/users/login" method="post" id="loginform">
             
                         <div class="input-control mb-3">
@@ -40,7 +41,6 @@
                     <br>
                     <p>Don't have an account? <a href="/register.html">Register</a></p>
                     <p>Forgot your password? <a href="/forgot-password.html">Reset Password</a></p>
-                    <p><a href="admin.html">Admin</a></p>
                 </div>
             </div>
         </div>
