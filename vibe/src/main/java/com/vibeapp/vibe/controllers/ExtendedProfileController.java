@@ -21,7 +21,7 @@ public class ExtendedProfileController {
 
     @GetMapping("/profiles/{uId}")
     public String getProfilePage(@PathVariable int uId, Model model) {
-        Profile profile = profileRepository.findByUId(uId);
+        Profile profile = profileRepository.findByuId(uId);
         model.addAttribute("profile", profile);
         return "user/extendedViewPage";
     }
