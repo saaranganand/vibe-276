@@ -56,7 +56,7 @@
     <h1>Feedback</h1>
     <div class="container">
         <div class ="form-group rounded" style="background-color: gray;">
-            <form action="mailto:vibemusicwebsite@gmail.com" method="GET">
+            <form>
                 <div class="form-group">
                     <label for="subject">Subject</label> <br>
                     <input type="text" class="form-control" name="subject">
@@ -65,8 +65,7 @@
                     <label for="body">Enter your thoughts below!</label> <br>
                     <textarea class="form-control" name="body" id ="body" rows="6"></textarea>
                 </div>
-                <button type="submit" class="btn btn-primary">Submit</button>
-                <!-- <button type="button" class="btn btn-primary" onclick="encodeSpaces()">Submit</button> --> 
+                <button type="button" class="btn btn-primary" onclick="encodeSpaces()">Submit</button> 
             </form>
         </div>
     </div>
@@ -77,15 +76,20 @@
 </body>
 
 <script>
-    console.log("START");
     function encodeSpaces() {
-        console.log("TEST");
-        var subjectInput = document.getElementById("body");
-        subjectInput.value = subjectInput.value.replace(/ /g, ' ');
+    var subject = document.getElementById('subject').value;
+    var body = document.getElementById('body').value;
 
-        document.querySelector('form').submit();
+    // Encoding the subject and body to ensure proper formatting in the mailto link
+    subject = encodeURIComponent(subject);
+    body = encodeURIComponent(body);
 
-    }
+    // Creating the mailto link with the encoded subject and body
+    var mailtoLink = 'mailto:vibemusicwebsite@gmail.com?subject=' + subject + '&body=' + body;
+
+    // Opening the mail client with the mailto link
+    window.location.href = mailtoLink;
+}
 </script>
 
 </html>
