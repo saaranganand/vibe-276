@@ -9,7 +9,7 @@ public class ExtendedView
 {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int uid;
+    private int uId;
     private String name;
     private String cityName;
     private String instrument; // Assuming one instrument
@@ -20,7 +20,8 @@ public class ExtendedView
     private String genres;
     private Boolean host;
     // private String image;
-    public ExtendedView(){
+    public ExtendedView()
+    {
     }
 
     public ExtendedView(String name, String cityName,String instrument,int age,String top1Artist,
@@ -36,11 +37,11 @@ public class ExtendedView
         this.host = host;
     }
 
-    public int getUid() {
-        return uid;
+    public int getuId() {
+        return uId;
     }
-    public void setUid(int uid) {
-        this.uid = uid;
+    public void setuId(int uid) {
+        this.uId = uid;
     }
     public String getName() {
         return name;
