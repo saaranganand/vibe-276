@@ -8,12 +8,12 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.vibeapp.vibe.models.Profile;
-import com.vibeapp.vibe.models.Profilerepository;
+import com.vibeapp.vibe.models.ProfileRepository;
 
 @Controller
 public class Profilecontrollers{
     @Autowired
-    private Profilerepository Profilerepo;
+    private ProfileRepository Profilerepo;
 
     @PostMapping("/submit-user-info")
     public String addUser(@RequestParam Map<String,String> newUser){
