@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,57 +9,66 @@
 <link rel="stylesheet" href="/css/home.css">
 <script src="https://kit.fontawesome.com/a02c21629a.js" crossorigin="anonymous"></script>
 
+
 </head>
 <body>
-
-<nav class="navbar">
-    <ul class="navbar-nav">
-        <li class="nav-item">
-            <a href="home.html" class="nav-link">
-                <i class="fa-solid fa-house fa-2xl"></i>
-                <br>
-                <span class="barlink-text">Home</span>
-            </a>
-        </li>
-        <div class="nav-items-bottom">
+    <!-- <h1>Welcome, <span th:text="${username}"></span>!</h1> -->
+    <nav class="navbar">
+        <ul class="navbar-nav">
             <li class="nav-item">
-                <a href="feedback.html" class="nav-link">
-                    <i class="fa-regular fa-star fa-2xl"></i>
+                <a href="/users/login" class="nav-link">
+                    <i class="fa-solid fa-house fa-2xl"></i>
                     <br>
-                    <span class="barlink-text">Feedback</span>
+                    <span class="barlink-text">Home</span>
                 </a>
             </li>
             <li class="nav-item">
-                <a href="team.html" class="nav-link">
-                    <i class="fa-solid fa-people-group fa-2xl"></i>
+                <!-- <a th:href="@'/users/profile' + ${user.name}" class="nav-link"> -->
+                <a href="/users/profile" class="nav-link">
+                    <i class="fa-solid fa-circle-user fa-2xl"></i>
                     <br>
-                    <span class="barlink-text">Team</span>
+                    <span class="barlink-text">Profile</span>
                 </a>
             </li>
-            <li class="nav-item">
-                <a href="privacypolicy.html" class="nav-link">
-                    <i class="fa-solid fa-shield-halved fa-2xl"></i>
-                    <br>
-                    <span class="barlink-text">Privacy</span>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a href="/users/logout" class="nav-link">
-                    <i class="fa-solid fa-right-from-bracket fa-2xl"></i>
-                    <br>
-                    <span class="barlink-text">Logout</span>
-                </a>
-            </li>
-        </div>
-    </ul>
-</nav>
+            <div class="nav-items-bottom">
+                <li class="nav-item">
+                    <a href="/feedback.html" class="nav-link">
+                        <i class="fa-regular fa-star fa-2xl"></i>
+                        <br>
+                        <span class="barlink-text">Feedback</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="/team.html" class="nav-link">
+                        <i class="fa-solid fa-people-group fa-2xl"></i>
+                        <br>
+                        <span class="barlink-text">Team</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="/privacypolicy.html" class="nav-link">
+                        <i class="fa-solid fa-shield-halved fa-2xl"></i>
+                        <br>
+                        <span class="barlink-text">Privacy</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="/logout" class="nav-link">
+                        <i class="fa-solid fa-right-from-bracket fa-2xl"></i>
+                        <br>
+                        <span class="barlink-text">Logout</span>
+                    </a>
+                </li>
+            </div>
+        </ul>
+    </nav>
 
 <div class="container-wrapper">
     <div class="container">
         <h2>User Information Form</h2>
         <form action="/submit-user-info" method="post">
             <div class="group">
-                <!-- <label for="userName" >Name:</label><br> -->
+                 <label for="userName" >Name:</label><br>
                 <input type="hidden"  class="info" id="userName" name="name" required>
 
                 <label for="cityName" >City Name</label><br>
@@ -109,5 +118,5 @@
         pic.src = URL.createObjectURL(inputfile.files[0]);
     }
 </script>
-</body>
+</body> 
 </html> 

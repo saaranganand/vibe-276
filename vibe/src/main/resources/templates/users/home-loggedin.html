@@ -20,7 +20,8 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a href="/users/editprofile" class="nav-link">
+                <!-- <a th:href="@'/users/profile' + ${user.name}" class="nav-link"> -->
+                <a href="/users/profile" class="nav-link">
                     <i class="fa-solid fa-circle-user fa-2xl"></i>
                     <br>
                     <span class="barlink-text">Profile</span>
@@ -82,13 +83,13 @@
                     <div id="loginorregister" th:each="user:${user}">
                         <p>Welcome, 
                             <a href="/users/editprofile">
-                                <span th:text="${user.name}" id="loginname"></span>
+                                <span th:text="${user.name}" id="loginname" name = "loginname"></span>
                             </a>
                         </p>
                     </div>
 
                     <div id="explorediv">
-                        <a href="/users/explore">
+                        <a href="/users/viewAll">
                             <button class="btn" id="explorebutton">Explore</button>
                         </a>
                     </div>
