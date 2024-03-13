@@ -13,7 +13,7 @@
     <nav class="navbar">
         <ul class="navbar-nav">
             <li class="nav-item">
-                <a href="home.html" class="nav-link">
+                <a href="/" class="nav-link">
                     <i class="fa-solid fa-house fa-2xl"></i>
                     <br>
                     <span class="barlink-text">Home</span>
@@ -56,7 +56,7 @@
     <h1>Feedback</h1>
     <div class="container">
         <div class ="form-group rounded" style="background-color: gray;">
-            <form action="mailto:vibemusicwebsite@gmail.com" method="GET">
+            <form>
                 <div class="form-group">
                     <label for="subject">Subject</label> <br>
                     <input type="text" class="form-control" name="subject" id="subject">
@@ -78,17 +78,20 @@
 
 <script>
     function encodeSpaces() {
-        console.log("TEST");
-        var subjectInput = document.getElementById("subject");
-        var bodyInput = document.getElementById("body");
-        console.log(bodyInput.value);
-        subjectInput.value = encodeURIComponent(subjectInput.value);
-        bodyInput.value = encodeURIComponent(bodyInput.value);
+    var subject = document.getElementById('subject').value;
+    var body = document.getElementById('body').value;
 
-        // bodyInput.value = decodeURIComponent(bodyInput.value.replace(/ /g, '%20'));
+    // Encoding the subject and body to ensure proper formatting in the mailto link
+    subject = encodeURIComponent(subject);
+    body = encodeURIComponent(body);
 
-        document.querySelector('form').submit();
-    }
+    // Creating the mailto link with the encoded subject and body
+    var mailtoLink = 'mailto:vibemusicwebsite@gmail.com?subject=' + subject + '&body=' + body;
+
+    // Opening the mail client with the mailto link
+    window.location.href = mailtoLink;
+}
+
 </script>
 
 </html>
