@@ -33,4 +33,4 @@ build/
 .vscode/
 
 ### App Props (Retain internal URL in actual file, external for local) ###
-/vibe/src/main/resources/application.properties
+/application.properties
