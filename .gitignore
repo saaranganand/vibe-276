@@ -31,3 +31,5 @@ build/
 
 ### VS Code ###
 .vscode/
+
+/vibe/src/main/resources/application.properties
