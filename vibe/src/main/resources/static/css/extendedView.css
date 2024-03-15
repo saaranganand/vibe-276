@@ -1,0 +1,41 @@
+.container {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.card {
+  border: none;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.card-title {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.card-info {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+
+.instrument,
+.genre,
+.artist,
+.host {
+  text-align: center;
+}
+
+.info-container,
+.host-container {
+  background-color: #8a7cc5;
+  color: beige;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.album-cover {
+  width: 100%;
+  height: auto;
+  margin-bottom: 5px;
+}
