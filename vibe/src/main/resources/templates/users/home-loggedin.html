@@ -19,13 +19,24 @@
                     <span class="barlink-text">Home</span>
                 </a>
             </li>
+            
             <li class="nav-item">
-                <a href="/users/editprofile" class="nav-link">
+                <a class="nav-link">
                     <i class="fa-solid fa-circle-user fa-2xl"></i>
                     <br>
                     <span class="barlink-text">Profile</span>
                 </a>
+                <form action= "/users/profile" method="post">
+                    
+                <div th:each="user:${user}">
+                    <input type="hidden" id="username" name="username" th:value="${user.name}"></a>
+                        </a>
+                    </p>
+                </div>
+                    <input class="btn btn-primary" type="submit" value="SEND"></input>
+                </form>
             </li>
+
             <div class="nav-items-bottom">
                 <li class="nav-item">
                     <a href="/feedback.html" class="nav-link">

@@ -29,7 +29,7 @@ public class ProfileController{
         Profilerepo.save(new Profile(newName, newCityName, newInstrument, newAge, newTop1artist, newTop2artist, newTop3artist, newGenres, host));
 
 
-        return "/";
+        return "users/home-loggedin";
 
     }
     
