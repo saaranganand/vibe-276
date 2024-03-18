@@ -15,7 +15,7 @@ public class ProfileController{
     @Autowired
     private ProfileRepository Profilerepo;
 
-    
+
 
 
     @PostMapping("/submit-user-info")
@@ -24,12 +24,13 @@ public class ProfileController{
         String newCityName = newUser.get("cityName");
         String newInstrument = newUser.get("instrument");
         int newAge = Integer.parseInt(newUser.get("age"));
+        String newskilllevel = newUser.get("skilllevel");
         String newTop1artist = newUser.get("top1Artist");
         String newTop2artist = newUser.get("top2Artist");
         String newTop3artist = newUser.get("top3Artist");
         String newGenres = newUser.get("genres");
         Boolean host = Boolean.parseBoolean(newUser.get("host"));
-        Profilerepo.save(new Profile(newName, newCityName, newInstrument, newAge, newTop1artist, newTop2artist, newTop3artist, newGenres, host));
+        Profilerepo.save(new Profile(newName, newCityName, newInstrument, newAge,newskilllevel,newTop1artist, newTop2artist, newTop3artist, newGenres, host));
         
 
         return "users/home-loggedin";

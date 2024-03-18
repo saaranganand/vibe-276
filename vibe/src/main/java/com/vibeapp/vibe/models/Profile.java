@@ -16,6 +16,7 @@ public class Profile {
     private String cityName;
     private String instrument; // Assuming one instrument
     private int age;
+    private String skilllevel;
     private String top1Artist;
     private String top2Artist;
     private String top3Artist;
@@ -25,12 +26,13 @@ public class Profile {
     public Profile(){
     }
 
-    public Profile(String name, String cityName,String instrument,int age,String top1Artist,
+    public Profile(String name, String cityName,String instrument,int age,String skilllevel,String top1Artist,
     String top2Artist,String top3Artist,String genres,Boolean host){
         this.name = name;
         this.cityName = cityName;
         this.instrument = instrument;
         this.age = age;
+        this.skilllevel = skilllevel;
         this.top1Artist = top1Artist;
         this.top2Artist = top2Artist;
         this.top3Artist = top3Artist;
@@ -95,8 +97,19 @@ public class Profile {
     public Boolean isHost() {
         return host;
     }
-    public void setHost(boolean host) {
+    public void setHost(Boolean host) {
         this.host = host;
     }
-    
+
+    public String getSkilllevel() {
+        return skilllevel;
+    }
+
+    public void setSkilllevel(String skilllevel) {
+        this.skilllevel = skilllevel;
+    }
+
+    public Boolean getHost() {
+        return host;
+    }
 }
