@@ -59,5 +59,15 @@ const validateInputs = () => {
     }
 
     if(isValid === true)
-        document.getElementById('loginform').submit();
+        // Hash the password before submitting the form
+        fetch(`https://api.hashify.net/hash/sha256/hex?value=${passwordValue}`)
+        .then(response => response.json())
+        .then(data => {
+            let hashedPassword = data.Digest;
+            password.value = hashedPassword;
+            document.getElementById('loginform').submit();
+        })
+        .catch(error => {
+            console.error('Error:', error);
+        });
 };
