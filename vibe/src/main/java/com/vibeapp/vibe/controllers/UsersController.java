@@ -79,6 +79,16 @@ public class UsersController {
         }
     }
 
+    
+
+    @PostMapping("/users/profile")
+    public String profle(@RequestParam Map<String, String> formData,Model model){
+        String username = formData.get("username");
+        User user = userRepo.findByName(username);
+        model.addAttribute("username", user);
+        return "users/add";
+    }
+
     // logout
     @GetMapping("/logout")
     public String destroySession(HttpServletRequest request) {
