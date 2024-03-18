@@ -96,9 +96,9 @@
                 <input type="text" id="top3Artist" name="top3Artist" required> 
                 
                 <div class="profileimage">
-                    <img src="/img/profile.png"><br>
+                    <img src="/img/profile.png" id="profile-pic"><br>
                     <label for="userImage" class = "uploadimage">Upload Image</label>
-                    <input type="file" class = "imagefile" accept ="img/jpeg, img/png, img/jpg"  id="userImage" name="image"> 
+                    <input type="file" class = "imagefile" accept ="image/jpeg, image/png, image/jpg"  id="userImage" name="image"> 
                 </div>
 
 
@@ -109,6 +109,7 @@
                     <option value="false" >No </option>
                 </select> 
 
+            <!-- need to add a post mapping for the submit button, to encode the photo to byte array  -->
             <button type="submit" class="btn btn-primary" >Submit</button>
         </div>
         </form>
@@ -125,7 +126,7 @@
     inputfile.onchange = function(){
         pic.src = URL.createObjectURL(inputfile.files[0]);
     }
-    
+
 </script>
 </body>
 </html> 

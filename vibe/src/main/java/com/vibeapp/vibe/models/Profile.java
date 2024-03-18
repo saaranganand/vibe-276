@@ -1,6 +1,10 @@
 package com.vibeapp.vibe.models;
 
 import jakarta.persistence.*;
+// import javax.persistence.Entity;
+
+
+
 
 @Entity
 @Table(name="profile")
