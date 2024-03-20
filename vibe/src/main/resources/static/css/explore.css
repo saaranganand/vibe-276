@@ -14,6 +14,17 @@ main {
     margin-left: 5rem;
 }
 
+#vibelogo {
+    display: block;
+    margin: 0 auto;
+    margin-bottom: 10px;
+    transition: width 0.3s ease;
+    min-width: 250px;
+}
+#vibelogo:hover {
+    transform: scale(1.15);
+}
+
 #search-bar {
     margin-right: 5rem;
     float: right;
@@ -173,6 +184,6 @@ a {
 
 /* font awesome */
 
-.fa-house, .fa-star, .fa-people-group, .fa-shield-halved, .fa-right-from-bracket{
+.fa-house, .fa-star, .fa-people-group, .fa-shield-halved, .fa-right-from-bracket, .fa-circle-user{
     color:beige;
 }

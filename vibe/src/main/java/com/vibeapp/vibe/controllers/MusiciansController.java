@@ -27,6 +27,14 @@ public class MusiciansController {
         return "viewAll.html";
     }
 
+    @GetMapping("/users/explore")
+    public String getAllMusiciansLogin(Model model) {
+        System.out.println("Displaying all musicians");
+        List<Musician> musicians = muRepo.findAll();
+        model.addAttribute("musicians", musicians);
+        return "users/viewAll-loggedin.html";
+    }
+
     @PostMapping("/search")
     public String searchProfiles(@RequestParam String input, Model model) {
         System.out.println("Searching profiles: " + input);

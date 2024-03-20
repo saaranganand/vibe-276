@@ -1,0 +1,26 @@
+:root {
+    font-size: 16px;
+    --bg-primary: beige;
+    --bg-secondary: #8a7cc5;
+}
+
+#announcements-container {
+    width: 80%;
+    margin: auto;
+    padding: 20px;
+}
+
+#announcements-container div {
+    border: 1px solid #ddd;
+    margin-bottom: 10px;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+body {
+    min-height: 100vh;
+    font-family: Arial, sans-serif;
+    background-image: linear-gradient(beige, rgb(213, 213, 191));
+    color: #000000;
+    text-align: center;
+}
