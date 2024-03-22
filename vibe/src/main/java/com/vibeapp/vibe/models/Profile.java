@@ -1,8 +1,7 @@
 package com.vibeapp.vibe.models;
 
 import jakarta.persistence.*;
-// import javax.persistence.Entity;
-
+import jakarta.persistence.Lob;;
 
 
 
@@ -22,12 +21,15 @@ public class Profile {
     private String top3Artist;
     private String genres;
     private Boolean host;
+
+    @Lob
+    private byte[] image;
     // private String image; 
     public Profile(){
     }
 
     public Profile(String name, String cityName,String instrument,int age,String skilllevel,String top1Artist,
-    String top2Artist,String top3Artist,String genres,Boolean host){
+    String top2Artist,String top3Artist,String genres,Boolean host,byte[] image){
         this.name = name;
         this.cityName = cityName;
         this.instrument = instrument;
@@ -38,6 +40,7 @@ public class Profile {
         this.top3Artist = top3Artist;
         this.genres = genres;
         this.host = host;
+        this.image = image;
     }
 
     public int getUid() {
@@ -111,5 +114,12 @@ public class Profile {
 
     public Boolean getHost() {
         return host;
+    }
+    public byte[] getImage() {
+        return image;
+    }
+
+    public void setImage(byte[] image) {
+        this.image = image;
     }
 }
