@@ -16,11 +16,16 @@ public class AnnouncementController {
     @Autowired
     private AnnouncementRepository announceRepo;
 
-    @GetMapping("/announcements")
+    @GetMapping("/users/announcements")
     public String getAllAnnouncements(Model model) {
         // Fetching announcements and adding to model will be done here
         List<Announcement> announcements = announceRepo.findAll();
         model.addAttribute("announcements", announcements);
-        return "announcements";
+        return "users/announcements";
+    }
+
+    @GetMapping("/users/announcements/add-announcement")
+    public String addAnnouncement() {
+        return "users/announcements/add-announcement";
     }
 }

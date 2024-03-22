@@ -18,11 +18,15 @@
         <p><b>Helping musicians since '24.</b></p>
     </header>
 
-    <div id="announcements-container">
-        <div th:each="announcement : ${announcements}">
-            <h2 th:text="${announcement.title}"></h2>
-            <p th:text="${announcement.content}"></p>
-        </div>
-    </div>
+    <main>
+        <button onclick="window.history.back()" id="backbtn" class="btn btn-primary" style="position: absolute; top: 10px; left: 10px;">Back</button>
+
+        <form action="/users/announcements/add" method="post">
+            <input type="text" name="content" placeholder="Enter announcement">
+            <br>
+            <br>
+            <input type="submit" value="Add Announcement">
+        </form>
+    </main>
 </body>
 </html>

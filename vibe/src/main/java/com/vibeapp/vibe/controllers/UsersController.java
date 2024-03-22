@@ -2,6 +2,7 @@ package com.vibeapp.vibe.controllers;
 
 import java.util.Map;
 
+import org.hibernate.mapping.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -21,7 +22,7 @@ public class UsersController {
 
     @Autowired
     private UserRepository userRepo;
-
+    
     // registration form validation and account creation
     @PostMapping("/users/register")
     public String addUser(@RequestParam Map<String, String> newuser, HttpServletResponse response) {
@@ -78,8 +79,6 @@ public class UsersController {
             return "users/home-loggedin";
         }
     }
-
-    
 
     @PostMapping("/users/profile")
     public String profle(@RequestParam Map<String, String> formData,Model model){

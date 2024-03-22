@@ -24,3 +24,72 @@ body {
     color: #000000;
     text-align: center;
 }
+
+body::-webkit-scrollbar {
+    width: 0.25rem;
+}
+body::-webkit-scrollbar-track {
+    background: #1e1e24;
+}
+body::-webkit-scrollbar-thumb {
+    background: #6649b8;
+}
+
+header {
+    padding: 20px;
+}
+
+#vibelogo {
+    display: block;
+    margin: 0 auto;
+    margin-bottom: 10px;
+    transition: width 0.3s ease;
+    min-width: 250px;
+}
+#vibelogo:hover {
+    transform: scale(1.15);
+}
+
+#addannouncementbtn {
+    position: fixed;
+    bottom: 50px;
+    right: 50px;
+}
+
+#addannouncementbtn .btn {
+    background-color: #8a7cc5;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#addannouncementbtn .btn:hover {
+    background: #6e639d;
+    border-color: #4a2aca;
+}
+
+#addannouncementbtn .fa-solid {
+    color: beige;
+}
+
+#backbtn {
+    background-color: #8a7cc5;
+    border-color: #8a7cc5;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 30px;
+    text-decoration: none;
+    transition: background 0.3s ease;
+}
+
+#backbtn:hover {
+    background-color: #6e639d;
+}
+
+#backbtn:active {
+    background-color: #524874;
+    color: white;
+}
