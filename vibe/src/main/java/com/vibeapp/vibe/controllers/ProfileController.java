@@ -1,9 +1,15 @@
 package com.vibeapp.vibe.controllers;
 
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
@@ -26,7 +32,7 @@ public class ProfileController{
     @PostMapping("/submit-user-info")
     public String addUser(@RequestParam Map<String,String> newUser,
                     @RequestParam("image") MultipartFile file){
-        String newName = newUser.get("name");
+        String newName = newUser.get("username");
         String newCityName = newUser.get("cityName");
         String newInstrument = newUser.get("instrument");
         int newAge = Integer.parseInt(newUser.get("age"));
@@ -49,12 +55,28 @@ public class ProfileController{
         }
 
         Profilerepo.save(new Profile(newName, newCityName, newInstrument, newAge,newskilllevel,newTop1artist, newTop2artist, newTop3artist, newGenres, host,imageBytes));
-        
+        return "/userimage";
+    }
 
-        return "users/home-loggedin";
+    @GetMapping("/userimage")
+    public String getimage(Model model){
+        List<Profile> profiles = Profilerepo.findAll();
+        model.addAttribute("check", profiles);
+        return "users/imagetest";
 
     }
-    
-    
+    @GetMapping("/user/image/{userId}")
+    public ResponseEntity<byte[]> getUserImage(@PathVariable int userId) {
+        Profile profile = Profilerepo.findById(userId).orElse(null);
+        if (profile != null && profile.getImage() != null) {
+            return ResponseEntity
+                    .ok()
+                    .contentType(MediaType.IMAGE_JPEG) // Adjust based on your image type
+                    .body(profile.getImage());
+        } else {
+            // Optionally, return a default image if the user has no image
+            return ResponseEntity.notFound().build();
+        }
+    }
 
 }
