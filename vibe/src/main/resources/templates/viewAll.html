@@ -58,38 +58,37 @@
                 <img src="img/vibelogo.png" alt="Vibe Logo" id="vibelogo">
             </a>
             <h1><b>Let's Explore!</b></h1>
-        </header>
-
-        <div id="filter-btn"><!-- filter button --></div>
-        <form th:action="@{/search}" th:method="post" id="search-bar">
-            <input type="text" id="search-bar-input" name="input" placeholder="Search Profiles">
-            <button type="submit">Search</button>
-        </form>
+            <div id="filter-btn"><!-- filter button --></div>
+            <form th:action="@{/search}" th:method="post" id="search-bar">
+                <input type="text" id="search-bar-input" name="input" placeholder="Search Profiles">
+                <button type="submit">Search</button>
+            </form>
+        </header><br>
        
         <div class="container-fluid">
             <div class="row justify-content-center">
-                <div class="col-md-4 mb-5">
-                    <div class="profiles-container">
-                        <div th:each="musician : ${musicians}" class="col-md-6 mb-5" id="musician-container">
-                           <div style="background-color: blanchedalmond; border: 2px solid grey; padding: 15px; border-radius: 10px;">
-                                <b><p th:text="${musician.username}" style="font-size: larger;"></p></b>
-                                <p th:text="${musician.city}"></p>
-                                <div th:each="genre : ${musician.genres}">
-                                    <span th:text="${genre}"></span>
-                                </div><br>
-                                <p>Top 3 Albums: 
-                                   <!--  displays profile's top albums -->
+                <div class="col-md-12 mb-5">
+                    <div class="profiles-container d-flex flex-wrap justify-content-center">
+                        <div th:each="musician : ${profiles}" class="col-md-3 mb-5" id="musician-container">
+                           <div style="background-color: blanchedalmond; border: 2px solid grey; padding: 15px; border-radius: 10px; width: 180px; text-align: left; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); ">
+                                <b><p th:text="${musician.name}" style="font-size: larger;"></p></b>
+                                <p th:text="${musician.cityName}"></p>
+                                <div th:each="genre : ${musician.genres}"></div><br>
+                                <p>Top 3 Artist: 
+                                    <p th:text="${musician.top1Artist}"></p><br>
+                                    <p th:text="${musician.top2Artist}"></p><br>
+                                    <p th:text="${musician.top3Artist}"></p>
                                 </p>
                                 <p>Host: 
                                     <b><label id="host-label" th:text="${musician.host ? 'Yes' : 'No'}"></label></b>
                                 </p> 
                             </div>
-                           
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+        
 
      
     </main>
