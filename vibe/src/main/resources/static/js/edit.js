@@ -1,5 +1,4 @@
-const form = document.getElementById('registerform');
-const email = document.getElementById('email');
+const form = document.getElementById('tokenform');
 const password = document.getElementById('password');
 const password2 = document.getElementById('password2');
 
@@ -27,11 +26,14 @@ const setSuccess = element => {
     inputControl.classList.remove('error');
 };
 
+
+
 const validateInputs = () => {
     const passwordValue = password.value.trim();
     const password2Value = password2.value.trim();
 
     isValid = true;
+
 
     if(passwordValue === '') {
         setError(password, 'Password is required');
@@ -70,7 +72,7 @@ const validateInputs = () => {
                 let hashedPassword = data.Digest;
                 password.value = hashedPassword;
                 password2.value = hashedPassword;
-                document.getElementById('registerform').submit();
+                document.getElementById('tokenform').submit();
             })
             .catch(error => {
                 console.error('Error:', error);
