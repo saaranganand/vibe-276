@@ -21,7 +21,7 @@ public class UsersController {
 
     @Autowired
     private UserRepository userRepo;
-
+    
     // registration form validation and account creation
     @PostMapping("/users/register")
     public String addUser(@RequestParam Map<String, String> newuser, HttpServletResponse response) {
@@ -78,8 +78,6 @@ public class UsersController {
             return "users/home-loggedin";
         }
     }
-
-    
 
     @PostMapping("/users/profile")
     public String profle(@RequestParam Map<String, String> formData,Model model){

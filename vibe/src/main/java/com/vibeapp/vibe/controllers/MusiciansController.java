@@ -24,7 +24,15 @@ public class MusiciansController {
         System.out.println("Displaying all musicians");
         List<Musician> musicians = muRepo.findAll();
         model.addAttribute("musicians", musicians);
-        return "viewAll.html";
+        return "/viewAll";
+    }
+
+    @GetMapping("/users/explore")
+    public String getAllMusiciansLogin(Model model) {
+        System.out.println("Displaying all musicians");
+        List<Musician> musicians = muRepo.findAll();
+        model.addAttribute("musicians", musicians);
+        return "users/viewAll-loggedin";
     }
 
     @PostMapping("/search")
