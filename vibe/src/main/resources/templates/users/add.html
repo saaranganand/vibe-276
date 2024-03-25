@@ -67,19 +67,10 @@
         </ul>
     </nav>
 
-    <!-- <div th:each="username:${username}">
-        <input type="text" id="username" name="username" th:value="${username.name}"></a>
-        <input type="text" id="username" name="username" th:value="${username.email}"></a>
-        <input type="text" id="username" name="username" th:value="${username.password}"></a>
-            </a>
-        </p>
-    </div> -->
-
-
 <div class="container-wrapper">
     <div class="container">
         <h2>User Information Form</h2>
-        <form action="/submit-user-info" method="post">
+        <form action="/submit-user-info" method="post" enctype="multipart/form-data">
             <div class="group">
                 <div th:each="username:${username}">
                     <input type="hidden" class ="info" id="username" name="username" th:value="${username.name}"></a>
@@ -136,7 +127,6 @@
     inputfile.onchange = function(){
         pic.src = URL.createObjectURL(inputfile.files[0]);
     }
-
 </script>
 </body>
 </html> 
