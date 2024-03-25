@@ -221,8 +221,19 @@ a {
     }
 }
 
+#loginorregister {
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.nav-link {
+    color: #333; 
+}
+
 /* font awesome */
 
-.fa-house, .fa-circle-user, .fa-star, .fa-people-group, .fa-shield-halved, .fa-right-from-bracket, .fa-scroll {
+.fa-house, .fa-circle-user, .fa-star, .fa-people-group, .fa-shield-halved, .fa-right-from-bracket, .fa-scroll{
     color:beige;
 }

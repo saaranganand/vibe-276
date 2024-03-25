@@ -4,14 +4,41 @@
     --bg-secondary: #8a7cc5;
 }
 
+.filter-container {
+    border: 2px #1e1e24;
+    padding: 20px;
+    position: fixed;
+    left: 100px;
+    overflow-y: auto; /* allows vertical scrolling  */
+    background-color: #c3b7f2;
+    
 
-#musician-container {
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); 
-    font-family: 'Courier New', Courier, monospace;
 }
+
+.checkbox {
+    position: relative;
+}
+
+.profiles-container {
+    font-family: 'Courier New', Courier, monospace;
+    margin-bottom: 40px;
+}
+
+
 
 main {
     margin-left: 5rem;
+}
+
+#vibelogo {
+    display: block;
+    margin: 0 auto;
+    margin-bottom: 10px;
+    transition: width 0.3s ease;
+    min-width: 250px;
+}
+#vibelogo:hover {
+    transform: scale(1.15);
 }
 
 #search-bar {
@@ -173,6 +200,6 @@ a {
 
 /* font awesome */
 
-.fa-house, .fa-star, .fa-people-group, .fa-shield-halved, .fa-right-from-bracket{
+.fa-house, .fa-star, .fa-people-group, .fa-shield-halved, .fa-right-from-bracket, .fa-circle-user, .fa-scroll {
     color:beige;
 }

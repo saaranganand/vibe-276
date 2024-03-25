@@ -5,4 +5,6 @@ import java.util.List;
 
 public interface ProfileRepository extends JpaRepository<Profile, Integer> {
     Profile findByUid(int uid);
+    List<Profile> findByNameContainingIgnoreCase(String input);
+    List<Profile> findByCityNameIgnoreCase(String city);
 }

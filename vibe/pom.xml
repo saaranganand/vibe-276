@@ -68,6 +68,13 @@
 			<groupId>org.springframework.session</groupId>
 			<artifactId>spring-session-core</artifactId>
 		</dependency>
+		<!-- https://mvnrepository.com/artifact/javax.persistence/com.springsource.javax.persistence -->
+		<!-- <dependency>
+			<groupId>javax.persistence</groupId>
+			<artifactId>javax.persistence-api</artifactId>
+			<version>2.2</version>
+		</dependency> -->
+
 
 
 		<dependency>
