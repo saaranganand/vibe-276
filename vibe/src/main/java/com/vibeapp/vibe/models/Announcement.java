@@ -16,9 +16,9 @@ public class Announcement {
     private int aid;
     private String title;
     private String content;
-    private String date;
     private String image;
     private String uploader;
+    private String date;
 
     @ManyToOne
     @JoinColumn(name="name")
@@ -27,7 +27,7 @@ public class Announcement {
     public Announcement() {
     }
 
-    public Announcement(String title, String content, String date, String image, String uploader) {
+    public Announcement(String title, String content, String image, String uploader, String date) {
         this.title = title;
         this.content = content;
         this.date = date;
