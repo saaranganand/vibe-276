@@ -17,6 +17,8 @@ import com.vibeapp.vibe.models.User;
 import com.vibeapp.vibe.models.UserRepository;
 
 import jakarta.servlet.http.HttpServletRequest;
+import org.springframework.web.bind.annotation.RequestBody;
+
 
 @Controller
 public class PasswordResetTokenController {
@@ -37,10 +39,28 @@ public class PasswordResetTokenController {
                 return "users/loginFailed"; //replace later
             }
 
-            // String token = UUID.randomUUID().toString();
-            // tokenRepo.save(new PasswordResetToken(email, token));
-            emailService.sendSimpleMessage("vibemusicwebsite@gmail.com", "Test Subject", "Text Body");
+            String token = UUID.randomUUID().toString();
+            tokenRepo.save(new PasswordResetToken(email, token));
             
+            String bodyMessage = "Your token is " + token;
+            String subject = "Vibe Music Reset Password Token";
+            emailService.sendSimpleMessage("vibemusicwebsite@gmail.com", subject, bodyMessage);
+            
+            //return "users/editPassword";
+            return "users/token";
+        }
+        
+    @PostMapping("/users/tokenrequest")
+        public String checkToken(@RequestParam String token) {
+            PasswordResetToken userToken = tokenRepo.findByToken(token);
+            if (userToken==null){
+                return "users/token";
+            }
             return "users/editPassword";
         }
+        
+
+
     }
+
+

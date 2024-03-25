@@ -24,6 +24,9 @@ public class PasswordResetToken {
     private Date expirationDate;
     private static final int EXPIRATION = 60; //in minutes
 
+    public PasswordResetToken(){
+        
+    }
     
     public PasswordResetToken(String email, String token) {
         this.email = email;
