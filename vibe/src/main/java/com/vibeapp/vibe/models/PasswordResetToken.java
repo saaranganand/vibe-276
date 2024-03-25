@@ -2,10 +2,8 @@ package com.vibeapp.vibe.models;
 
 //import java.sql.Date;
 import java.util.Calendar;
-import java.util.Locale;
 import java.util.Date;
 
-import org.springframework.mail.SimpleMailMessage;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
