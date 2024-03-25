@@ -66,7 +66,7 @@
         <form action="/submit-user-info" method="post" enctype="multipart/form-data">
             <div class="group">
                 <div th:each="username:${username}">
-                    <input type="text" class ="info" id="username" name="username" th:value="${username.name}"></a>
+                    <input type="hidden" class ="info" id="username" name="username" th:value="${username.name}"></a>
                 </div> 
                
                 <label for="cityName" >City Name</label><br>
