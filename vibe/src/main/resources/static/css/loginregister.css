@@ -74,6 +74,12 @@ footer {
     flex-direction: column;
 }
 
+.input-control .error {
+    color: #ff3860;
+    font-size: 13px;
+    height: 13px;
+}
+
 .input-control.success input {
     border-color: #09c372;
 }
@@ -85,12 +91,6 @@ footer {
 #submitbtn:active, #forgotbtn:active, #teambackbtn:active, #privbackbtn:active, #logoutbtn:active {
     background-color: #524874;
     color: white;
-}
-
-.input-control .error {
-    color: #ff3860;
-    font-size: 13px;
-    height: 13px;
 }
 
 #registerfailed, #loginfailed, #deletionfailed {

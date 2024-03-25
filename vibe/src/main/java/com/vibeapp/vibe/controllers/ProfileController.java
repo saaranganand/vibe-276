@@ -58,25 +58,25 @@ public class ProfileController{
         return "users/home-loggedin";
     }
 
-    @GetMapping("/userimage")
-    public String getimage(Model model){
-        List<Profile> profiles = Profilerepo.findAll();
-        model.addAttribute("check", profiles);
-        return "users/imagetest";
-    }
-    
-    @GetMapping("/user/image/{userId}")
-    public ResponseEntity<byte[]> getUserImage(@PathVariable int userId) {
-        Profile profile = Profilerepo.findById(userId).orElse(null);
-        if (profile != null && profile.getImage() != null) {
-            return ResponseEntity
-                    .ok()
-                    .contentType(MediaType.IMAGE_JPEG) // Adjust based on your image type
-                    .body(profile.getImage());
-        } else {
-            // Optionally, return a default image if the user has no image
-            return ResponseEntity.notFound().build();
-        }
-    }
+    // @GetMapping("/userimage")
+    // public String getimage(Model model){
+    //     List<Profile> profiles = Profilerepo.findAll();
+    //     model.addAttribute("check", profiles);
+    //     return "users/imagetest";
+
+    // }
+    // @GetMapping("/user/image/{userId}")
+    // public ResponseEntity<byte[]> getUserImage(@PathVariable int userId) {
+    //     Profile profile = Profilerepo.findById(userId).orElse(null);
+    //     if (profile != null && profile.getImage() != null) {
+    //         return ResponseEntity
+    //                 .ok()
+    //                 .contentType(MediaType.IMAGE_JPEG) // Adjust based on your image type
+    //                 .body(profile.getImage());
+    //     } else {
+    //         // Optionally, return a default image if the user has no image
+    //         return ResponseEntity.notFound().build();
+    //     }
+    // }
 
 }
