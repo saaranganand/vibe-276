@@ -237,6 +237,7 @@ header {
 }
 
 #anno-date {
+    color: var(--bg-primary);
     align-self: center;
     font-size: 14px;
 }
@@ -270,4 +271,23 @@ header {
     display: flex;
     justify-content: center;
     margin: 20px 0;
+}
+
+.input-control {
+    display: flex;
+    flex-direction: column;
+}
+
+.input-control .error {
+    color: #ff3860;
+    font-size: 13px;
+    height: 13px;
+}
+
+.input-control.success input {
+    border-color: #09c372;
+}
+
+.input-control.error input {
+    border-color: #ff3860;
 }

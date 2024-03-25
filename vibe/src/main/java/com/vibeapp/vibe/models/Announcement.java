@@ -1,5 +1,6 @@
 package com.vibeapp.vibe.models;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -9,19 +10,22 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name="announcement")
+@Table(name = "announcement")
 public class Announcement {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int aid;
     private String title;
+
+    @Column(length=1000000)
     private String content;
+
     private String image;
     private String uploader;
     private String date;
 
     @ManyToOne
-    @JoinColumn(name="name")
+    @JoinColumn(name = "name")
     private User user;
 
     public Announcement() {
@@ -91,5 +95,4 @@ public class Announcement {
         this.user = user;
     }
 
-    
 }
