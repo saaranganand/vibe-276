@@ -55,7 +55,7 @@ public class ProfileController{
         }
 
         Profilerepo.save(new Profile(newName, newCityName, newInstrument, newAge,newskilllevel,newTop1artist, newTop2artist, newTop3artist, newGenres, host,imageBytes));
-        return "/userimage";
+        return "users/home-loggedin";
     }
 
     @GetMapping("/userimage")
@@ -63,8 +63,8 @@ public class ProfileController{
         List<Profile> profiles = Profilerepo.findAll();
         model.addAttribute("check", profiles);
         return "users/imagetest";
-
     }
+    
     @GetMapping("/user/image/{userId}")
     public ResponseEntity<byte[]> getUserImage(@PathVariable int userId) {
         Profile profile = Profilerepo.findById(userId).orElse(null);

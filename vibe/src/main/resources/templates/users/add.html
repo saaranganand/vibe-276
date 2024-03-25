@@ -11,6 +11,8 @@
 
 </head>
 <body>
+
+
     <nav class="navbar">
         <ul class="navbar-nav">
             <li class="nav-item">
@@ -66,46 +68,66 @@
         <form action="/submit-user-info" method="post" enctype="multipart/form-data">
             <div class="group">
                 <div th:each="username:${username}">
-                    <input type="text" class ="info" id="username" name="username" th:value="${username.name}"></a>
+                    <input type="hidden" class ="info" id="username" name="username" th:value="${username.name}"></a>
                 </div> 
                
-                <label for="cityName" >City Name</label><br>
-                <input type="text"  class="info"id="cityName" name="cityName" required>
-
-                <label for="instrument" >Instrument</label><br>
-                <input type="text"  class="info" id="instrument" name="instrument" required>
-
-                <label for="age" >Age</label><br>
-                <input type="number"  class="info" id="age" name="age" required>
-
-                <label for="genres" >Genres</label><br>
-                <input type="text" class = "info" id="genres" name="genres" required>
-
-                <label for="skilllevel" >skilllevel</label><br>
-                <input type="text" class = "info" id="skilllevel" name="skilllevel" required>
-
-                <label for="top3Artist" class = "info">Top 3 Artist</label><br>
-                <input type="text"  id="top1Artist" name="top1Artist" required>
-                <input type="text"  id="top2Artist" name="top2Artist" required> 
-                <input type="text" id="top3Artist" name="top3Artist" required> 
-                
-                <div class="profileimage">
+                <div class="detailed">
+                    <div class="form-group">
+                        <label for="cityName">City Name</label>
+                        <input type="text"  class="form-control"id="cityName" name="cityName" required>
+                        <!-- <input type="text"  class="form-control"id="cityName" name="cityName" required> -->
+                        <!-- <select class="form-control" id="cityName" >
+                            <option>City</option>
+                            <option>Surrey</option>
+                            <option>Vancouver</option>
+                            <option>Burnaby</option>
+                            <option>Langley</option>
+                            <option>Coquitlam</option>
+                        </select> -->
+                        <label for="instrument" >Instrument</label>
+                        <input type="text"  class="form-control" id="instrument" name="instrument" required>
+    
+                        <label for="age" >Age</label>
+                        <input type="number"  class="form-control" id="age" name="age" required>
+    
+                        <label for="genres" >Genres</label>
+                        <input type="text" class = "form-control" id="genres" name="genres" required>
+    
+                        <label for="skilllevel" >skilllevel</label>
+                        <input type="text" class = "form-control" id="skilllevel" name="skilllevel" required> 
+                    </div>
+                 </div>
+                 <div class="profileimage">
                     <img src="/img/profile.png" id="profile-pic"><br>
                     <label for="userImage" class = "uploadimage">Upload Image</label>
                     <input type="file" class = "imagefile" accept ="image/jpeg, image/png, image/jpg"  id="userImage" name="image"> 
                 </div>
+                <div class="artist">
+                    <div class="form-group">
+                        <label for="top3Artist" class="info">Top 3 Artist</label><br>
+                        <div class="row">
+                            <div class="col">
+                                <input type="text" class="form-control" id="top1Artist" name="top1Artist" placeholder="Artist 1" required>
+                            </div>
+                            <div class="col">
+                                <input type="text" class="form-control" id="top2Artist" name="top2Artist" placeholder="Artist 2" required>
+                            </div>
+                            <div class="col">
+                                <input type="text" class="form-control" id="top3Artist" name="top3Artist" placeholder="Artist 3" required>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
-
-
-                <label for="host">Host:</label>
-                <select  id="host" name="host">
-                    <option value="true" selected >Yes</option>
-                    <option value="false" >No </option>
-                </select> 
-
-            <!-- need to add a post mapping for the submit button, to encode the photo to byte array  -->
-            <button type="submit" class="btn btn-primary" >Submit</button>
-        </div>
+                <div class="hostandSubmit">
+                    <label for="host">Host:</label>
+                    <select  id="host" name="host">
+                        <option value="true" selected >Yes</option>
+                        <option value="false" >No </option>
+                    </select> 
+                    <button type="submit" class="btn btn-primary" >Submit</button>
+                </div>    
+            </div>
         </form>
     </div>
 </div>
