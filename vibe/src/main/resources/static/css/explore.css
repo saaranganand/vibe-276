@@ -5,10 +5,14 @@
 }
 
 
-#musician-container {
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); 
+
+
+.profiles-container {
     font-family: 'Courier New', Courier, monospace;
+    margin-bottom: 40px;
 }
+
+
 
 main {
     margin-left: 5rem;
