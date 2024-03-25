@@ -4,8 +4,20 @@
     --bg-secondary: #8a7cc5;
 }
 
+.filter-container {
+    border: 2px #1e1e24;
+    padding: 20px;
+    position: fixed;
+    left: 100px;
+    overflow-y: auto; /* allows vertical scrolling  */
+    background-color: #c3b7f2;
+    
 
+}
 
+.checkbox {
+    position: relative;
+}
 
 .profiles-container {
     font-family: 'Courier New', Courier, monospace;

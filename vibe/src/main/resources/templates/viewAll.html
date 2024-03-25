@@ -58,21 +58,27 @@
                 <img src="img/vibelogo.png" alt="Vibe Logo" id="vibelogo">
             </a>
             <h1><b>Let's Explore!</b></h1>
-            <div id="filter-btn"><!-- filter button --></div>
             <form th:action="@{/search}" th:method="post" id="search-bar">
                 <input type="text" id="search-bar-input" name="input" placeholder="Search Profiles">
                 <button type="submit">Search</button>
-            </form>
+            </form> 
         </header><br>
        
         <div class="container-fluid">
             <div class="row justify-content-center">
                 <div class="col-md-12 mb-5">
+                    <div class="filter-container">
+                        <h4>Location:</h4>
+                        <div class="locations">
+                            <div class="checkbox"><label><input type="checkbox" rel="Burnaby" onchange="filter();">Burnaby</label></div>
+                            <div class="checkbox"><label><input type="checkbox" rel="Vancouver" onchange="filter();">Vancouver</label></div>
+                        </div>
+                    </div>
                     <div class="profiles-container d-flex flex-wrap justify-content-center">
                         <div th:each="musician : ${profiles}" class="col-md-3 mb-5" id="musician-container">
                            <div style="background-color: blanchedalmond; border: 2px solid grey; padding: 15px; border-radius: 10px; width: 180px; text-align: left; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); ">
                                 <b><p th:text="${musician.name}" style="font-size: larger;"></p></b>
-                                <p th:text="${musician.cityName}"></p>
+                                <p id = city th:text="${musician.cityName}"></p>
                                 <div th:each="genre : ${musician.genres}"></div><br>
                                 <p>Top 3 Artist: 
                                     <p th:text="${musician.top1Artist}"></p><br>
@@ -93,6 +99,34 @@
      
     </main>
     
+    <script>
+        function filter() {
+            var checkBoxes = document.querySelectorAll('.locations input[type="checkbox"]');
+            var selectedLocations = [];
+
+            checkBoxes.forEach(function(checkbox) {
+                if (checkbox.checked) {
+                    selectedLocations.push(checkbox.getAttribute('rel'));
+                }
+            });
+
+            display(selectedLocations);
+        }
+
+        function display(selectedLocations) {
+            var profiles = document.querySelectorAll('.profiles-container #musician-container');
+            profiles.forEach(function(profile) {
+                var city = profile.querySelector('#city').textContent.trim();
+                // length == 0 means nothing selected
+                if (selectedLocations.length === 0 || selectedLocations.includes(city)) {
+                    profile.style.display = 'block'; // profile is block-level element 
+                } else {
+                    profile.style.display = 'none'; // hides profile
+                }
+            });
+        }
+
+    </script>
 
     <footer>
         © Vibe 2024
