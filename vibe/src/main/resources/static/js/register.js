@@ -87,6 +87,18 @@ const validateInputs = () => {
         setSuccess(password2);
     }
 
-    if(isValid === true)
-        document.getElementById('registerform').submit();
+    if(isValid === true) {
+        // Hash the password before submitting the form
+        fetch(`https://api.hashify.net/hash/sha256/hex?value=${passwordValue}`)
+            .then(response => response.json())
+            .then(data => {
+                let hashedPassword = data.Digest;
+                password.value = hashedPassword;
+                password2.value = hashedPassword;
+                document.getElementById('registerform').submit();
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+    }
 };
