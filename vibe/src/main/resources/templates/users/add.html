@@ -139,16 +139,22 @@
     </div>
 </div>
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js">
-</script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 
         
 <script>
     let pic = document.getElementById("profile-pic");
     let inputfile = document.getElementById("userImage");
-    inputfile.onchange = function(){
-        pic.src = URL.createObjectURL(inputfile.files[0]);
-    }
-</script>
+    document.getElementById('userImage').addEventListener('change', function(e) {
+        var size = this.files[0].size;
+        var maxSize = 2 * 1024 * 1024; // 2MB
+        if (size > maxSize) {
+            alert("The file size should not exceed 2MB. Please Resubmit your Image");
+            this.value = ""; // Clear the file input
+        }else{
+            pic.src = URL.createObjectURL(inputfile.files[0]);
+        }
+    });
+    </script>    
 </body>
 </html> 
