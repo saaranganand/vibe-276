@@ -90,23 +90,34 @@
        
         <div class="container-fluid">
             <div class="row justify-content-center">
-                <div class="col-md-4 mb-5">
-                    <div class="profiles-container">
-                        <div th:each="musician : ${musicians}" class="col-md-6 mb-5" id="musician-container">
-                           <div style="background-color: blanchedalmond; border: 2px solid grey; padding: 15px; border-radius: 10px;">
-                                <b><p th:text="${musician.username}" style="font-size: larger;"></p></b>
-                                <p th:text="${musician.city}"></p>
-                                <div th:each="genre : ${musician.genres}">
-                                    <span th:text="${genre}"></span>
-                                </div><br>
-                                <p>Top 3 Albums: 
-                                   <!--  displays profile's top albums -->
+                <div class="col-md-12 mb-5">
+                    <div class="filter-container">
+                        <h4>Location:</h4>
+                        <div class="locations">
+                            <div class="checkbox"><label><input type="checkbox" rel="Burnaby" onchange="filter();">Burnaby</label></div>
+                            <div class="checkbox"><label><input type="checkbox" rel="Vancouver" onchange="filter();">Vancouver</label></div>
+                        </div>
+                    </div>
+                    <div class="profiles-container d-flex flex-wrap justify-content-center">
+                        <div th:each="musician : ${profiles}" class="col-md-3 mb-5" id="musician-container">
+                           <div style="background-color: blanchedalmond; border: 2px solid grey; padding: 15px; border-radius: 10px; width: 180px; text-align: left; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); ">
+                                <b><p th:text="${musician.name}" style="font-size: larger;"></p></b>
+                                <p id = city th:text="${musician.cityName}"></p>
+                                <div th:each="genre : ${musician.genres}"></div><br>
+                                <p>Top 3 Artist: 
+                                    <p th:text="${musician.top1Artist}"></p><br>
+                                    <p th:text="${musician.top2Artist}"></p><br>
+                                    <p th:text="${musician.top3Artist}"></p>
                                 </p>
                                 <p>Host: 
                                     <b><label id="host-label" th:text="${musician.host ? 'Yes' : 'No'}"></label></b>
                                 </p> 
+                                <div class = "extendedBtn">
+                                    <a th:href="@{/extendedView(name=${musician.name})}">
+                                        <button class="btn" id="extendedBtn">View Profile</button>
+                                    </a>
+                                </div>
                             </div>
-                           
                         </div>
                     </div>
                 </div>
