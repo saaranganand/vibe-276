@@ -149,7 +149,7 @@
         var size = this.files[0].size;
         var maxSize = 2 * 1024 * 1024; // 2MB
         if (size > maxSize) {
-            alert("The file size should not exceed 2MB.");
+            alert("The file size should not exceed 2MB. Please Resubmit your Image");
             this.value = ""; // Clear the file input
         }else{
             pic.src = URL.createObjectURL(inputfile.files[0]);
