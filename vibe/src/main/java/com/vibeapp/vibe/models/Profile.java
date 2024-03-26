@@ -28,6 +28,11 @@ public class Profile {
     public Profile(){
     }
 
+    public Profile(String name, Boolean host) {
+        this.name = name;
+        this.host = host;
+    }
+
     public Profile(String name, String cityName,String instrument,int age,String skilllevel,String top1Artist,
     String top2Artist,String top3Artist,String genres,Boolean host,byte[] image){
         this.name = name;

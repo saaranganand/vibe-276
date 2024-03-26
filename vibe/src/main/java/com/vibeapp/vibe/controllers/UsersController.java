@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.vibeapp.vibe.models.Profile;
+import com.vibeapp.vibe.models.ProfileRepository;
 import com.vibeapp.vibe.models.User;
 import com.vibeapp.vibe.models.UserRepository;
 
@@ -21,6 +23,9 @@ public class UsersController {
 
     @Autowired
     private UserRepository userRepo;
+
+    @Autowired
+    private ProfileRepository profRepo;
     
     // registration form validation and account creation
     @PostMapping("/users/register")
@@ -39,6 +44,7 @@ public class UsersController {
         }
         else {
             userRepo.save(new User(newName, newPassword, newEmail));
+            profRepo.save(new Profile(newName, false));
             response.setStatus(201);
             return "users/registerSuccess";
         }
