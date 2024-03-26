@@ -34,5 +34,15 @@ public class ExploreController {
         return "/viewAll";
     }
 
+    @GetMapping("/users/explore")
+    public String getAllMusiciansLogin(Model model) {
+        System.out.println("Displaying all musicians");
+        List<Profile> profiles = proRepo.findAll();
+        model.addAttribute("profiles", profiles);
+        return "users/viewAll-loggedin";
+    }
+
+
+    
     
 }
