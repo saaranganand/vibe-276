@@ -37,6 +37,9 @@ public class UsersController {
 
         User existingUserByEmail = userRepo.findByEmail(newEmail);
         User existingUserByUsername = userRepo.findByName(newName);
+
+        // Initialize default image for user under their profile record
+        byte[] image = new byte[0];
     
         if (existingUserByEmail != null || existingUserByUsername != null) {
             response.setStatus(409);
@@ -44,7 +47,8 @@ public class UsersController {
         }
         else {
             userRepo.save(new User(newName, newPassword, newEmail));
-            profRepo.save(new Profile(newName, false));
+            profRepo.save(new Profile(newName, false, image)); // Initialize w default image
+            // profRepo.save(new Profile(newName, false));
             response.setStatus(201);
             return "users/registerSuccess";
         }
