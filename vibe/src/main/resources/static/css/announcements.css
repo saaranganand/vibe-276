@@ -75,8 +75,6 @@
     color: #333; 
 }
 
-/* font awesome */
-
 .fa-house, .fa-circle-user, .fa-star, .fa-people-group, .fa-shield-halved, .fa-right-from-bracket, .fa-scroll{
     color:beige;
 }
@@ -131,6 +129,35 @@ header {
 #vibelogo:hover {
     transform: scale(1.15);
 }
+
+/* search bar */
+.search-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 90%;
+    border-radius: 25px;
+    overflow: hidden;
+    background-color: white;
+    border: solid 1px black;
+}
+
+#searchbar {
+    flex-grow: 1;
+    border: none;
+    padding: 10px;
+}
+#searchbar:focus {
+    outline: none;
+}
+
+#searchbar-submit {
+    padding: 10px;
+    color: white;
+    background-color: var(--bg-secondary);
+    border: none;
+}
+/* end of search bar */
 
 #addannouncementbtn {
     position: fixed;
@@ -211,9 +238,11 @@ header {
 
 #anno-text {
     padding: 0 10px 0 10px;
+    border-radius: 10px;
     background-color: white;
     font-size: 16px;
     margin-bottom: 10px;
+    word-wrap: break-word;
 }
 
 #anno-image-container {
@@ -290,4 +319,8 @@ header {
 
 .input-control.error input {
     border-color: #ff3860;
+}
+
+.textareaElement {
+    text-align: left;
 }

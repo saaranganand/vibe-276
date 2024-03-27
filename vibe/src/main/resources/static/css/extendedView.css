@@ -39,3 +39,15 @@
   height: auto;
   margin-bottom: 5px;
 }
+
+#Spotify {
+  display: block;
+  margin: 0 auto;
+  margin-bottom: 10px;
+  transition: width 0.3s ease;
+  min-width: 100px;
+}
+#Spotify:hover {
+  transform: scale(1.20);
+
+}

@@ -1,9 +1,7 @@
 package com.vibeapp.vibe.models;
 
 import jakarta.persistence.*;
-import jakarta.persistence.Lob;;
-
-
+import jakarta.persistence.Lob;
 
 @Entity
 @Table(name="profile")
