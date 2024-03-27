@@ -1,15 +1,12 @@
-// get current session user
-const sessionUser = // ???;
-
-// get all delete buttons
-const deleteButtons = document.querySelectorAll('.delete-button');
-
-// get all uploader elements to detect which posts to show button on
-const uploaders = document.querySelectorAll('#anno-uploader');
-
-for (let i = 0; i < uploaders.length; i++) {
-    //if session user is uploader of that post, reveal button
-    if (uploaders[i].textContent === sessionUser) {
-        deleteButtons[i].style.display = 'block';
+//search anouncements based on input stirng
+function searchAnnouncements() {
+    const searchString = document.getElementById('searchbar').value.toLowerCase();
+    const announcements = document.querySelectorAll('.announcement');
+    for (let i = 0; i < announcements.length; i++) {
+        if (announcements[i].textContent.toLowerCase().includes(searchString)) {
+            announcements[i].style.display = 'block';
+        } else {
+            announcements[i].style.display = 'none';
+        }
     }
 }
