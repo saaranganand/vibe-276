@@ -81,7 +81,7 @@
                 <div class="detailed">
                     <div class="form-group">
                         <label for="cityName">City Name</label>
-                        <input type="text"  class="form-control"id="cityName" name="cityName" required>
+                        <input type="text"  class="form-control"id="cityName" name="cityName" th:value="${username.cityName}" required>
                         <!-- <input type="text"  class="form-control"id="cityName" name="cityName" required> -->
                         <!-- <select class="form-control" id="cityName" >
                             <option>City</option>
@@ -92,20 +92,21 @@
                             <option>Coquitlam</option>
                         </select> -->
                         <label for="instrument" >Instrument</label>
-                        <input type="text"  class="form-control" id="instrument" name="instrument" required>
+                        <input type="text"  class="form-control" id="instrument" name="instrument" th:value="${username.instrument}"required>
     
                         <label for="age" >Age</label>
-                        <input type="number"  class="form-control" id="age" name="age" required>
+                        <input type="number"  class="form-control" id="age" name="age" th:value="${username.age}"required>
     
                         <label for="genres" >Genres</label>
-                        <input type="text" class = "form-control" id="genres" name="genres" required>
+                        <input type="text" class = "form-control" id="genres" name="genres" th:value="${username.genres}"required>
     
                         <label for="skilllevel" >skilllevel</label>
-                        <input type="text" class = "form-control" id="skilllevel" name="skilllevel" required> 
+                        <input type="text" class = "form-control" id="skilllevel" name="skilllevel" th:value="${username.skilllevel}" required> 
                     </div>
                  </div>
                  <div class="profileimage">
-                    <img src="/img/profile.png" id="profile-pic"><br>
+                    <img th:src="@{/user/image/{userId}(userId=${username.uid})}" id="profile-pic"><br>
+                    <!-- <img src="/img/profile.png" id="profile-pic"><br> -->
                     <label for="userImage" class = "uploadimage">Upload Image</label>
                     <input type="file" class = "imagefile" accept ="image/jpeg, image/png, image/jpg"  id="userImage" name="image"> 
                 </div>
@@ -114,13 +115,13 @@
                         <label for="top3Artist" class="info">Top 3 Artist</label><br>
                         <div class="row">
                             <div class="col">
-                                <input type="text" class="form-control" id="top1Artist" name="top1Artist" placeholder="Artist 1" required>
+                                <input type="text" class="form-control" id="top1Artist" name="top1Artist" th:value="${username.top1Artist}" required>
                             </div>
                             <div class="col">
-                                <input type="text" class="form-control" id="top2Artist" name="top2Artist" placeholder="Artist 2" required>
+                                <input type="text" class="form-control" id="top2Artist" name="top2Artist" th:value="${username.top2Artist}" required>
                             </div>
                             <div class="col">
-                                <input type="text" class="form-control" id="top3Artist" name="top3Artist" placeholder="Artist 3" required>
+                                <input type="text" class="form-control" id="top3Artist" name="top3Artist" th:value="${username.top3Artist}" required>
                             </div>
                         </div>
                     </div>

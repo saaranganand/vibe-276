@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -27,12 +28,15 @@ public class ProfileController{
     private ProfileRepository Profilerepo;
     private static final Logger logger = LoggerFactory.getLogger(ProfileController.class);
 
+    
 
 
+    @Transactional
     @PostMapping("/submit-user-info")
     public String addUser(@RequestParam Map<String,String> newUser,
                     @RequestParam("image") MultipartFile file){
         String newName = newUser.get("username");
+        Profile user = Profilerepo.findByName(newName);
         String newCityName = newUser.get("cityName");
         String newInstrument = newUser.get("instrument");
         int newAge = Integer.parseInt(newUser.get("age"));
@@ -53,9 +57,20 @@ public class ProfileController{
                 logger.error("Error while getting bytes from image", e);
             }
         }
-
-        Profilerepo.save(new Profile(newName, newCityName, newInstrument, newAge,newskilllevel,newTop1artist, newTop2artist, newTop3artist, newGenres, host,imageBytes));
-        return "users/home-loggedin";
+        user.setName(newName);
+        user.setCityName(newCityName);
+        user.setInstrument(newInstrument);
+        user.setAge(newAge);
+        user.setSkilllevel(newskilllevel);
+        user.setTop1Artist(newTop1artist);
+        user.setTop2Artist(newTop2artist);
+        user.setTop3Artist(newTop3artist);
+        user.setGenres(newGenres);
+        user.setHost(host);
+        if(imageBytes != null){
+            user.setImage(imageBytes);
+        }
+        return "/users/home-loggedin";
     }
 
     // @GetMapping("/userimage")
@@ -65,18 +80,18 @@ public class ProfileController{
     //     return "users/imagetest";
 
     // }
-    // @GetMapping("/user/image/{userId}")
-    // public ResponseEntity<byte[]> getUserImage(@PathVariable int userId) {
-    //     Profile profile = Profilerepo.findById(userId).orElse(null);
-    //     if (profile != null && profile.getImage() != null) {
-    //         return ResponseEntity
-    //                 .ok()
-    //                 .contentType(MediaType.IMAGE_JPEG) // Adjust based on your image type
-    //                 .body(profile.getImage());
-    //     } else {
-    //         // Optionally, return a default image if the user has no image
-    //         return ResponseEntity.notFound().build();
-    //     }
-    // }
+    @GetMapping("/user/image/{userId}")
+    public ResponseEntity<byte[]> getUserImage(@PathVariable int userId) {
+        Profile profile = Profilerepo.findById(userId).orElse(null);
+        if (profile != null && profile.getImage() != null) {
+            return ResponseEntity
+                    .ok()
+                    .contentType(MediaType.IMAGE_JPEG) // Adjust based on your image type
+                    .body(profile.getImage());
+        } else {
+            // Optionally, return a default image if the user has no image
+            return ResponseEntity.notFound().build();
+        }
+    }
 
 }
