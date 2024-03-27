@@ -1,9 +1,11 @@
 package com.vibeapp.vibe.controllers;
 
+import java.io.File;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -17,6 +19,13 @@ import com.vibeapp.vibe.models.UserRepository;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
+
+import org.springframework.web.bind.annotation.RestController;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import java.io.IOException;
 
 @Controller
 public class UsersController {
@@ -37,6 +46,10 @@ public class UsersController {
 
         User existingUserByEmail = userRepo.findByEmail(newEmail);
         User existingUserByUsername = userRepo.findByName(newName);
+
+        String imagePath = "src/main/resources/static/img/profile.png"; // Adjust the path as needed
+        byte[] imageBytes = readImageToByteArray(imagePath);
+
     
         if (existingUserByEmail != null || existingUserByUsername != null) {
             response.setStatus(409);
@@ -44,9 +57,20 @@ public class UsersController {
         }
         else {
             userRepo.save(new User(newName, newPassword, newEmail));
-            profRepo.save(new Profile(newName, false));
+            profRepo.save(new Profile(newName, false,imageBytes));
             response.setStatus(201);
             return "users/registerSuccess";
+        }
+    }
+
+    public static byte[] readImageToByteArray(String imagePath) {
+        try {
+            // Convert the image path to a Path object and read all bytes
+            return Files.readAllBytes(Paths.get(imagePath));
+        } catch (IOException e) {
+            // Log the error or handle it according to your application's needs
+            e.printStackTrace();
+            return null;
         }
     }
 
@@ -85,13 +109,20 @@ public class UsersController {
         }
     }
 
+    @Transactional
     @PostMapping("/users/profile")
     public String profle(@RequestParam Map<String, String> formData,Model model){
         String username = formData.get("username");
-        User user = userRepo.findByName(username);
+        Profile user = profRepo.findByName(username);
         model.addAttribute("username", user);
         return "users/add";
     }
+
+    // @GetMapping("/profile")
+    // public String gotoprofile(@RequestParam("name") String name,Model model){
+    //     Profile user = profRepo.findByName(name);
+    //     return "add.html"
+    // }
 
     // logout
     @GetMapping("/logout")
@@ -99,4 +130,6 @@ public class UsersController {
         request.getSession().invalidate();
         return "users/login";
     }
+
+
 }
