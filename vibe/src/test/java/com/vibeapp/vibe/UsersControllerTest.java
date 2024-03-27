@@ -1,6 +1,5 @@
 package com.vibeapp.vibe;
 
-import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.when;
 
@@ -11,7 +10,6 @@ import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMock
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
-import org.springframework.mock.web.MockMultipartFile;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
@@ -41,7 +39,7 @@ public class UsersControllerTest {
                 .param("password", "testpassword"))
                 .andExpect(MockMvcResultMatchers.status().is(201))
                 .andExpect(MockMvcResultMatchers.view().name("users/home-loggedin"));
-}
+    }
 
     @Test
     public void testLoginFailure() throws Exception {
@@ -54,5 +52,13 @@ public class UsersControllerTest {
                 .param("password", "wrongpassword"))
                 .andExpect(MockMvcResultMatchers.status().is(409))
                 .andExpect(MockMvcResultMatchers.view().name("users/loginFailed"));
-}
+    }
+
+    @Test
+    public void testRegisterNewUser() throws Exception {
+        mockMvc.perform(MockMvcRequestBuilders.post("/users/register")
+                .contentType(MediaType.APPLICATION_JSON)
+                .content("{\"username\":\"testuser\", \"password\":\"Test@123\", \"email\":\"testuser@example.com\"}"))
+                .andExpect(MockMvcResultMatchers.status().isCreated());
+    }
 }

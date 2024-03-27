@@ -1,10 +1,11 @@
 const form = document.getElementById('announceform');
 const title = document.getElementById('title');
-const content = document.getElementById('content');
+const content = document.getElementById('hiddenContent');
 const image = document.getElementById('image');
 
 form.addEventListener('submit', e => {
     e.preventDefault();
+    document.getElementById('hiddenContent').value = document.getElementById('content').innerText;
 
     validateInputs();
 });
