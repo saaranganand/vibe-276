@@ -29,9 +29,16 @@ public class ExploreController {
     @PostMapping("/search")
     public String searchProfiles(@RequestParam String input, Model model) {
         System.out.println("Searching profiles: " + input);
-        List<Profile> filteredProfiles = proRepo.findByNameContainingIgnoreCase(input);
-        model.addAttribute("profiles", filteredProfiles);
-        return "/viewAll";
+        if (input != null && !input.trim().isEmpty()){
+            List<Profile> filteredProfiles = proRepo.findByNameContainingIgnoreCase(input);
+            model.addAttribute("profiles", filteredProfiles);
+        }
+        else {
+            List<Profile> profiles = proRepo.findAll();
+            model.addAttribute("profiles", profiles);
+        }
+        
+        return "viewAll.html";
     }
 
     @GetMapping("/users/explore")
