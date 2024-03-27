@@ -1,9 +1,7 @@
 package com.vibeapp.vibe.models;
 
 import jakarta.persistence.*;
-import jakarta.persistence.Lob;;
-
-
+import jakarta.persistence.Lob;
 
 @Entity
 @Table(name="profile")
@@ -31,6 +29,12 @@ public class Profile {
     public Profile(String name, Boolean host) {
         this.name = name;
         this.host = host;
+    }
+
+    public Profile(String name, Boolean host, byte[] image) {
+        this.name = name;
+        this.host = host;
+        this.image = image;
     }
 
     public Profile(String name, String cityName,String instrument,int age,String skilllevel,String top1Artist,
