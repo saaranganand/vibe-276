@@ -26,6 +26,11 @@ public class Profile {
     public Profile(){
     }
 
+    public Profile(String name, Boolean host) {
+        this.name = name;
+        this.host = host;
+    }
+
     public Profile(String name, Boolean host, byte[] image) {
         this.name = name;
         this.host = host;
