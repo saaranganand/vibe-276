@@ -47,7 +47,7 @@ public class UsersController {
         User existingUserByEmail = userRepo.findByEmail(newEmail);
         User existingUserByUsername = userRepo.findByName(newName);
 
-        String imagePath = "src/main/resources/static/img/profile.png"; // Adjust the path as needed
+        String imagePath = "src/main/resources/static/img/profile.png";
         byte[] imageBytes = readImageToByteArray(imagePath);
 
     
