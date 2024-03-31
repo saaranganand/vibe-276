@@ -28,7 +28,7 @@ public class AnnouncementController {
     @GetMapping("/users/announcements")
     public String getAllAnnouncements(Model model) {
         System.out.println("Getting all announcements");
-        List<Announcement> announcements = announceRepo.findAllByOrderByAidAsc();
+        List<Announcement> announcements = announceRepo.findAllByOrderByAidDesc();
         model.addAttribute("anno", announcements);
         return "users/announcements";
     }

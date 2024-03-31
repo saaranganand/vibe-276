@@ -226,6 +226,17 @@ header {
     margin: 20px;
     padding: 20px;
     width: 80%;
+    position: relative;
+}
+
+#xBtn {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    width: 30px;
+    color: red;
+    background: black;
+    font-size: 24px;
 }
 
 #anno-title {
@@ -323,4 +334,23 @@ header {
 
 .textareaElement {
     text-align: left;
+}
+
+#logoutbtn {
+    background-color: var(--bg-secondary);
+    font-size: 20px;
+    border-color: var(--bg-secondary);
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
+a {
+    text-decoration: none;
+}
+#logoutbtn:hover {
+    background-color: #6b5f98;
+}
+#logoutbtn:active {
+    background-color: #4a3f6f;
+    color: white;
 }

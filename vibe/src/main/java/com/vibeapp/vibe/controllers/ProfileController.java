@@ -70,7 +70,7 @@ public class ProfileController{
         if(imageBytes != null){
             user.setImage(imageBytes);
         }
-        return "/users/home-loggedin";
+        return "redirect:/users/login";
     }
 
     // @GetMapping("/userimage")
