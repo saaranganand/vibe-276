@@ -6,13 +6,11 @@
 <title>User Information Form</title>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
 <link rel="stylesheet" href="/css/profile.css">
-<link rel="stylesheet" href="/css/home.css">
+<link rel="stylesheet" href="/css/home-loggedin.css">
 <script src="https://kit.fontawesome.com/a02c21629a.js" crossorigin="anonymous"></script>
 
 </head>
 <body>
-
-
     <nav class="navbar">
         <ul class="navbar-nav">
             <li class="nav-item">
@@ -22,23 +20,36 @@
                     <span class="barlink-text">Home</span>
                 </a>
             </li>
+
             <li class="nav-item">
-                <a href="/users/profile" class="nav-link">
-                    <i class="fa-solid fa-circle-user fa-2xl"></i>
-                    <br>
-                    <span class="barlink-text">Profile</span>
-                </a>
+                <form action="/users/profile" method="post" style="display:inline;">
+                    <div th:each="user:${user}">
+                        <input type="hidden" id="username" name="username" th:value="${user.name}">
+                    </div>
+                    <button type="submit" class="nav-link">
+                        <i class="fa-solid fa-circle-user fa-2xl"></i>
+                        <br>
+                        <span class="barlink-text">Profile</span>
+                    </button>
+                </form>
             </li>
+
             <li>
-                <a href="/users/announcements" class="nav-link">
-                    <i class="fa-solid fa-scroll fa-2xl"></i>
-                    <br>
-                    <span class="barlink-text">Bulletin</span>
-                </a>
+                <form action="/users/announcements" method="post" style="display:inline;">
+                    <div th:each="user:${user}">
+                        <input type="hidden" id="username" name="username" th:value="${user.name}">
+                    </div>
+                    <button type="submit" class="nav-link" style="outline: none;">
+                        <i class="fa-solid fa-circle-user fa-2xl"></i>
+                        <br>
+                        <span class="barlink-text">Profile</span>
+                    </button>
+                </form>
             </li>
+
             <div class="nav-items-bottom">
                 <li class="nav-item">
-                    <a href="/feedback.html" class="nav-link">
+                    <a href="/feedback.html" class="nav-link" style="outline: none;">
                         <i class="fa-regular fa-star fa-2xl"></i>
                         <br>
                         <span class="barlink-text">Feedback</span>
@@ -156,6 +167,6 @@
             pic.src = URL.createObjectURL(inputfile.files[0]);
         }
     });
-    </script>    
+</script>    
 </body>
 </html> 

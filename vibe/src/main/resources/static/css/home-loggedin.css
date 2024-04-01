@@ -51,6 +51,10 @@ main {
     text-decoration: none;
 }
 
+.nav-link:focus {
+    outline: none;
+}
+
 .barlink-text {
     color: beige;
     opacity: 0;
