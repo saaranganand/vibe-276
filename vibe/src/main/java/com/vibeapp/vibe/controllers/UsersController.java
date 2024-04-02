@@ -110,11 +110,14 @@ public class UsersController {
             return "users/home-loggedin";
         }
     }
-
+    String username = "";
     @Transactional
     @PostMapping("/users/profile")
     public String profle(@RequestParam Map<String, String> formData,Model model){
-        String username = formData.get("username");
+        if(username == ""){
+            username = formData.get("username");
+        }
+        // String username = formData.get("username");
         Profile user = profRepo.findByName(username);
         model.addAttribute("username", user);
         return "users/add";

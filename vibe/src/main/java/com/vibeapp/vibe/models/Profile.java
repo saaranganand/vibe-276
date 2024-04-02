@@ -19,6 +19,10 @@ public class Profile {
     private String top3Artist;
     private String genres;
     private Boolean host;
+    private String spotify;
+    private String facebook;
+    private String instagram;
+    private String lastfm;
 
     @Lob
     private byte[] image;
@@ -132,4 +136,38 @@ public class Profile {
     public void setImage(byte[] image) {
         this.image = image;
     }
+
+    public String getSpotify() {
+        return spotify;
+    }
+
+    public void setSpotify(String spotify) {
+        this.spotify = spotify;
+    }
+
+    public String getFacebook() {
+        return facebook;
+    }
+
+    public void setFacebook(String facebook) {
+        this.facebook = facebook;
+    }
+
+    public String getInstagram() {
+        return instagram;
+    }
+
+    public void setInstagram(String instagram) {
+        this.instagram = instagram;
+    }
+
+    public String getLastfm() {
+        return lastfm;
+    }
+
+    public void setLastfm(String lastfm) {
+        this.lastfm = lastfm;
+    }
+
+    
 }
