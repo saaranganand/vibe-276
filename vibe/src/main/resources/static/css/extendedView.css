@@ -40,14 +40,14 @@
   margin-bottom: 5px;
 }
 
-#Spotify {
+#logos {
   display: block;
   margin: 0 auto;
   margin-bottom: 10px;
   transition: width 0.3s ease;
   min-width: 100px;
 }
-#Spotify:hover {
+#logos:hover {
   transform: scale(1.20);
 
 }
