@@ -27,9 +27,7 @@ public class ProfileController{
     @Autowired
     private ProfileRepository Profilerepo;
     private static final Logger logger = LoggerFactory.getLogger(ProfileController.class);
-
     
-
 
     @Transactional
     @PostMapping("/submit-user-info")
