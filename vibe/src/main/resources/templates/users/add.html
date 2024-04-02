@@ -102,6 +102,17 @@
     
                         <label for="skilllevel" >skilllevel</label>
                         <input type="text" class = "form-control" id="skilllevel" name="skilllevel" th:value="${username.skilllevel}" required> 
+
+                        <div class = "links">
+                            <label for="spotify" >Spotify link</label>
+                                <input type="text" class = "form-control" id="skilllevel" name="spotify" th:value="${username.spotify}" required> 
+                            <label for="lastfm" >LastFM link</label>
+                                <input type="text" class = "form-control" id="skilllevel" name="lastfm" th:value="${username.lastfm}" required>
+                            <label for="facebook" >Facebook links</label>
+                                <input type="text" class = "form-control" id="skilllevel" name="facebook" th:value="${username.facebook}" required>
+                            <label for="instagram" >Instagram links</label>
+                                <input type="text" class = "form-control" id="skilllevel" name="instagram" th:value="${username.instagram}" required>
+                        </div>
                     </div>
                  </div>
                  <div class="profileimage">
@@ -126,6 +137,7 @@
                         </div>
                     </div>
                 </div>
+                
 
                 <div class="hostandSubmit">
                     <label for="host">Host:</label>
