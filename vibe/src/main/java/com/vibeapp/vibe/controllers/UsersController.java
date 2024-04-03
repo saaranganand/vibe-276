@@ -21,12 +21,13 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 
-import org.springframework.web.bind.annotation.RestController;
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import java.io.IOException;
+import org.springframework.core.io.ClassPathResource;
+import org.springframework.util.StreamUtils;
+
 
 @Controller
 public class UsersController {
@@ -38,6 +39,7 @@ public class UsersController {
     private ProfileRepository profRepo;
     
     // registration form validation and account creation
+    @Transactional
     @PostMapping("/users/register")
     public String addUser(@RequestParam Map<String, String> newuser, HttpServletResponse response) {
         System.out.println("ADD new user");
@@ -48,31 +50,31 @@ public class UsersController {
         User existingUserByEmail = userRepo.findByEmail(newEmail);
         User existingUserByUsername = userRepo.findByName(newName);
 
-        String imagePath = "src/main/resources/static/img/profile.png";
-        byte[] imageBytes = readImageToByteArray(imagePath);
+        // Initialize default image for user under their profile record
+        byte[] image = null;
+        try {
+            image = readImageToByteArray("static/img/profile.png"); // Adjust the path as needed
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
-    
         if (existingUserByEmail != null || existingUserByUsername != null) {
             response.setStatus(409);
             return "users/registerFailed";
         }
         else {
             userRepo.save(new User(newName, newPassword, newEmail));
-            profRepo.save(new Profile(newName, false,imageBytes));
+            profRepo.save(new Profile(newName, false, image)); // Initialize w default image
+            // profRepo.save(new Profile(newName, false));
             response.setStatus(201);
             return "users/registerSuccess";
         }
     }
 
-    public static byte[] readImageToByteArray(String imagePath) {
-        try {
-            // Convert the image path to a Path object and read all bytes
-            return Files.readAllBytes(Paths.get(imagePath));
-        } catch (IOException e) {
-            // Log the error or handle it according to your application's needs
-            e.printStackTrace();
-            return null;
-        }
+
+    public static byte[] readImageToByteArray(String imagePath) throws IOException {
+        ClassPathResource imgFile = new ClassPathResource(imagePath);
+        return StreamUtils.copyToByteArray(imgFile.getInputStream());
     }
 
     @GetMapping("/users/login")
@@ -111,11 +113,14 @@ public class UsersController {
             return "users/home-loggedin";
         }
     }
-
+    String username = "";
     @Transactional
     @PostMapping("/users/profile")
     public String profle(@RequestParam Map<String, String> formData,Model model){
-        String username = formData.get("username");
+        if(username == ""){
+            username = formData.get("username");
+        }
+        // String username = formData.get("username");
         Profile user = profRepo.findByName(username);
         model.addAttribute("username", user);
         return "users/add";

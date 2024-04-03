@@ -7,6 +7,7 @@
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
 <link rel="stylesheet" href="/css/profile.css">
 <link rel="stylesheet" href="/css/home.css">
+<link rel="stylesheet" href="/css/navbar.css">
 <script src="https://kit.fontawesome.com/a02c21629a.js" crossorigin="anonymous"></script>
 
 </head>
@@ -102,6 +103,17 @@
     
                         <label for="skilllevel" >skilllevel</label>
                         <input type="text" class = "form-control" id="skilllevel" name="skilllevel" th:value="${username.skilllevel}" required> 
+
+                        <div class = "links">
+                            <label for="spotify" >Spotify link</label>
+                                <input type="text" class = "form-control" id="skilllevel" name="spotify" th:value="${username.spotify}" required> 
+                            <label for="lastfm" >LastFM link</label>
+                                <input type="text" class = "form-control" id="skilllevel" name="lastfm" th:value="${username.lastfm}" required>
+                            <label for="facebook" >Facebook links</label>
+                                <input type="text" class = "form-control" id="skilllevel" name="facebook" th:value="${username.facebook}" required>
+                            <label for="instagram" >Instagram links</label>
+                                <input type="text" class = "form-control" id="skilllevel" name="instagram" th:value="${username.instagram}" required>
+                        </div>
                     </div>
                  </div>
                  <div class="profileimage">
@@ -126,6 +138,7 @@
                         </div>
                     </div>
                 </div>
+                
 
                 <div class="hostandSubmit">
                     <label for="host">Host:</label>

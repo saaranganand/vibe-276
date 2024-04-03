@@ -19,13 +19,20 @@ public class ExtendedView
     private String top3Artist;
     private String genres;
     private Boolean host;
+    private String skilllevel;
+    private String spotify;
+    private String facebook;
+    private String instagram;
+    private String lastfm;
+
+
     // private String image;
     public ExtendedView()
     {
     }
 
     public ExtendedView(String name, String cityName,String instrument,int age,String top1Artist,
-    String top2Artist,String top3Artist,String genres,Boolean host){
+    String top2Artist,String top3Artist,String genres,Boolean host,String skilllevel,String spotify){
         this.name = name;
         this.cityName = cityName;
         this.instrument = instrument;
@@ -35,6 +42,8 @@ public class ExtendedView
         this.top3Artist = top3Artist;
         this.genres = genres;
         this.host = host;
+        this.skilllevel = skilllevel;
+        this.spotify = spotify;
     }
 
     public int getUid() {
@@ -97,4 +106,53 @@ public class ExtendedView
     public void setHost(boolean host) {
         this.host = host;
     }
+
+    public Boolean getHost() {
+        return host;
+    }
+
+    public void setHost(Boolean host) {
+        this.host = host;
+    }
+
+    public String getSkilllevel() {
+        return skilllevel;
+    }
+
+    public void setSkilllevel(String skilllevel) {
+        this.skilllevel = skilllevel;
+    }
+
+    public String getSpotify() {
+        return spotify;
+    }
+
+    public void setSpotify(String spotify) {
+        this.spotify = spotify;
+    }
+
+    public String getFacebook() {
+        return facebook;
+    }
+
+    public void setFacebook(String facebook) {
+        this.facebook = facebook;
+    }
+
+    public String getInstagram() {
+        return instagram;
+    }
+
+    public void setInstagram(String instagram) {
+        this.instagram = instagram;
+    }
+
+    public String getLastfm() {
+        return lastfm;
+    }
+
+    public void setLastfm(String lastfm) {
+        this.lastfm = lastfm;
+    }
+    
 }
