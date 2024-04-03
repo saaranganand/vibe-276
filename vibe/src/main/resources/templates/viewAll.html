@@ -84,6 +84,11 @@
                                 <p>Host: 
                                     <b><label id="host-label" th:text="${musician.host ? 'Yes' : 'No'}"></label></b>
                                 </p> 
+                                <div class = "extendedBtn">
+                                    <a th:href="@{/extendedView(name=${musician.name})}">
+                                        <button class="btn" id="extendedBtn">View Profile</button>
+                                    </a>
+                                </div>
                             </div>
                         </div>
                     </div>
