@@ -4,83 +4,6 @@
     --bg-secondary: #8a7cc5;
 }
 
-/* navbar */
-.navbar {
-    width: 5rem;
-    height: 100vh;
-    position: fixed;
-    background-color: var(--bg-secondary);
-    transition: width 200ms ease;
-    z-index: 1000;
-}
-
-.navbar-nav {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    height: 100%;
-}
-
-.nav-item {
-    width: 100%;
-}
-
-.nav-items-bottom {
-    margin-top: auto;
-}
-
-.nav-link {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 5rem;
-    color: var(--text-primary);
-    text-decoration: none;
-}
-
-.barlink-text {
-    color: beige;
-    opacity: 0;
-    transition: transform 0.3s ease, opacity 200ms ease;
-}
-
-.nav-link i {
-    min-width: 2rem;
-    margin: 0 1.5rem;
-    transition: transform 200ms ease;
-}
-
-.navbar:hover {
-    width: 8rem;
-}
-
-.navbar:hover .barlink-text {
-    opacity: 1;
-    transform: translateX(1.4rem);
-}
-
-.navbar:hover .nav-link i {
-    transform: translateX(1.5rem);
-}
-
-.nav-link:hover i, .nav-link:hover .barlink-text {
-    color: black;
-}
-
-.nav-link {
-    color: #333; 
-}
-
-.fa-house, .fa-circle-user, .fa-star, .fa-people-group, .fa-shield-halved, .fa-right-from-bracket, .fa-scroll{
-    color:beige;
-}
-
-/* end of navbar */
-
 * {
     margin: 0;
     padding: 0;
@@ -226,6 +149,17 @@ header {
     margin: 20px;
     padding: 20px;
     width: 80%;
+    position: relative;
+}
+
+#xBtn {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    width: 30px;
+    color: red;
+    background: black;
+    font-size: 24px;
 }
 
 #anno-title {
@@ -323,4 +257,23 @@ header {
 
 .textareaElement {
     text-align: left;
+}
+
+#logoutbtn {
+    background-color: var(--bg-secondary);
+    font-size: 20px;
+    border-color: var(--bg-secondary);
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
+a {
+    text-decoration: none;
+}
+#logoutbtn:hover {
+    background-color: #6b5f98;
+}
+#logoutbtn:active {
+    background-color: #4a3f6f;
+    color: white;
 }
