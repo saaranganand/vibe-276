@@ -5,23 +5,25 @@
 }
 
 .filter-container {
-    border: 2px #1e1e24;
-    padding: 20px;
     position: fixed;
-    left: 100px;
-    overflow-y: auto; /* allows vertical scrolling  */
+    top: 270px; 
+    left: 130px; 
+
+    display: block;
+    padding: 30px;
     background-color: #c3b7f2;
-    
-
+    box-shadow: #6649b8 0 0 0 5px;
+    align-items: left;
+    border-radius: 10px;
 }
 
-.checkbox {
-    position: relative;
-}
 
 .profiles-container {
     font-family: 'Courier New', Courier, monospace;
+    font-weight: bold;
     margin-bottom: 40px;
+    margin-left: 15rem;
+    margin-top: 2rem;
 }
 
 
@@ -45,6 +47,7 @@ main {
     margin-right: 5rem;
     float: right;
 }
+
 
 #host-label {
     display: inline-block;
@@ -118,17 +121,6 @@ a {
     justify-content: center;
     align-items: center;
 }
-
-#explorebutton {
-    font-size: 30px;
-    color: white;
-    transition: background-color 0.3s ease, border 0.3s ease, box-shadow 0.3s ease;
-}
-#explorebutton:hover {
-    background-color: transparent;
-    color: var(--bg-secondary);
-    box-shadow: 0 0 0 10px var(--bg-secondary);
-} 
 
 
 

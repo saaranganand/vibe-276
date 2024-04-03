@@ -1,6 +1,7 @@
 package com.vibeapp.vibe.controllers;
 
 import java.io.File;
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -83,6 +84,8 @@ public class UsersController {
             return "login";
         }
         else { // logged in
+            List<Profile> profiles = profRepo.findAll();
+            model.addAttribute("profiles", profiles);
             model.addAttribute("user", user);
             return "users/home-loggedin";
         }

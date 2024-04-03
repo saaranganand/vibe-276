@@ -165,3 +165,16 @@ a {
 .nav-link {
     color: #333; 
 }
+
+
+
+#slide-container {
+    font: 'Arial';
+}
+
+
+/* font awesome */
+
+.fa-house, .fa-circle-user, .fa-star, .fa-people-group, .fa-shield-halved, .fa-right-from-bracket, .fa-scroll{
+    color:beige;
+}
