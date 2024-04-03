@@ -4,14 +4,20 @@ import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.actuate.autoconfigure.observation.ObservationProperties.Http;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.vibeapp.vibe.models.Admin;
 import com.vibeapp.vibe.models.AdminRepository;
+import com.vibeapp.vibe.models.Announcement;
+import com.vibeapp.vibe.models.AnnouncementRepository;
 import com.vibeapp.vibe.models.User;
 import com.vibeapp.vibe.models.UserRepository;
 
@@ -27,6 +33,9 @@ public class AdminsController {
 
     @Autowired
     private UserRepository userRepo;
+
+    @Autowired
+    private AnnouncementRepository announceRepo;
 
     @GetMapping("/admins/login")
     public String getAdminLogin(Model model, HttpServletRequest request, HttpSession session) {
@@ -78,6 +87,22 @@ public class AdminsController {
             response.setStatus(201);
             return "admins/deleted";
         }
+    }
+
+    @GetMapping("/admins/announcements/delete")
+    public String getAllAnnouncements(Model model) {
+        System.out.println("Getting all announcements");
+        List<Announcement> announcements = announceRepo.findAllByOrderByAidDesc();
+        model.addAttribute("anno", announcements);
+        return "admins/announcements/delete";
+    }
+
+    @PostMapping("/admins/announcements/delete/{annoId}")
+    public String deleteAnnouncement(@PathVariable("annoId") int annoId, HttpServletResponse response) {
+        System.out.println("Delete announcement");
+        announceRepo.deleteById(annoId);
+        response.setStatus(201);
+        return "redirect:/admins/announcements/delete";
     }
 
     @PostMapping("/admins/back")

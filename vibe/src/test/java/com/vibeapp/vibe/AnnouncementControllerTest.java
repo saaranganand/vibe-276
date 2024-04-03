@@ -32,7 +32,7 @@ public class AnnouncementControllerTest {
 
     @Test
     public void testGetAllAnnouncements() throws Exception {
-        when(announcementRepository.findAllByOrderByAidAsc()).thenReturn(Arrays.asList(new Announcement("Test Title", "Test Content", "Test Image", "Test Uploader", "Test Date")));
+        when(announcementRepository.findAllByOrderByAidDesc()).thenReturn(Arrays.asList(new Announcement("Test Title", "Test Content", "Test Image", "Test Uploader", "Test Date")));
 
         mockMvc.perform(get("/users/announcements"))
             .andExpect(status().isOk())

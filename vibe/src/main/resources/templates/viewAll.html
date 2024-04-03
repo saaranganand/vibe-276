@@ -6,10 +6,10 @@
     <title>Explore Page</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="/css/explore.css">
+    <link rel="stylesheet" href="/css/navbar.css">
     <script src="https://kit.fontawesome.com/a02c21629a.js" crossorigin="anonymous"></script>
 </head>
 <body>
-
     <nav class="navbar">
         <ul class="navbar-nav">
             <li class="nav-item">
@@ -41,16 +41,10 @@
                         <span class="barlink-text">Privacy</span>
                     </a>
                 </li>
-                <!-- <li class="nav-item">
-                    <a href="/users/logout" class="nav-link">
-                        <i class="fa-solid fa-right-from-bracket fa-2xl"></i>
-                        <br>
-                        <span class="barlink-text">Logout</span>
-                    </a>
-                </li> -->
             </div>
         </ul>
     </nav>
+
 
     <main>
         <header>
@@ -62,20 +56,20 @@
                 <input type="text" id="search-bar-input" name="input" placeholder="Search Profiles">
                 <button type="submit">Search</button>
             </form> 
+            <div class="filter-container">
+                <b><h5>Location:</h5></b>
+                <div class="locations">
+                    <div class="checkbox"><label><input type="checkbox" rel="Burnaby" onchange="filter();">Burnaby</label></div>
+                    <div class="checkbox"><label><input type="checkbox" rel="Vancouver" onchange="filter();">Vancouver</label></div>
+                    <div class="checkbox"><label><input type="checkbox" rel="Richmond" onchange="filter();">Richmond</label></div>
+                    <div class="checkbox"><label><input type="checkbox" rel="Surrey" onchange="filter();">Surrey</label></div>
+                </div>
+            </div>
         </header><br>
        
         <div class="container-fluid">
             <div class="row justify-content-center">
                 <div class="col-md-12 mb-5">
-                    <div class="filter-container">
-                        <h4>Location:</h4>
-                        <div class="locations">
-                            <div class="checkbox"><label><input type="checkbox" rel="Burnaby" onchange="filter();">Burnaby</label></div>
-                            <div class="checkbox"><label><input type="checkbox" rel="Vancouver" onchange="filter();">Vancouver</label></div>
-                            <div class="checkbox"><label><input type="checkbox" rel="Richmond" onchange="filter();">Richmond</label></div>
-                            <div class="checkbox"><label><input type="checkbox" rel="Surrey" onchange="filter();">Surrey</label></div>
-                        </div>
-                    </div>
                     <div class="profiles-container d-flex flex-wrap justify-content-center">
                         <div th:each="musician : ${profiles}" class="col-md-3 mb-5" id="musician-container">
                            <div style="background-color: blanchedalmond; border: 2px solid grey; padding: 15px; border-radius: 10px; width: 180px; text-align: left; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); ">  
@@ -91,11 +85,11 @@
                                 <p>Host: 
                                     <b><label id="host-label" th:text="${musician.host ? 'Yes' : 'No'}"></label></b>
                                 </p> 
-                                <!-- <div class = "extendedBtn">
+                                <div class = "extendedBtn">
                                     <a th:href="@{/extendedView(name=${musician.name})}">
                                         <button class="btn" id="extendedBtn">View Profile</button>
                                     </a>
-                                </div> -->
+                                </div>
                             </div>
                         </div>
                     </div>
