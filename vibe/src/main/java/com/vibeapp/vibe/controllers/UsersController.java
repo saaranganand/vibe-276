@@ -113,13 +113,13 @@ public class UsersController {
             return "users/home-loggedin";
         }
     }
-    String username = "";
+
     @Transactional
     @PostMapping("/users/profile")
     public String profle(@RequestParam Map<String, String> formData,Model model){
-        if(username == ""){
-            username = formData.get("username");
-        }
+
+        String username = formData.get("username");
+        
         // String username = formData.get("username");
         Profile user = profRepo.findByName(username);
         model.addAttribute("username", user);
@@ -135,7 +135,7 @@ public class UsersController {
     // logout
     @GetMapping("/logout")
     public String destroySession(HttpServletRequest request) {
-        username = "";
+
         request.getSession().invalidate();
         return "users/login";
     }
