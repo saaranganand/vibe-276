@@ -30,16 +30,12 @@ public class ProfileController{
     private ProfileRepository Profilerepo;
     private static final Logger logger = LoggerFactory.getLogger(ProfileController.class);
 
-    public String newName = "";
-
 
     @Transactional
     @PostMapping("/submit-user-info")
     public String addUser(@RequestParam Map<String,String> newUser,
                     @RequestParam("image") MultipartFile file){
-        if(newName == ""){
-            newName = newUser.get("username");
-        }
+        String newName = newUser.get("username");
         Profile user = Profilerepo.findByName(newName);
         String newCityName = newUser.get("cityName");
         String newInstrument = newUser.get("instrument");
