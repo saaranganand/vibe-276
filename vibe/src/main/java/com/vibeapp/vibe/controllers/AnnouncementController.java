@@ -48,7 +48,8 @@ public class AnnouncementController {
         model.addAttribute("username", user);
 
         System.out.println("Getting all announcements");
-        List<Announcement> announcements = announceRepo.findAllByOrderByAidAsc();
+        List<Announcement> announcements = announceRepo.findAllByOrderByAidDesc();
+
         model.addAttribute("anno", announcements);
         return "users/announcements";
     }
