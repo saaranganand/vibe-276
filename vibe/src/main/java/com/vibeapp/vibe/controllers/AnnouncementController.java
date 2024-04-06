@@ -85,9 +85,6 @@ public class AnnouncementController {
         String uploader = user.getName();
         Profile profileuser = proRepo.findByName(uploader);
         byte[] userimage = profileuser.getImage();
-
-        // int userid = profileuser.getUid();
-        // int userid = 5;
         announceRepo.save(new Announcement(newTitle, newContent, newImage, uploader, newDate,userimage));
         response.setStatus(201);
         return "redirect:/users/announcements";
@@ -106,19 +103,4 @@ public class AnnouncementController {
             return ResponseEntity.notFound().build();
         }
     }
-    
-
-    // @GetMapping("/user/image/{userId}")
-    // public ResponseEntity<byte[]> getUserImage(@PathVariable int userId) {
-    //     Profile profile = Profilerepo.findById(userId).orElse(null);
-    //     if (profile != null && profile.getImage() != null) {
-    //         return ResponseEntity
-    //                 .ok()
-    //                 .contentType(MediaType.IMAGE_JPEG) // Adjust based on your image type
-    //                 .body(profile.getImage());
-    //     } else {
-    //         // Optionally, return a default image if the user has no image
-    //         return ResponseEntity.notFound().build();
-    //     }
-    // }
 }
