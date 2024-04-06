@@ -135,10 +135,8 @@ public class UsersController {
     // logout
     @GetMapping("/logout")
     public String destroySession(HttpServletRequest request) {
-
         request.getSession().invalidate();
         return "users/login";
     }
-
 
 }
