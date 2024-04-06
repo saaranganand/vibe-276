@@ -89,6 +89,7 @@
                     <div class="card">
                         <div class="card-body">
                             <div class="card-title">
+                                <img th:src="@{/user/image/{userId}(userId=${exview.uid})}" id="user-pic"><br>
                                 <h2 th:text="${exview.name}" id="username"></h2>
                                 <h3 th:text="${exview.cityName}"></h3>
                             </div>

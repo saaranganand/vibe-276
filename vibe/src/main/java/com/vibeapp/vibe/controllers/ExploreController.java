@@ -20,7 +20,7 @@ public class ExploreController {
     @Autowired
     private ProfileRepository proRepo;
 
-
+    @Transactional
     @GetMapping("/explore")
     public String getAllMusicians(Model model) {
         System.out.println("Displaying all musicians");
@@ -29,6 +29,7 @@ public class ExploreController {
         return "viewAll.html";
     }
 
+    @Transactional
     @PostMapping("/search")
     public String searchProfiles(@RequestParam String input, Model model) {
         System.out.println("Searching profiles: " + input);
