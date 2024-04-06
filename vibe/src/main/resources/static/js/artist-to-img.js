@@ -25,7 +25,7 @@ function getAlbumCover(artistName, element) {
 
         var albumId = randomAlbum.id;
 
-        fetch("http://coverartarchive.org/release-group/" + albumId)
+        fetch("https://coverartarchive.org/release-group/" + albumId)
           .then((response) => {
             if (!response.ok) {
               // If album cover not found, try another album
