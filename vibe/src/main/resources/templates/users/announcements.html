@@ -113,7 +113,7 @@
                     <button class="delete-button" style="display: none;">Delete</button>
                     
                     <div id="anno-uploader">
-                        <img th:src="@{/user/profileimage/{userId}(userId=${announcement.aid})}" id="user-pic" class = userbox>
+                        <img th:src="@{/user/userimage/{userId}(userId=${announcement.aid})}" id="user-pic" class = userbox>
                         <div id="text-container">
                             <span><u>Posted By:</u></span>
                             <span th:text="${announcement.uploader}" id="uploader-name"></span>
