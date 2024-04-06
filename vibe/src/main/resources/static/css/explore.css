@@ -129,3 +129,11 @@ a {
 .fa-house, .fa-star, .fa-people-group, .fa-shield-halved, .fa-right-from-bracket, .fa-circle-user, .fa-scroll {
     color:beige;
 }
+
+#user-pic{
+    border-radius: 50%;
+    width: 100px; /* Adjust to your preference */
+    height: 100px; /* Adjust to your preference */
+    object-fit: cover;
+    margin-right: 10px;
+}
