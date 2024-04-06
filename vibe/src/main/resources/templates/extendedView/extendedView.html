@@ -109,20 +109,20 @@
                                 <div class="artist">
                                     <h3>Top 3 Artists:</h3>
                                     <div class="info-container">
-                                        <div class="artist-container">
+                                        <div class="artist-container" onclick="redirectToSpotifyArtist(document.getElementById('artist1Name').innerText)" style="cursor: pointer;">
                                             <div id="artist1"></div>
                                             <br>
-                                            <p id="artist1Name" th:text="${exview.top1Artist}" onclick="redirectToSpotifyArtist(this.innerText)" style="cursor: pointer;"></p>
+                                            <p id="artist1Name" th:text="${exview.top1Artist}"></p>
                                         </div>
-                                        <div class="artist-container">
+                                        <div class="artist-container" onclick="redirectToSpotifyArtist(document.getElementById('artist2Name').innerText)" style="cursor: pointer;">
                                             <div id="artist2"></div>
                                             <br>
-                                            <p id="artist2Name" th:text="${exview.top2Artist}" onclick="redirectToSpotifyArtist(this.innerText)" style="cursor: pointer;"></p>
+                                            <p id="artist2Name" th:text="${exview.top2Artist}"></p>
                                         </div>
-                                        <div class="artist-container">
+                                        <div class="artist-container" onclick="redirectToSpotifyArtist(document.getElementById('artist3Name').innerText)" style="cursor: pointer;">
                                             <div id="artist3"></div>
                                             <br>
-                                            <p id="artist3Name" th:text="${exview.top3Artist}" onclick="redirectToSpotifyArtist(this.innerText)" style="cursor: pointer;"></p>
+                                            <p id="artist3Name" th:text="${exview.top3Artist}"></p>
                                         </div>
                                     </div>
                                 </div>
