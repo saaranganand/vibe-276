@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="/css/navbar.css">
     <script src="https://kit.fontawesome.com/a02c21629a.js" crossorigin="anonymous"></script>
     <script src="js/artist-to-img.js"></script>
+    <script src="js/link-to-artist.js"></script>
 </head>
 <body>
     <nav class="navbar">
@@ -109,17 +110,17 @@
                                 <div class="artist">
                                     <h3>Top 3 Artists:</h3>
                                     <div class="info-container">
-                                        <div class="artist-container">
+                                        <div class="artist-container" onclick="redirectToSpotifyArtist(document.getElementById('artist1Name').innerText)" style="cursor: pointer;">
                                             <div id="artist1"></div>
                                             <br>
                                             <p id="artist1Name" th:text="${exview.top1Artist}"></p>
                                         </div>
-                                        <div class="artist-container">
+                                        <div class="artist-container" onclick="redirectToSpotifyArtist(document.getElementById('artist2Name').innerText)" style="cursor: pointer;">
                                             <div id="artist2"></div>
                                             <br>
                                             <p id="artist2Name" th:text="${exview.top2Artist}"></p>
                                         </div>
-                                        <div class="artist-container">
+                                        <div class="artist-container" onclick="redirectToSpotifyArtist(document.getElementById('artist3Name').innerText)" style="cursor: pointer;">
                                             <div id="artist3"></div>
                                             <br>
                                             <p id="artist3Name" th:text="${exview.top3Artist}"></p>

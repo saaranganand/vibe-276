@@ -85,8 +85,10 @@ public class UsersController {
         }
         else { // logged in
             List<Profile> profiles = profRepo.findAll();
+            long userCount = userRepo.count();
             model.addAttribute("profiles", profiles);
             model.addAttribute("user", user);
+            model.addAttribute("userCount", userCount);
             return "users/home-loggedin";
         }
     }
@@ -107,8 +109,10 @@ public class UsersController {
             return "users/loginFailed";
         } else {
             // login success
+            long userCount = userRepo.count();
             request.getSession().setAttribute("session_user", user);
             model.addAttribute("user", user);
+            model.addAttribute("userCount", userCount);
             response.setStatus(201);
             return "users/home-loggedin";
         }
@@ -135,10 +139,8 @@ public class UsersController {
     // logout
     @GetMapping("/logout")
     public String destroySession(HttpServletRequest request) {
-
         request.getSession().invalidate();
         return "users/login";
     }
-
 
 }
