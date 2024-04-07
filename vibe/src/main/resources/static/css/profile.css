@@ -90,7 +90,7 @@
     position: absolute;
     max-height: 6em; /* fit 3 lines of text */
     overflow-y: auto;
-    width: 300px;
+    width: 15vw;
     box-sizing: border-box; /* Include padding and border in element's total width and height */
     border: 1px solid black;
 }
