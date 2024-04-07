@@ -86,10 +86,10 @@
 
 <div class="container-wrapper">
     <div class="container">
-        <h2>User Information Form</h2>
+        <!-- <h2>User Information Form</h2> -->
         <form action="/submit-user-info" method="post" enctype="multipart/form-data">
             <div th:each="username:${username}">
-                <!-- <h2 th:text="${username != null} ? (${username.name} + '\'s Profile') : 'User Information Form'"></h2> -->
+                <h2 th:text="${username != null} ? (${username.name} + '\'s Profile') : 'User Information Form'"></h2>
                 <input type="hidden" class ="info" id="username" name="username" th:value="${username.name}"></a>
             </div> 
             <div class="group">
