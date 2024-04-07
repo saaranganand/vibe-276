@@ -178,3 +178,11 @@ a {
 .fa-house, .fa-circle-user, .fa-star, .fa-people-group, .fa-shield-halved, .fa-right-from-bracket, .fa-scroll{
     color:beige;
 }
+
+#user-pic{
+    border-radius: 50%;
+    width: 80px; /* Adjust to your preference */
+    height: 80px; /* Adjust to your preference */
+    object-fit: cover;
+    margin-right: 10px;
+}
