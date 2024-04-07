@@ -1,3 +1,9 @@
+:root {
+  font-size: 16px;
+  --bg-primary: beige;
+  --bg-secondary: #8a7cc5;
+}
+
 .container {
   max-width: 1000px;
   margin: 0 auto;

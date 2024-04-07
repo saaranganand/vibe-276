@@ -1,3 +1,9 @@
+:root {
+    font-size: 16px;
+    --bg-primary: beige;
+    --bg-secondary: #8a7cc5;
+}
+
 .container-wrapper {
     display: flex;
     justify-content: center;
@@ -80,4 +86,22 @@
     display: none;
 }
 
+#instrumentDropdown, #genreDropdown {
+    display: none;
+    position: absolute;
+    max-height: 6em; /* fit 3 lines of text */
+    overflow-y: auto;
+    width: 300px;
+    box-sizing: border-box; /* Include padding and border in element's total width and height */
+    border: 1px solid black;
+}
+#instrumentDropdown div, #genreDropdown div {
+    padding: 5px;
+    cursor: pointer;
+    background-color: #f8f8f8;
+}
+#instrumentDropdown div:hover, #genreDropdown div:hover {
+    color: white;
+    background-color: var(--bg-secondary);
+}
 
