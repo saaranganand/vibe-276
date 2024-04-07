@@ -25,6 +25,10 @@ public class ExtendedView
     private String instagram;
     private String lastfm;
 
+    @Lob
+    byte[] userimage;
+
+
 
     // private String image;
     public ExtendedView()
@@ -153,6 +157,14 @@ public class ExtendedView
 
     public void setLastfm(String lastfm) {
         this.lastfm = lastfm;
+    }
+
+    public byte[] getUserimage() {
+        return userimage;
+    }
+
+    public void setUserimage(byte[] userimage) {
+        this.userimage = userimage;
     }
     
 }

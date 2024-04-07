@@ -73,7 +73,8 @@
                     <div class="profiles-container d-flex flex-wrap justify-content-center">
                         <div th:each="musician : ${profiles}" class="col-md-3 mb-5" id="musician-container">
                            <div style="background-color: blanchedalmond; border: 2px solid grey; padding: 15px; border-radius: 10px; width: 180px; text-align: left; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); ">  
-                                <!-- <img src="@{/user/image/{userId}(userId=${musician.uid})}" alt="User Image" id="profile-image"> -->
+                            <img th:src="@{/user/image/{userId}(userId=${musician.uid})}" id="user-pic"><br>
+                                
                                 <b><p th:text="${musician.name}" style="font-size: larger;"></p></b>
                                 <p id = city th:text="${musician.cityName}"></p>
                                 <div th:each="genre : ${musician.genres}"></div><br>

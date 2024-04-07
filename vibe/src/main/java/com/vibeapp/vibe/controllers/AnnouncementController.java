@@ -6,10 +6,13 @@ import java.util.Map;
 import java.time.LocalDate;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -29,9 +32,10 @@ public class AnnouncementController {
     @Autowired
     private AnnouncementRepository announceRepo;
     @Autowired
+
     private ProfileRepository proRepo;
 
-
+    @Transactional
     @GetMapping("/users/announcements")
     public String getAllAnnouncements(Model model) {
         System.out.println("Getting all announcements");
@@ -65,6 +69,7 @@ public class AnnouncementController {
     }
     
     // Post mapping to add new anouncement
+    @Transactional
     @PostMapping("/users/addannounce")
     public String addStudent(@RequestParam Map<String, String> newannouncement, HttpServletResponse response, HttpSession session) {
         System.out.println("Add announcement");
@@ -78,8 +83,24 @@ public class AnnouncementController {
         // get the currently logged in user
         User user = (User) session.getAttribute("session_user");
         String uploader = user.getName();
-        announceRepo.save(new Announcement(newTitle, newContent, newImage, uploader, newDate));
+        Profile profileuser = proRepo.findByName(uploader);
+        byte[] userimage = profileuser.getImage();
+        announceRepo.save(new Announcement(newTitle, newContent, newImage, uploader, newDate,userimage));
         response.setStatus(201);
         return "redirect:/users/announcements";
+    }
+
+    @GetMapping("/user/userimage/{userId}")
+    public ResponseEntity<byte[]> getUserImage(@PathVariable int userId){
+        Announcement annouce = announceRepo.findById(userId).orElse(null);
+        if(annouce != null && annouce.getUserimage() != null){
+            return ResponseEntity
+                    .ok()
+                    .contentType(MediaType.IMAGE_JPEG)
+                    .body(annouce.getUserimage());
+        }else {
+            // Optionally, return a default image if the user has no image
+            return ResponseEntity.notFound().build();
+        }
     }
 }

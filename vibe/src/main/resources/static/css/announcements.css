@@ -207,7 +207,7 @@ header {
 
 #anno-uploader {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
     align-self: flex-end;
     border-radius: 30px;
@@ -216,6 +216,19 @@ header {
     font-size: 14px;
     margin-bottom: 10px;
 }
+
+#text-container {
+    display: flex;
+    flex-direction: column; /* Stack "Posted By" and name vertically */
+}
+
+.userbox{
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
 
 #uploader-name {
     font-size: 16px;
@@ -277,3 +290,5 @@ a {
     background-color: #4a3f6f;
     color: white;
 }
+
+
