@@ -29,7 +29,6 @@
                     <h2 th:text="${announcement.title}" id="anno-title"></h2>
                     <p th:text="${announcement.content}" id="anno-text"></p>
                     <div th:if="${announcement.image != null and !#strings.isEmpty(announcement.image)}" id="anno-image-container">
-                        <!-- currently rendering a link -->
                         <img th:src="${announcement.image}" alt="Announcement Image" id="anno-image">
                     </div>
 
@@ -40,11 +39,12 @@
                             <p th:text="${announcement.date}"></p>
                         </div>
 
-                        <button class="delete-button" style="display: none;">Delete</button>
-
                         <div id="anno-uploader">
-                            <span><u>Posted By: </u></span>
-                            <span th:text="${announcement.uploader}" id="uploader-name"></span>
+                            <img th:src="@{/user/userimage/{userId}(userId=${announcement.aid})}" id="user-pic" class = userbox>
+                            <div id="text-container">
+                                <span><u>Posted By: </u></span>
+                                <span th:text="${announcement.uploader}" id="uploader-name"></span>
+                            </div>
                         </div>
                     </div>
                 </form>

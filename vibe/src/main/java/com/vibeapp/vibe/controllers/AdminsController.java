@@ -24,6 +24,7 @@ import com.vibeapp.vibe.models.UserRepository;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
+import jakarta.transaction.Transactional;
 
 @Controller
 public class AdminsController {
@@ -89,6 +90,7 @@ public class AdminsController {
         }
     }
 
+    @Transactional
     @GetMapping("/admins/announcements/delete")
     public String getAllAnnouncements(Model model) {
         System.out.println("Getting all announcements");
