@@ -166,12 +166,13 @@ a {
     color: #333; 
 }
 
-
-
 #slide-container {
     font: 'Arial';
 }
 
+#usercount {
+    color: #5a4e8b;
+}
 
 /* font awesome */
 
