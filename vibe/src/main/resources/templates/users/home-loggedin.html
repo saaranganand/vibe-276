@@ -139,9 +139,15 @@
                                     <p th:text="${user.top2Artist}"></p><br>
                                     <p th:text="${user.top3Artist}"></p>
                                 </p>
-                                <a th:href="@{/extendedView(name=${user.name})}">
-                                    <button>Visit Profile</button>
-                                </a>
+                                <div class = "extendedBtn">
+                                    <form action="/extendedView" method="post" style="display:inline;">
+                                        <div th:each="user:${username}">
+                                            <input type="hidden" id="username" name="username" th:value="${username.name}"></a>
+                                        </div>
+                                        <input type="hidden" id="explorename" name="explorename" th:value="${user.name}"></a>
+                                        <button type="submit" class="btn" id="extendedBtn">Visit Profile</button>
+                                    </form>
+                                </div>
                             </div>
                         </div>
                     </div>
