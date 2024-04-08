@@ -71,7 +71,9 @@ public class ProfileController{
         user.setTop3Artist(newTop3artist);
         user.setGenres(newGenres);
         user.setHost(host);
-        user.setSpotify(spotify);
+        if(user.getSpotify() ==null){
+            user.setSpotify(spotify);
+        }
         user.setFacebook(facebook);
         user.setInstagram(instagram);
         user.setLastfm(lastfm);
