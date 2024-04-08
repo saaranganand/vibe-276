@@ -18,6 +18,8 @@ import com.vibeapp.vibe.models.ExtendedView;
 import com.vibeapp.vibe.models.ExtendedViewRepository;
 import com.vibeapp.vibe.models.Profile;
 import com.vibeapp.vibe.models.ProfileRepository;
+import com.vibeapp.vibe.models.UserRepository;
+import com.vibeapp.vibe.models.User;
 ;
 
 @Controller
@@ -28,6 +30,9 @@ public class ExtendedViewController{
     @Autowired
     private ProfileRepository proRepo;
 
+    @Autowired
+    private UserRepository userRepo;
+
     // @GetMapping("/extendedView")
     // public String getUserData(@RequestParam("name") String name, Model model)
     // {
@@ -35,17 +40,31 @@ public class ExtendedViewController{
     //     model.addAttribute("exview", exview);
     //     return "extendedView/extendedView";
     // }
+    // @Transactional
+    // @GetMapping("/message")
+    // public String getUserEmail(@RequestParam("name") String name, Model model) {
+    //     User user = userRepo.findByName(name);
+    //     model.addAttribute("user", user);
+    //     return "message";
+    // }
+
+
     @Transactional
     @PostMapping("/extendedView")
     public String getUserData(@RequestParam Map<String, String> formData, Model model)
     {
         String username = formData.get("username");
         Profile user = proRepo.findByName(username);
+        
+        // User user1 = userRepo.findByName(username);
         model.addAttribute("username", user);
+        
 
         String extendusername = formData.get("explorename");
         ExtendedView exview = ExRepo.findByName(extendusername);
+        User user1 = userRepo.findByName(extendusername);
         model.addAttribute("exview", exview);
+        model.addAttribute("user1", user1);
         return "extendedView/extendedView";
     }
 
