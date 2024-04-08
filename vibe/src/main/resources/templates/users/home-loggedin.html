@@ -35,6 +35,14 @@
             </li>
 
             <li>
+                <a href="/explore" class="nav-link"> 
+                    <i class="fa-solid fa-compass fa-2xl"></i>
+                    <br>
+                    <span class="barlink-text">Explore</span>
+                </a>
+            </li>
+
+            <li>
                 <form action="/users/announcements" method="post" style="display:inline;">
                     <div th:each="user:${user}">
                         <input type="hidden" id="username" name="username" th:value="${user.name}">
