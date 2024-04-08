@@ -3,6 +3,8 @@ package com.vibeapp.vibe.controllers;
 import java.util.List;
 import java.util.Map;
 
+import javax.swing.Spring;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -28,8 +30,6 @@ public class ProfileController{
     private ProfileRepository Profilerepo;
     private static final Logger logger = LoggerFactory.getLogger(ProfileController.class);
 
-    
-
 
     @Transactional
     @PostMapping("/submit-user-info")
@@ -45,6 +45,10 @@ public class ProfileController{
         String newTop2artist = newUser.get("top2Artist");
         String newTop3artist = newUser.get("top3Artist");
         String newGenres = newUser.get("genres");
+        String spotify = newUser.get("spotify");
+        String facebook = newUser.get("facebook");
+        String instagram = newUser.get("instagram");
+        String lastfm = newUser.get("lastfm");
         Boolean host = Boolean.parseBoolean(newUser.get("host"));
         byte[] imageBytes = null;
         if (!file.isEmpty()) {
@@ -67,10 +71,14 @@ public class ProfileController{
         user.setTop3Artist(newTop3artist);
         user.setGenres(newGenres);
         user.setHost(host);
+        user.setSpotify(spotify);
+        user.setFacebook(facebook);
+        user.setInstagram(instagram);
+        user.setLastfm(lastfm);
         if(imageBytes != null){
             user.setImage(imageBytes);
         }
-        return "/users/home-loggedin";
+        return "redirect:/users/login";
     }
 
     // @GetMapping("/userimage")

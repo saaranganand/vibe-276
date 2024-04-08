@@ -1,6 +1,7 @@
 package com.vibeapp.vibe.controllers;
 
 import java.io.File;
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -83,7 +84,11 @@ public class UsersController {
             return "login";
         }
         else { // logged in
+            List<Profile> profiles = profRepo.findAll();
+            long userCount = userRepo.count();
+            model.addAttribute("profiles", profiles);
             model.addAttribute("user", user);
+            model.addAttribute("userCount", userCount);
             return "users/home-loggedin";
         }
     }
@@ -104,8 +109,10 @@ public class UsersController {
             return "users/loginFailed";
         } else {
             // login success
+            long userCount = userRepo.count();
             request.getSession().setAttribute("session_user", user);
             model.addAttribute("user", user);
+            model.addAttribute("userCount", userCount);
             response.setStatus(201);
             return "users/home-loggedin";
         }
@@ -114,7 +121,10 @@ public class UsersController {
     @Transactional
     @PostMapping("/users/profile")
     public String profle(@RequestParam Map<String, String> formData,Model model){
+
         String username = formData.get("username");
+        
+        // String username = formData.get("username");
         Profile user = profRepo.findByName(username);
         model.addAttribute("username", user);
         return "users/add";
@@ -132,6 +142,5 @@ public class UsersController {
         request.getSession().invalidate();
         return "users/login";
     }
-
 
 }

@@ -21,7 +21,14 @@ public class ExtendedView
     private Boolean host;
     private String skilllevel;
     private String spotify;
-    
+    private String facebook;
+    private String instagram;
+    private String lastfm;
+
+    @Lob
+    byte[] userimage;
+
+
 
     // private String image;
     public ExtendedView()
@@ -127,4 +134,37 @@ public class ExtendedView
     public void setSpotify(String spotify) {
         this.spotify = spotify;
     }
+
+    public String getFacebook() {
+        return facebook;
+    }
+
+    public void setFacebook(String facebook) {
+        this.facebook = facebook;
+    }
+
+    public String getInstagram() {
+        return instagram;
+    }
+
+    public void setInstagram(String instagram) {
+        this.instagram = instagram;
+    }
+
+    public String getLastfm() {
+        return lastfm;
+    }
+
+    public void setLastfm(String lastfm) {
+        this.lastfm = lastfm;
+    }
+
+    public byte[] getUserimage() {
+        return userimage;
+    }
+
+    public void setUserimage(byte[] userimage) {
+        this.userimage = userimage;
+    }
+    
 }

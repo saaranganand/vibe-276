@@ -1,9 +1,11 @@
 package com.vibeapp.vibe.controllers;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 
 import com.vibeapp.vibe.models.Profile;
@@ -18,6 +20,7 @@ public class ExploreController {
     @Autowired
     private ProfileRepository proRepo;
 
+    @Transactional
     @GetMapping("/explore")
     public String getAllMusicians(Model model) {
         System.out.println("Displaying all musicians");
@@ -26,6 +29,7 @@ public class ExploreController {
         return "viewAll.html";
     }
 
+    @Transactional
     @PostMapping("/search")
     public String searchProfiles(@RequestParam String input, Model model) {
         System.out.println("Searching profiles: " + input);
@@ -41,8 +45,20 @@ public class ExploreController {
         return "viewAll.html";
     }
 
-    @GetMapping("/users/explore")
-    public String getAllMusiciansLogin(Model model) {
+    // @GetMapping("/users/explore")
+    // public String getAllMusiciansLogin(Model model) {
+    //     System.out.println("Displaying all musicians");
+    //     List<Profile> profiles = proRepo.findAll();
+    //     model.addAttribute("profiles", profiles);
+    //     return "users/viewAll-loggedin";
+    // }
+
+    @Transactional
+    @PostMapping("/users/explore")
+    public String profle(@RequestParam Map<String, String> formData,Model model){
+        String username = formData.get("username");
+        Profile user = proRepo.findByName(username);
+        model.addAttribute("username", user);
         System.out.println("Displaying all musicians");
         List<Profile> profiles = proRepo.findAll();
         model.addAttribute("profiles", profiles);

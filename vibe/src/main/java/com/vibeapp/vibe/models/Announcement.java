@@ -6,6 +6,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.Lob;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
@@ -24,12 +25,29 @@ public class Announcement {
     private String uploader;
     private String date;
 
+    // private Integer userid;
+    @Lob
+    private byte[] userimage;
+
     @ManyToOne
     @JoinColumn(name = "name")
     private User user;
 
     public Announcement() {
     }
+
+    public Announcement(String title, String content, String image, String uploader, String date, byte[] userimage) {
+        this.title = title;
+        this.content = content;
+        this.date = date;
+        this.image = image;
+        this.uploader = uploader;
+        this.userimage = userimage;
+
+        // this.userid = userid;
+    }
+
+
 
     public Announcement(String title, String content, String image, String uploader, String date) {
         this.title = title;
@@ -94,5 +112,21 @@ public class Announcement {
     public void setUser(User user) {
         this.user = user;
     }
+
+    public byte[] getUserimage() {
+        return userimage;
+    }
+
+    public void setUserimage(byte[] userimage) {
+        this.userimage = userimage;
+    }
+
+    // public int getUserid() {
+    //     return userid;
+    // }
+
+    // public void setUserid(int userid) {
+    //     this.userid = userid;
+    // }
 
 }
