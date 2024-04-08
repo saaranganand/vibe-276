@@ -57,6 +57,16 @@
                 <img src="img/vibelogo.png" alt="Vibe Logo" id="vibelogo">
             </a>
             <h1><b>Let's Explore!</b></h1>
+            
+            <div class="dropdown">
+                <i class="fa-solid fa-sliders" id="dropbtn"></i>
+                <div class="dropdown-content">
+                    <span class="multi-range-slider">
+                        <input type="range" min="1" max="100" value="10" class="slider" id="lowerAge">
+                        <input type="range" min="1" max="100" value="50" class="slider" id="upperAge">
+                    </span>
+                </div>
+            </div>
             <form th:action="@{/search}" th:method="post" id="search-bar">
                 <input type="text" id="search-bar-input" name="input" placeholder="Search Profiles">
                 <button type="submit">Search</button>
@@ -108,6 +118,9 @@
     </main>
     
     <script>
+        var slider = document.getElementById("ageRange");
+        var output = document.getElementById()
+
         function filter() {
             var checkBoxes = document.querySelectorAll('.locations input[type="checkbox"]');
             var selectedLocations = [];
@@ -133,7 +146,6 @@
                 }
             });
         }
-
     </script>
 
     <footer>
