@@ -38,12 +38,17 @@
                 </form>
             </li>
 
-            <li>
-                <a href="/explore" class="nav-link"> 
-                    <i class="fa-solid fa-compass fa-2xl"></i>
-                    <br>
-                    <span class="barlink-text">Explore</span>
-                </a>
+            <li class="nav-item">
+                <form action="/users/explore" method="post">
+                    <div th:each="user:${username}">
+                        <input type="hidden" id="username" name="username" th:value="${username.name}"></a>
+                    </div>
+                    <button type="submit" class="nav-link">
+                        <i class="fa-solid fa-compass fa-2xl"></i>
+                        <br>
+                        <span class="barlink-text">Explore</span>
+                    </button>
+                </form>
             </li>
 
             <li>
