@@ -1,5 +1,6 @@
 package com.vibeapp.vibe.controllers;
 
+import java.util.Random;
 import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,7 +36,12 @@ public class PasswordResetTokenController {
                 return "users/findEmailFailed";
             }
 
-            String token = UUID.randomUUID().toString();
+            Random rand = new Random(); 
+            int max = 999999;
+            int min = 100000;
+            int value = rand.nextInt((max - min) + 1) + min; // Generate rand num between [min, max]
+
+            String token = Integer.toString(value);
             tokenRepo.save(new PasswordResetToken(email, token));
             String subject = "Vibe Music Reset Password Token";
             String bodyMessage = "Your token is " + token;
