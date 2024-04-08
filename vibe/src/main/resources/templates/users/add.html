@@ -111,7 +111,8 @@
                         <div id="instrumentDropdown" class="dropdown-content"></div>
                         
                         <label for="age" >Age</label>
-                        <input type="number"  class="form-control" id="age" name="age" th:value="${username.age}"required>
+                        <input type="number" class="form-control" id="age" name="age" th:value="${username.age != 0 ? username.age : ''}" placeholder="Enter age" required>
+
     
                         <label for="genres" >Genres</label>
                         <input type="text" class="form-control" id="genres" name="genres" th:value="${username.genres}" oninput="fetchGenres(this.value)" autocomplete="off" required>
