@@ -71,9 +71,7 @@ public class ProfileController{
         user.setTop3Artist(newTop3artist);
         user.setGenres(newGenres);
         user.setHost(host);
-        if(user.getSpotify() ==null){
-            user.setSpotify(spotify);
-        }
+        user.setSpotify(spotify);
         user.setFacebook(facebook);
         user.setInstagram(instagram);
         user.setLastfm(lastfm);
@@ -82,14 +80,7 @@ public class ProfileController{
         }
         return "redirect:/users/login";
     }
-
-    // @GetMapping("/userimage")
-    // public String getimage(Model model){
-    //     List<Profile> profiles = Profilerepo.findAll();
-    //     model.addAttribute("check", profiles);
-    //     return "users/imagetest";
-
-    // }
+    
     @GetMapping("/user/image/{userId}")
     public ResponseEntity<byte[]> getUserImage(@PathVariable int userId) {
         Profile profile = Profilerepo.findById(userId).orElse(null);
