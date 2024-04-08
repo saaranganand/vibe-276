@@ -89,62 +89,108 @@
                 <div class="col-12">
                     <div class="card">
                         <div class="card-body">
-                            <div class="card-title">
-                                <img th:src="@{/user/image/{userId}(userId=${exview.uid})}" id="user-pic"><br>
-                                <h2 th:text="${exview.name}" id="username"></h2>
-                                <h3 th:text="${exview.cityName}"></h3>
+                            <div class="row">
+                                <div class = "col-md-6">
+                                    <div class="card-title">
+                                        <img th:src="@{/user/image/{userId}(userId=${exview.uid})}" id="user-pic"><br>
+                                        <h1 th:text="${exview.name}" id="username"></h1>
+                                        <!-- <h3 th:text="${exview.cityName}"></h3> -->
+                                        
+                                    </div>
+                                </div>
+                                <div class = "col-md-6 text-right">
+                                    <div class="message">
+                                        <a th:href="|mailto:${user1.email}|" class="btn btn-primary">
+                                            <i class="fa-solid fa-envelope fa-2xl"></i>
+                                            <br>
+                                            <span class="barlink-text">Message</span>
+                                        </a>
+                                    </div>
+                                </div>
                             </div>
+                            
+                            
+                            
                             <div class="card-info">
-                                <div class="instrument">
-                                    <h3>Instrument:</h3>
-                                    <div class="info-container">
-                                        <p th:text="${exview.instrument}"></p>
-                                    </div>
-                                </div>
-                                <div class="genre">
-                                    <h3>Genre:</h3>
-                                    <div class="info-container">
-                                        <p th:text="${exview.genres}"></p>
-                                    </div>
-                                </div>
-                                <div class="artist">
-                                    <h3>Top 3 Artists:</h3>
-                                    <div class="info-container">
-                                        <div class="artist-container" onclick="redirectToSpotifyArtist(document.getElementById('artist1Name').innerText)" style="cursor: pointer;">
-                                            <div id="artist1"></div>
-                                            <br>
-                                            <p id="artist1Name" th:text="${exview.top1Artist}"></p>
-                                        </div>
-                                        <div class="artist-container" onclick="redirectToSpotifyArtist(document.getElementById('artist2Name').innerText)" style="cursor: pointer;">
-                                            <div id="artist2"></div>
-                                            <br>
-                                            <p id="artist2Name" th:text="${exview.top2Artist}"></p>
-                                        </div>
-                                        <div class="artist-container" onclick="redirectToSpotifyArtist(document.getElementById('artist3Name').innerText)" style="cursor: pointer;">
-                                            <div id="artist3"></div>
-                                            <br>
-                                            <p id="artist3Name" th:text="${exview.top3Artist}"></p>
+                                <div class = "1st Column">
+                                    <div class = "city">
+                                        <h3>City:</h3>
+                                        <div class="info-container">
+                                            <p th:text="${exview.cityName}"></p>
                                         </div>
                                     </div>
+                                    <div class="instrument">
+                                        <h3>Instrument:</h3>
+                                        <div class="info-container">
+                                            <p th:text="${exview.instrument}"></p>
+                                        </div>
+
+                                    </div>
+                                    <div class="artist">
+                                        <h3>Top 3 Artists:</h3>
+                                        <div class="info-container">
+                                            <div class="artist-container" onclick="redirectToSpotifyArtist(document.getElementById('artist1Name').innerText)" style="cursor: pointer;">
+                                                <div id="artist1"></div>
+                                                <br>
+                                                <p id="artist1Name" th:text="${exview.top1Artist}"></p>
+                                            </div>
+                                            <div class="artist-container" onclick="redirectToSpotifyArtist(document.getElementById('artist2Name').innerText)" style="cursor: pointer;">
+                                                <div id="artist2"></div>
+                                                <br>
+                                                <p id="artist2Name" th:text="${exview.top2Artist}"></p>
+                                            </div>
+                                            <div class="artist-container" onclick="redirectToSpotifyArtist(document.getElementById('artist3Name').innerText)" style="cursor: pointer;">
+                                                <div id="artist3"></div>
+                                                <br>
+                                                <p id="artist3Name" th:text="${exview.top3Artist}"></p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <script th:inline="javascript">
+                                            var top1Artist = /*[[${exview.top1Artist}]]*/ 'default';
+                                            var top2Artist = /*[[${exview.top2Artist}]]*/ 'default';
+                                            var top3Artist = /*[[${exview.top3Artist}]]*/ 'default';
+                                            var artist1 = document.getElementById('artist1');
+                                            var artist2 = document.getElementById('artist2');
+                                            var artist3 = document.getElementById('artist3');
+                                            // will render artist image if found, else will render random album cover
+                                            getArtistImage(top1Artist, artist1);
+                                            getArtistImage(top2Artist, artist2);
+                                            getArtistImage(top3Artist, artist3);
+                                    </script>
+                                    
                                 </div>
-                                <script th:inline="javascript">
-                                        var top1Artist = /*[[${exview.top1Artist}]]*/ 'default';
-                                        var top2Artist = /*[[${exview.top2Artist}]]*/ 'default';
-                                        var top3Artist = /*[[${exview.top3Artist}]]*/ 'default';
-                                        var artist1 = document.getElementById('artist1');
-                                        var artist2 = document.getElementById('artist2');
-                                        var artist3 = document.getElementById('artist3');
-                                        // will render artist image if found, else will render random album cover
-                                        getArtistImage(top1Artist, artist1);
-                                        getArtistImage(top2Artist, artist2);
-                                        getArtistImage(top3Artist, artist3);
-                                </script>
-                                <div class="host">
-                                    <h3>Host:</h3>
-                                    <div class="host-container">
-                                        <p th:text="${exview.host}"></p>
+                                
+                                <div class = "2nd Column">
+                                    <div class="genre">
+                                        <h3>Genre:</h3>
+                                        <div class="info-container">
+                                            <p th:text="${exview.genres}"></p>
+                                        </div>
+                                    </div>
+                                
+                                    <div class = "skilllevel">
+                                        <h3>Skill Level:</h3>
+                                        <div class="info-container">
+                                            <p th:text="${exview.skilllevel}"></p>
+                                        </div>
+                                    </div>
+                                    <div class = "age">
+                                        <h3>Age:</h3>
+                                        <div class="info-container">
+                                            <p th:text="${exview.age}"></p>
+                                        </div>
+                                    </div>
+                                    <div class="host" style="text-align: center;">
+                                        <h3>Host:</h3>
+                                        <div class="host-container">
+                                            <p th:text="${exview.host ? 'Yes' : 'No'}"></p>
+                                        </div>
                                     </div>
                                 </div>
+                                
+                                
+                                
                                 <div class="logos" style="display: flex; justify-content: center;">
                                     <a th:href="${exview.Spotify}">
                                         <img src="/img/assets/Spotify.png" alt="Vibe Logo" id="Spotify" style="width: 50px; height: auto;">
