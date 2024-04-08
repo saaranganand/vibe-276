@@ -12,21 +12,21 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "password_reset_token")
-public class PasswordResetToken {
+@Table(name = "token")
+public class Token {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int uid;
     private String email;
     private String token;
     private Date expirationDate;
-    private static final int EXPIRATION = 60; //in minutes
+    private static final int EXPIRATION = 10; //in minutes
 
-    public PasswordResetToken(){
+    public Token(){
         
     }
     
-    public PasswordResetToken(String email, String token) {
+    public Token(String email, String token) {
         this.email = email;
         this.token = token;
         this.expirationDate=calculateExpiryDate(EXPIRATION);

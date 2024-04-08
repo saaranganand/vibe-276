@@ -9,17 +9,17 @@ import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.vibeapp.vibe.models.PasswordResetTokenRepository;
+import com.vibeapp.vibe.models.TokenRepository;
 
 @Service
 @Transactional
 public class TokenDeleteTask {
     @Autowired
-    PasswordResetTokenRepository passwordResetTokenRepository;
+    TokenRepository tokenRepository;
 
     @Scheduled(cron = "0 0 0 * * *") // Schedules deletion every day at 12am local server time
     public void deleteExpiredToken(){
         Date current = Date.from(Instant.now());
-        passwordResetTokenRepository.deleteAllExpiredSince(current);
+        tokenRepository.deleteAllExpiredSince(current);
     }
 }

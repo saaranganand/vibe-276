@@ -11,8 +11,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.vibeapp.vibe.models.EmailService;
-import com.vibeapp.vibe.models.PasswordResetToken;
-import com.vibeapp.vibe.models.PasswordResetTokenRepository;
+import com.vibeapp.vibe.models.Token;
+import com.vibeapp.vibe.models.TokenRepository;
 import com.vibeapp.vibe.models.User;
 import com.vibeapp.vibe.models.UserRepository;
 
@@ -26,7 +26,7 @@ public class PasswordResetTokenController {
     UserRepository userRepo;
 
     @Autowired
-    PasswordResetTokenRepository tokenRepo;
+    TokenRepository tokenRepo;
 
     @Autowired
     EmailService emailService;
@@ -44,7 +44,7 @@ public class PasswordResetTokenController {
             int value = rand.nextInt((max - min) + 1) + min; // Generate rand num between [min, max]
 
             String token = Integer.toString(value);
-            tokenRepo.save(new PasswordResetToken(email, token));
+            tokenRepo.save(new Token(email, token));
             String subject = "Vibe Music Reset Password Token";
             String bodyMessage = "Your token is " + token;
             emailService.sendSimpleMessage(email, subject, bodyMessage);
@@ -54,7 +54,7 @@ public class PasswordResetTokenController {
         
     @PostMapping("/users/tokenrequest")
         public String changePassword(@RequestParam String token, @RequestParam String password) {
-            PasswordResetToken userToken = tokenRepo.findByToken(token);
+            Token userToken = tokenRepo.findByToken(token);
             if (userToken==null){
                 return "users/editPassword";
             } 

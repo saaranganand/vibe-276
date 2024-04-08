@@ -15,8 +15,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.vibeapp.vibe.models.EmailService;
-import com.vibeapp.vibe.models.PasswordResetToken;
-import com.vibeapp.vibe.models.PasswordResetTokenRepository;
+import com.vibeapp.vibe.models.Token;
+import com.vibeapp.vibe.models.TokenRepository;
 import com.vibeapp.vibe.models.Profile;
 import com.vibeapp.vibe.models.ProfileRepository;
 import com.vibeapp.vibe.models.User;
@@ -48,7 +48,7 @@ public class UsersController {
     private ProfileRepository profRepo;
 
     @Autowired
-    PasswordResetTokenRepository tokenRepo;
+    TokenRepository tokenRepo;
 
     @Autowired
     EmailService emailService;
@@ -66,7 +66,7 @@ public class UsersController {
         User existingUserByEmail = userRepo.findByEmail(newEmail);
         User existingUserByUsername = userRepo.findByName(newName);
 
-        PasswordResetToken userToken = tokenRepo.findByToken(token);
+        Token userToken = tokenRepo.findByToken(token);
 
         Date current = Date.from(Instant.now());
 
@@ -180,7 +180,7 @@ public class UsersController {
         int value = rand.nextInt((max - min) + 1) + min; // Generate rand num between [min, max]
 
         String token = Integer.toString(value);
-        tokenRepo.save(new PasswordResetToken(email, token));
+        tokenRepo.save(new Token(email, token));
         String subject = "Vibe Music Register Token";
         String bodyMessage = "Your token is " + token;
         emailService.sendSimpleMessage(email, subject, bodyMessage);
