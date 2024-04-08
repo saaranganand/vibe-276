@@ -61,7 +61,7 @@ public class PasswordResetTokenController {
             Date current = Date.from(Instant.now());
             if (userToken.getExpirationDate().before(current)) {
                 tokenRepo.delete(userToken);
-                return "redirect:/expiredToken.html";
+                return "users/tokenExpired";
             }
             
             User user = userRepo.findByEmail(userToken.getEmail());
