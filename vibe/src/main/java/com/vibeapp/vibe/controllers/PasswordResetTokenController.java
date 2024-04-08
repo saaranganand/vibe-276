@@ -67,6 +67,7 @@ public class PasswordResetTokenController {
             User user = userRepo.findByEmail(userToken.getEmail());
             user.setPassword(password);
             userRepo.save(user);
+            tokenRepo.delete(userToken);
 
             return "users/login";
         }

@@ -1,6 +1,5 @@
 package com.vibeapp.vibe.controllers;
 
-import java.io.File;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
@@ -26,15 +25,11 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 
-import java.io.ByteArrayOutputStream;
 import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Paths;
 import java.time.Instant;
 
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.util.StreamUtils;
-import org.springframework.web.bind.annotation.RequestBody;
 
 
 
@@ -82,6 +77,10 @@ public class UsersController {
             response.setStatus(409);
             return "users/registerFailed";
         } 
+        else if (!userToken.getEmail().equals(newEmail)){
+            response.setStatus(409);
+            return "users/registerEmailInvalid";
+        }
         else if (userToken.getExpirationDate().before(current)) {
             response.setStatus(410);
             tokenRepo.delete(userToken);
@@ -91,6 +90,7 @@ public class UsersController {
             userRepo.save(new User(newName, newPassword, newEmail));
             profRepo.save(new Profile(newName, false, image)); // Initialize w default image
             // profRepo.save(new Profile(newName, false));
+            tokenRepo.delete(userToken);
             response.setStatus(201);
             return "users/registerSuccess";
         }
@@ -172,7 +172,7 @@ public class UsersController {
     public String registerEmail(@RequestParam String email) {
         User user = userRepo.findByEmail(email);
         if (user != null){
-            return "redirect:/registerEmail.html"; // email in use
+            return "redirect:/registerEmailFailed.html"; 
         }
         Random rand = new Random(); 
         int max = 999999;
