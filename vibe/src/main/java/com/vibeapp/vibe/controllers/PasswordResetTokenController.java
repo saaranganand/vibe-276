@@ -1,5 +1,7 @@
 package com.vibeapp.vibe.controllers;
 
+import java.time.Instant;
+import java.util.Date;
 import java.util.Random;
 import java.util.UUID;
 
@@ -55,7 +57,13 @@ public class PasswordResetTokenController {
             PasswordResetToken userToken = tokenRepo.findByToken(token);
             if (userToken==null){
                 return "users/editPassword";
+            } 
+            Date current = Date.from(Instant.now());
+            if (userToken.getExpirationDate().before(current)) {
+                tokenRepo.delete(userToken);
+                return "redirect:/expiredToken.html";
             }
+            
             User user = userRepo.findByEmail(userToken.getEmail());
             user.setPassword(password);
             userRepo.save(user);
