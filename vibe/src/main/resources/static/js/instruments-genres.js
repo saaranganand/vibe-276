@@ -36,15 +36,21 @@ function fetchAllGenres() {
                 .then(data => {
                     allGenres = allGenres.concat(data.genres);
 
-                    if (data.genres.length === limit) {
-                        // there might be more so fetch the next page
-                        offset += limit;
-                        fetchPage();
-                    } else {
-                        resolve();
-                    }
+                    // always fetch next page
+                    offset += limit;
+
+                    //delay of 1s before fetching next page
+                    setTimeout(fetchPage, 1000);
                 })
-                .catch(reject);
+                .catch(error => {
+                    //stop fetching if error
+                    if (error.message.includes('503')) {
+                        resolve();
+                    } else {
+                        console.error('Error:', error);
+                        reject(error);
+                    }
+                });
         }
 
         fetchPage();
