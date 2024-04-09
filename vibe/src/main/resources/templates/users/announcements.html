@@ -102,7 +102,7 @@
                 <div th:if="${announcement.image != null and !#strings.isEmpty(announcement.image)}" id="anno-image-container">
                     <img th:src="${announcement.image}" alt="Announcement Image" id="anno-image">
                 </div>
-             
+                <a th:if="${announcement.uploader == sessionUser.name}" th:href="@{'/users/announcements/edit/'+${announcement.aid}}" class="btn btn-primary edit-button"><i class="fa-solid fa-pen-to-square"></i></a>
                 <br>
                 
                 <div id="anno-footer">
@@ -110,7 +110,9 @@
                         <p th:text="${announcement.date}"></p>
                     </div>
 
-                    <button class="delete-button" style="display: none;">Delete</button>
+                    <form th:if="${announcement.uploader == sessionUser.name}" th:action="@{'/users/announcements/delete/'+${announcement.aid}}" method="post">
+                        <button type="submit" class="btn btn-primary delete-button"><i class="fa-solid fa-trash"></i></button>
+                    </form>
                     
                     <div id="anno-uploader">
                         <img th:src="@{/user/userimage/{userId}(userId=${announcement.aid})}" id="user-pic" class = userbox>

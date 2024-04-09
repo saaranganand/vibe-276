@@ -152,16 +152,6 @@ header {
     position: relative;
 }
 
-#xBtn {
-    position: absolute;
-    top: 10px;
-    left: 10px;
-    width: 30px;
-    color: red;
-    background: black;
-    font-size: 24px;
-}
-
 #anno-title {
     display: inline-block;
     padding: 0 10px 0 10px;
@@ -291,4 +281,27 @@ a {
     color: white;
 }
 
+.delete-button {
+    position: absolute;
+    border: solid 1px red;
+    top: 10px;
+    left: 10px;
+    color: var(--bg-secondary);
+    background: var(--bg-primary);
+}
 
+.edit-button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    color: var(--bg-secondary);
+    background: var(--bg-primary);
+}
+
+.edit-button:hover {
+    background-color: #6b5f98;
+}
+
+.delete-button:hover {
+    background-color: red;
+}

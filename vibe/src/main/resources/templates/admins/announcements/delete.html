@@ -25,7 +25,7 @@
 
             <div th:each="announcement:${anno}" class="announcement" id="indiv-anno">
                 <form th:action="@{'/admins/announcements/delete/' + ${announcement.aid}}" method="post">
-                    <button type="submit" class="delete-button" id="xBtn">X</button>
+                    <button type="submit" class="btn btn-primary delete-button"><i class="fa-solid fa-trash"></i></button>
                     <h2 th:text="${announcement.title}" id="anno-title"></h2>
                     <p th:text="${announcement.content}" id="anno-text"></p>
                     <div th:if="${announcement.image != null and !#strings.isEmpty(announcement.image)}" id="anno-image-container">
