@@ -1,3 +1,97 @@
+.slider-btn {
+    border: none;
+    margin-right: 1.5rem;
+    float: right;
+    padding: 5px 10px;
+    border-radius: 20px;
+    background: #8a7cc5;
+    color: #fff;
+    transition: background 0.3s ease;
+}
+
+.slider-bt:hover {
+    background: #6e639d;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    z-index: 1;
+    padding: 5 10px;
+}
+
+
+input[type=range] {
+    box-sizing: border-box;
+    appearance: none;
+    width: 400px;
+    margin: 0;
+    padding: 0 2px;
+    overflow: hidden;
+    border: 0;
+    border-radius: 1px;
+    outline: none;
+    background: linear-gradient(grey, grey) no-repeat center;
+
+    background-size: 100% 2px;
+    pointer-events: none;
+ 
+    &:active,
+    &:focus {
+       outline: none;
+    }
+ 
+    &::-webkit-slider-thumb {
+       height: 28px;
+       width: 28px;
+       border-radius: 28px;
+       background-color:#4c358b;
+       position: relative;
+       margin: 5px 0;
+       appearance: none;
+       pointer-events: all;
+       box-shadow: 0 1px 4px 0.5px rgba(0, 0, 0, 0.25);
+       &::before {
+             content: ' ';
+             display: block;
+             position: absolute;
+             top: 13px;
+             left: 100%;
+             width: 2000px;
+             height: 2px;
+       }
+    }
+ }
+ 
+ .multi-range {
+    position: relative;
+    height: 50px;
+ 
+    input[type=range] {
+       position: absolute;
+       
+       &:nth-child(1) {
+          &::-webkit-slider-thumb::before {
+             background-color: red;
+          }
+       }
+ 
+       &:nth-child(2) {
+          background: none;
+ 
+          &::-webkit-slider-thumb::before {
+              background-color: grey; 
+          }
+       }
+    }
+ }
+
+
+
+
+
 :root {
     font-size: 16px;
     --bg-primary: beige;
@@ -19,7 +113,7 @@
 
 
 .profiles-container {
-    font-family: 'Courier New', Courier, monospace;
+    font-family:Arial, Helvetica, sans-serif
     font-weight: bold;
     margin-bottom: 40px;
     margin-left: 15rem;
@@ -46,6 +140,18 @@ main {
 #search-bar {
     margin-right: 5rem;
     float: right;
+}
+#searchbtn {
+    padding: 5px 10px;
+    border-radius: 20px;
+    background: #8a7cc5;
+    color: #fff;
+    text-decoration: none;
+    transition: background 0.3s ease;
+}
+
+#searchbtn:hover {
+    background: #6e639d;
 }
 
 
@@ -126,7 +232,7 @@ a {
 
 /* font awesome */
 
-.fa-house, .fa-star, .fa-people-group, .fa-shield-halved, .fa-right-from-bracket, .fa-circle-user, .fa-scroll {
+.fa-house, .fa-star, .fa-people-group, .fa-shield-halved, .fa-right-from-bracket, .fa-circle-user, .fa-scroll, .fa-compass{
     color:beige;
 }
 
