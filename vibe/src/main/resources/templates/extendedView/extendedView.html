@@ -108,12 +108,18 @@
                                 </div>
                                 <div class = "col-md-6 text-right">
                                     <div class="message">
-                                        <a th:href="|mailto:${user1.email}|" class="btn btn-primary">
+                                        <button th:data-email="${user1.email}" onclick="openEmail(this.getAttribute('data-email'))" class="btn btn-primary">
                                             <i class="fa-solid fa-envelope fa-2xl"></i>
                                             <br>
-                                            <span class="barlink-text">Message</span>
-                                        </a>
+                                            <span class="barlink-text1">Message</span>
+                                        </button>
                                     </div>
+                                    <script>
+                                        function openEmail(email) {
+                                            window.open('about:blank', '_blank');
+                                            window.location.href = 'mailto:' + email;
+                                        }
+                                    </script>
                                 </div>
                             </div>
                             
@@ -219,6 +225,13 @@
                                         <img src="/img/assets/instagram.png" alt="Vibe Logo" id="instagram" style="width: 50px; height: auto;">
                                     </a>
                                 </div>
+                                <script>
+                                    document.querySelectorAll('.logos a').forEach(function(a) {
+                                        if (a.getAttribute('href').trim() === '') {
+                                            a.parentElement.style.display = 'none';
+                                        }
+                                    });
+                                </script>
                         </div>
                     </div>
                 </div>
