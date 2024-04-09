@@ -6,6 +6,8 @@ import java.util.List;
 public interface ProfileRepository extends JpaRepository<Profile, Integer> {
     Profile findByUid(int uid);
     Profile findByName(String name);
-    List<Profile> findByNameContainingIgnoreCase(String input);
-    List<Profile> findByCityNameIgnoreCase(String city);
+    List<Profile> findByNameContainingIgnoreCase(String name);
+    List<Profile> findByCityNameContainingIgnoreCase(String city);
+    List<Profile> findByInstrumentContainingIgnoreCase(String instrument);
+    List<Profile> findByGenresContainingIgnoreCase(String genres);
 }

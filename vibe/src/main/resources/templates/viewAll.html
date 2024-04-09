@@ -61,6 +61,8 @@
             </a>
             <h1><b>Let's Explore!</b></h1>
 
+            <form action="@{}"></form>
+
             <div class="dropdown">
                 <button class="slider-btn"><i class="fa-solid fa-sliders" id="dropbtn" onclick="toggleDropdown()" style="cursor: pointer;"></i></button>
                 <div class="dropdown-content" id="dropdown-content">
@@ -113,9 +115,13 @@
                                     <b><label id="host-label" th:text="${musician.host ? 'Yes' : 'No'}"></label></b>
                                 </p> 
                                 <div class = "extendedBtn">
-                                    <a th:href="@{/extendedView(name=${musician.name})}">
-                                        <button class="btn" id="extendedBtn">View Profile</button>
-                                    </a>
+                                    <form action="/extendedView" method="post" style="display:inline;">
+                                        <div th:each="user:${username}">
+                                            <input type="hidden" id="username" name="username" th:value="${username.name}"></a>
+                                        </div>
+                                        <input type="hidden" id="explorename" name="explorename" th:value="${musician.name}"></a>
+                                        <button type="submit" class="btn" id="extendedBtn">View Profile</button>
+                                    </form>
                                 </div>
                             </div>
                         </div>

@@ -1,7 +1,9 @@
 package com.vibeapp.vibe.controllers;
 
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -13,6 +15,8 @@ import com.vibeapp.vibe.models.ProfileRepository;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RequestBody;
+
 
 
 @Controller
@@ -33,25 +37,20 @@ public class ExploreController {
     @PostMapping("/search")
     public String searchProfiles(@RequestParam String input, Model model) {
         System.out.println("Searching profiles: " + input);
+
+        Set<Profile> filteredProfiles = new HashSet<>();
+
         if (input != null && !input.trim().isEmpty()){
-            List<Profile> filteredProfiles = proRepo.findByNameContainingIgnoreCase(input);
-            model.addAttribute("profiles", filteredProfiles);
+            filteredProfiles.addAll(proRepo.findByNameContainingIgnoreCase(input));
+            filteredProfiles.addAll(proRepo.findByInstrumentContainingIgnoreCase(input));
+            filteredProfiles.addAll(proRepo.findByGenresContainingIgnoreCase(input));
+        } else {
+            filteredProfiles.addAll(proRepo.findAll());
         }
-        else {
-            List<Profile> profiles = proRepo.findAll();
-            model.addAttribute("profiles", profiles);
-        }
-        
+    
+        model.addAttribute("profiles", filteredProfiles);
         return "viewAll.html";
     }
-
-    // @GetMapping("/users/explore")
-    // public String getAllMusiciansLogin(Model model) {
-    //     System.out.println("Displaying all musicians");
-    //     List<Profile> profiles = proRepo.findAll();
-    //     model.addAttribute("profiles", profiles);
-    //     return "users/viewAll-loggedin";
-    // }
 
     @Transactional
     @PostMapping("/users/explore")
