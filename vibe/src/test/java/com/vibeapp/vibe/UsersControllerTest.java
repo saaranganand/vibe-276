@@ -76,4 +76,24 @@ public class UsersControllerTest {
                 .param("password", "Test@123"))
                 .andExpect(MockMvcResultMatchers.status().isCreated());
     }
+
+    @Test
+    public void testRegisterEmailSuccess() throws Exception {
+        when(userRepository.findByEmail(anyString())).thenReturn(null);
+
+        mockMvc.perform(MockMvcRequestBuilders.post("/registerEmail")
+                .param("email", "testuser@example.com"))
+                .andExpect(MockMvcResultMatchers.view().name("redirect:/register.html"));
+
+    }
+
+    @Test
+    public void testRegisterEmailFail() throws Exception {
+        when(userRepository.findByEmail(anyString())).thenReturn(new User("test", "Test@123", "testuser@example.com"));
+
+        mockMvc.perform(MockMvcRequestBuilders.post("/registerEmail")
+                .param("email", "testuser@example.com"))
+                .andExpect(MockMvcResultMatchers.view().name("redirect:/registerEmailFailed.html"));
+
+    }
 }
