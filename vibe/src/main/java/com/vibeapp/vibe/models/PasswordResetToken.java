@@ -20,7 +20,7 @@ public class PasswordResetToken {
     private String email;
     private String token;
     private Date expirationDate;
-    private static final int EXPIRATION = 10; //in minutes
+    private static final int EXPIRATION = 60; //in minutes
 
     public PasswordResetToken(){
         
