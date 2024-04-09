@@ -61,20 +61,21 @@
             </a>
             <h1><b>Let's Explore!</b></h1>
 
-            <form action="@{}"></form>
-
-<!--             <div class="dropdown">
+            <div class="dropdown">
                 <button class="slider-btn"><i class="fa-solid fa-sliders" id="dropbtn" onclick="toggleDropdown()" style="cursor: pointer;"></i></button>
                 <div class="dropdown-content" id="dropdown-content">
-                    <div class="slider-container">
-                        <b><p>Filter by Age:</p></b>
-                        <span class="multi-range-slider">
-                            <input type="range" min="1" max="100" value="10" class="slider" id="lowerAge">
-                            <input type="range" min="1" max="100" value="50" class="slider" id="upperAge">
-                        </span>
+                    <div class="slider">
+                        <div class="slider-bar"></div>
+                        <div class="slider-handle" id="handle-min" value="0"></div>
+                        <div class="slider-handle" id="handle-max" value="100"></div>
                     </div>
-                </div>
-            </div> -->
+                    <div>
+                        Min Age: <span id="min-age">0</span><br>
+                        Max Age: <span id="max-age">100</span>
+                    </div>
+                </div> 
+            </div>            
+
 
             <form th:action="@{/search}" th:method="post" id="search-bar">
                 <input type="text" id="search-bar-input" name="input" placeholder="Search Profiles">
