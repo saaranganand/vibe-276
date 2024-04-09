@@ -110,6 +110,9 @@ public class UsersController {
         } else {
             // login success
             long userCount = userRepo.count();
+            List<Profile> profiles = profRepo.findAll();
+            model.addAttribute("profiles", profiles);
+            
             request.getSession().setAttribute("session_user", user);
             model.addAttribute("user", user);
             model.addAttribute("userCount", userCount);
