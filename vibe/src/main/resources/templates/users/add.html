@@ -38,6 +38,19 @@
                 </form>
             </li>
 
+            <li class="nav-item">
+                <form action="/users/explore" method="post">
+                    <div th:each="user:${username}">
+                        <input type="hidden" id="username" name="username" th:value="${username.name}"></a>
+                    </div>
+                    <button type="submit" class="nav-link">
+                        <i class="fa-solid fa-compass fa-2xl"></i>
+                        <br>
+                        <span class="barlink-text">Explore</span>
+                    </button>
+                </form>
+            </li>
+
             <li>
                 <form action="/users/announcements" method="post" style="display:inline;">
                     <div th:each="user:${username}">
@@ -100,10 +113,11 @@
                             <option value="" disabled selected hidden>Please Select Your City</option>
                             <option value = "Surrey" th:selected="${username != null and username.cityName == 'Surrey'}">Surrey</option>
                             <option value = "Vancouver" th:selected="${username != null and username.cityName == 'Vancouver'}">Vancouver</option>
+                            <option value = "Richmond" th:selected="${username != null and username.cityName == 'Richmond'}">Richmond</option>
                             <option value = "Burnaby" th:selected="${username != null and username.cityName == 'Burnaby'}">Burnaby</option>
                             <option value = "Langley" th:selected="${username != null and username.cityName == 'Langley'}">Langley</option>
                             <option value = "Coquitlam" th:selected="${username != null and username.cityName == 'Coquitlam'}">Coquitlam</option>
-<option value = "Abbotsford" th:selected="${username != null and username.cityName == 'Abbotsford'}">Abbotsford</option>
+                            <option value = "Abbotsford" th:selected="${username != null and username.cityName == 'Abbotsford'}">Abbotsford</option>
                         </select>
     
                         <label for="instrument">Instrument</label>
@@ -111,7 +125,8 @@
                         <div id="instrumentDropdown" class="dropdown-content"></div>
                         
                         <label for="age" >Age</label>
-                        <input type="number"  class="form-control" id="age" name="age" th:value="${username.age}"required>
+                        <input type="number" class="form-control" id="age" name="age" th:value="${username.age != 0 ? username.age : ''}" placeholder="Enter age" required>
+
     
                         <label for="genres" >Genres</label>
                         <input type="text" class="form-control" id="genres" name="genres" th:value="${username.genres}" oninput="fetchGenres(this.value)" autocomplete="off" required>
@@ -130,13 +145,13 @@
 
                         <div class = "links">
                             <label for="spotify" >Spotify link</label>
-                                <input type="text" class = "form-control" id="spotify" name="spotify" th:value="${username.spotify}" required> 
+                                <input type="text" class = "form-control" id="spotify" name="spotify" th:value="${username.spotify}" > 
                             <label for="lastfm" >LastFM link</label>
-                                <input type="text" class = "form-control" id="lastfm" name="lastfm" th:value="${username.lastfm}" required>
+                                <input type="text" class = "form-control" id="lastfm" name="lastfm" th:value="${username.lastfm}" >
                             <label for="facebook" >Facebook links</label>
-                                <input type="text" class = "form-control" id="facebook" name="facebook" th:value="${username.facebook}" required>
+                                <input type="text" class = "form-control" id="facebook" name="facebook" th:value="${username.facebook}" >
                             <label for="instagram" >Instagram links</label>
-                                <input type="text" class = "form-control" id="instagram" name="instagram" th:value="${username.instagram}" required>
+                                <input type="text" class = "form-control" id="instagram" name="instagram" th:value="${username.instagram}" >
                         </div>
                     </div>
                  </div>

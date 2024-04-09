@@ -20,8 +20,8 @@ import static org.mockito.Mockito.when;
 
 import com.vibeapp.vibe.controllers.PasswordResetTokenController;
 import com.vibeapp.vibe.models.EmailService;
-import com.vibeapp.vibe.models.PasswordResetToken;
-import com.vibeapp.vibe.models.PasswordResetTokenRepository;
+import com.vibeapp.vibe.models.Token;
+import com.vibeapp.vibe.models.TokenRepository;
 import com.vibeapp.vibe.models.User;
 import com.vibeapp.vibe.models.UserRepository;
 
@@ -34,7 +34,7 @@ public class PasswordResetTokenControllerTest {
     private MockMvc mockMvc;
 
     @MockBean
-    private PasswordResetTokenRepository tokenRepo;
+    private TokenRepository tokenRepo;
 
     @MockBean
     private UserRepository userRepo;
@@ -46,7 +46,7 @@ public class PasswordResetTokenControllerTest {
     void init(){
         String email = "test@gmail.com";
         String token = "1234";
-        PasswordResetToken passwordResetToken = new PasswordResetToken(email, token);
+        Token passwordResetToken = new Token(email, token);
         when(tokenRepo.findByToken(token)).thenReturn(passwordResetToken);
         User user = new User("John", "password", email);
         when(userRepo.findByEmail(passwordResetToken.getEmail())).thenReturn(user);

@@ -24,13 +24,16 @@
                     <h1 class="text-center mt-5 mb-4">REGISTER</h1>
                     <h5>Enter your details:</h5>
                     <form action="/users/register" method="post" id="registerform">
-                        
                         <div class="input-control mb-3">
-                            <input id="username" name="username" type="text" placeholder="Username" class="form-control form-control-lg">
+                            <input id="email" name="email" type="text" placeholder="Email Address" class="form-control form-control-lg">
                             <div class="error"></div>
                         </div>
                         <div class="input-control mb-3">
-                            <input id="email" name="email" type="text" placeholder="Email Address" class="form-control form-control-lg">
+                            <input id="token" name="token" type="text" placeholder="Token" class="form-control form-control-lg">
+                            <div class="error"></div>
+                        </div>
+                        <div class="input-control mb-3">
+                            <input id="username" name="username" type="text" placeholder="Username" class="form-control form-control-lg">
                             <div class="error"></div>
                         </div>
                         <div class="input-control mb-3">

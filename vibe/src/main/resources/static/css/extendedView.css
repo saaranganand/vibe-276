@@ -32,6 +32,11 @@
   text-align: center;
 }
 
+.artist-container{
+  margin-bottom: 10px;
+
+}
+
 .container {
   margin-bottom: 50px;
 }
@@ -43,6 +48,15 @@
   padding: 10px;
   border-radius: 5px;
 }
+
+.host-container {
+  background-color: #8a7cc5;
+  color: beige;
+  padding: 24px;
+  border-radius: 5px;
+}
+
+
 
 #username {
   color: #8a7cc5;
@@ -98,4 +112,9 @@
   height: 100px; /* Adjust to your preference */
   object-fit: cover;
   margin-right: 10px;
+}
+
+.barlink-text1 {
+  color: beige;
+  opacity: 1;
 }

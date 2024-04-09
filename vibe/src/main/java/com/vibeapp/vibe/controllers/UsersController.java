@@ -1,8 +1,9 @@
 package com.vibeapp.vibe.controllers;
 
-import java.io.File;
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
+import java.util.Random;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -12,6 +13,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.vibeapp.vibe.models.EmailService;
+import com.vibeapp.vibe.models.Token;
+import com.vibeapp.vibe.models.TokenRepository;
 import com.vibeapp.vibe.models.Profile;
 import com.vibeapp.vibe.models.ProfileRepository;
 import com.vibeapp.vibe.models.User;
@@ -21,12 +25,12 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 
-import java.io.ByteArrayOutputStream;
 import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Paths;
+import java.time.Instant;
+
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.util.StreamUtils;
+
 
 
 @Controller
@@ -37,6 +41,12 @@ public class UsersController {
 
     @Autowired
     private ProfileRepository profRepo;
+
+    @Autowired
+    TokenRepository tokenRepo;
+
+    @Autowired
+    EmailService emailService;
     
     // registration form validation and account creation
     @Transactional
@@ -44,11 +54,16 @@ public class UsersController {
     public String addUser(@RequestParam Map<String, String> newuser, HttpServletResponse response) {
         System.out.println("ADD new user");
         String newEmail = newuser.get("email");
+        String token = newuser.get("token");
         String newName = newuser.get("username");
         String newPassword = newuser.get("password");
 
         User existingUserByEmail = userRepo.findByEmail(newEmail);
         User existingUserByUsername = userRepo.findByName(newName);
+
+        Token userToken = tokenRepo.findByToken(token);
+
+        Date current = Date.from(Instant.now());
 
         // Initialize default image for user under their profile record
         byte[] image = null;
@@ -58,14 +73,24 @@ public class UsersController {
             e.printStackTrace();
         }
 
-        if (existingUserByEmail != null || existingUserByUsername != null) {
+        if (existingUserByEmail != null || existingUserByUsername != null || userToken == null) {
             response.setStatus(409);
             return "users/registerFailed";
+        } 
+        else if (!userToken.getEmail().equals(newEmail)){
+            response.setStatus(409);
+            return "users/registerEmailInvalid";
+        }
+        else if (userToken.getExpirationDate().before(current)) {
+            response.setStatus(410);
+            tokenRepo.delete(userToken);
+            return "users/tokenExpired";
         }
         else {
             userRepo.save(new User(newName, newPassword, newEmail));
             profRepo.save(new Profile(newName, false, image)); // Initialize w default image
             // profRepo.save(new Profile(newName, false));
+            tokenRepo.delete(userToken);
             response.setStatus(201);
             return "users/registerSuccess";
         }
@@ -110,6 +135,9 @@ public class UsersController {
         } else {
             // login success
             long userCount = userRepo.count();
+            List<Profile> profiles = profRepo.findAll();
+            model.addAttribute("profiles", profiles);
+            
             request.getSession().setAttribute("session_user", user);
             model.addAttribute("user", user);
             model.addAttribute("userCount", userCount);
@@ -142,5 +170,26 @@ public class UsersController {
         request.getSession().invalidate();
         return "users/login";
     }
+
+    @PostMapping("/registerEmail")
+    public String registerEmail(@RequestParam String email) {
+        User user = userRepo.findByEmail(email);
+        if (user != null){
+            return "redirect:/registerEmailFailed.html"; 
+        }
+        Random rand = new Random(); 
+        int max = 999999;
+        int min = 100000;
+        int value = rand.nextInt((max - min) + 1) + min; // Generate rand num between [min, max]
+
+        String token = Integer.toString(value);
+        tokenRepo.save(new Token(email, token));
+        String subject = "Vibe Music Register Token";
+        String bodyMessage = "Your token is " + token;
+        emailService.sendSimpleMessage(email, subject, bodyMessage);
+
+        return "redirect:/register.html";
+    }
+    
 
 }
