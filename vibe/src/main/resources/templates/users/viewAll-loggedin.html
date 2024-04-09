@@ -92,6 +92,7 @@
                 <img src="/img/vibelogo.png" alt="Vibe Logo" id="vibelogo">
             </a>
             <h1><b>Let's Explore!</b></h1>
+
             <form th:action="@{/search}" th:method="post" id="search-bar">
                 <input type="text" id="search-bar-input" name="input" placeholder="Search Profiles">
                 <button type="submit">Search</button>
@@ -117,6 +118,7 @@
                         <div th:each="musician : ${profiles}" class="col-md-3 mb-5" id="musician-container">
                            <div class="profile-tile" style="background-color: blanchedalmond; border: 2px solid grey; padding: 15px; border-radius: 10px; width: 180px; text-align: left; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);" data-tilt>
                             <img th:src="@{/user/image/{userId}(userId=${musician.uid})}" id="user-pic"><br>
+                                
                                 <b><p th:text="${musician.name}" style="font-size: larger;"></p></b>
                                 <p id = city th:text="${musician.cityName}"></p>
                                 <div th:each="genre : ${musician.genres}"></div><br>
