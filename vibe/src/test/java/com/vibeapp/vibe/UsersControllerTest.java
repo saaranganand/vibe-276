@@ -14,6 +14,9 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 
+import com.vibeapp.vibe.models.EmailService;
+import com.vibeapp.vibe.models.Token;
+import com.vibeapp.vibe.models.TokenRepository;
 import com.vibeapp.vibe.models.User;
 import com.vibeapp.vibe.models.UserRepository;
 
@@ -26,6 +29,12 @@ public class UsersControllerTest {
 
     @MockBean
     private UserRepository userRepository;
+
+    @MockBean
+    TokenRepository tokenRepo;
+
+    @MockBean
+    EmailService emailService;
 
     @Test
     public void testLoginSuccess() throws Exception {
@@ -56,9 +65,15 @@ public class UsersControllerTest {
 
     @Test
     public void testRegisterNewUser() throws Exception {
+        when(userRepository.findByEmail(anyString())).thenReturn(null);
+        when(userRepository.findByName(anyString())).thenReturn(null);
+        when(tokenRepo.findByToken(anyString())).thenReturn(new Token("testuser@example.com", "123456"));
+    
         mockMvc.perform(MockMvcRequestBuilders.post("/users/register")
-                .contentType(MediaType.APPLICATION_JSON)
-                .content("{\"username\":\"testuser\", \"password\":\"Test@123\", \"email\":\"testuser@example.com\"}"))
+                .param("email", "testuser@example.com")
+                .param("token", "123456")
+                .param("username", "testuser")
+                .param("password", "Test@123"))
                 .andExpect(MockMvcResultMatchers.status().isCreated());
     }
 }
