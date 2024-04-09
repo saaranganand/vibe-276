@@ -32,6 +32,11 @@
   text-align: center;
 }
 
+.artist-container{
+  margin-bottom: 10px;
+
+}
+
 .container {
   margin-bottom: 50px;
 }
@@ -43,6 +48,8 @@
   padding: 10px;
   border-radius: 5px;
 }
+
+
 
 #username {
   color: #8a7cc5;
