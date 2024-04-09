@@ -37,9 +37,14 @@ public class AnnouncementController {
 
     @Transactional
     @GetMapping("/users/announcements")
-    public String getAllAnnouncements(Model model, HttpSession session) {
+    public String getAllAnnouncements(@RequestParam(defaultValue = "desc") String order, Model model, HttpSession session) {
         System.out.println("Getting all announcements");
-        List<Announcement> announcements = announceRepo.findAllByOrderByAidDesc();
+        List<Announcement> announcements;
+        if ("asc".equals(order)) {
+            announcements = announceRepo.findAllByOrderByAidAsc();
+        } else {
+            announcements = announceRepo.findAllByOrderByAidDesc();
+        }
         model.addAttribute("anno", announcements);
 
         User sessionUser = (User) session.getAttribute("session_user");
