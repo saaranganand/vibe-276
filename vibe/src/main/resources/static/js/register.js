@@ -3,10 +3,11 @@ const username = document.getElementById('username');
 const email = document.getElementById('email');
 const password = document.getElementById('password');
 const password2 = document.getElementById('password2');
+const token = document.getElementById('token');
 
 form.addEventListener('submit', e => {
     e.preventDefault();
-
+    validateTokenInput();
     validateInputs();
 });
 
@@ -101,4 +102,16 @@ const validateInputs = () => {
                 console.error('Error:', error);
             });
     }
+};
+
+const validateTokenInput = () => {
+    const tokenValue = token.value.trim();
+    isValid = true;
+    if (tokenValue.length != 6){
+        setError(token, "Invalid token length. Must be 6 characters.");
+        isValid = false;
+    } else {
+        setSuccess(token);
+    }
+
 };
