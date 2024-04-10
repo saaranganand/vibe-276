@@ -14,6 +14,31 @@ main {
     margin-left: 5rem;
 }
 
+@keyframes floatNoteDown {
+    0% { transform: translateY(0); }
+    100% { transform: translateY(100vh); }
+}
+
+@keyframes floatNoteLeft {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-100vw); }
+}
+
+@keyframes floatNoteUp {
+    0% { transform: translateY(0); }
+    100% { transform: translateY(-100vh); }
+}
+
+@keyframes floatNoteRight {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(100vw); }
+}
+
+@keyframes fade {
+    0% { opacity: 1; }
+    100% { opacity: 0; }
+}
+
 body {
     min-height: 100vh;
     font-family: Arial, sans-serif;

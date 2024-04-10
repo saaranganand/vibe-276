@@ -69,6 +69,7 @@
 
 .profiles-container {
     font-family:Arial, Helvetica, sans-serif;
+    font-weight: bold;
     margin-bottom: 40px;
     margin-left: 15rem;
     margin-top: 2rem;
@@ -173,6 +174,7 @@ a {
 
 .btn:hover {
     background: #6e639d;
+    color: #fff;
 }
 
 #buttoncontainer {
@@ -182,7 +184,21 @@ a {
     align-items: center;
 }
 
-
+.profile-tile {
+    width: 45%;
+    padding: 20px;
+    margin: 2.5%;
+    border-radius: 15px;
+    transition: transform .2s;
+    overflow: hidden;
+    position: relative;
+    box-shadow: 0 10px 30px 10px rgba(0,0,0,0.2);
+    background: linear-gradient(45deg, rgb(222, 204, 177), blanchedalmond);
+    perspective: 1000px;
+}
+.profile-tile:hover {
+    transform: scale(1.05);
+}
 
 /* font awesome */
 
