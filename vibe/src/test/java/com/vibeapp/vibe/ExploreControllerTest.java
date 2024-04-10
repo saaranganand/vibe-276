@@ -77,7 +77,7 @@ public class ExploreControllerTest {
         mockMvc.perform(MockMvcRequestBuilders.post("/search")
                 .param("input", searchTerm))
                 .andExpect(MockMvcResultMatchers.status().isOk())
-                .andExpect(MockMvcResultMatchers.view().name("/viewAll"))
+                .andExpect(MockMvcResultMatchers.view().name("viewAll.html"))
                 .andExpect(MockMvcResultMatchers.model().attribute("profiles", hasItem(
                         allOf(
                                 hasProperty("name", Matchers.is("John")),
