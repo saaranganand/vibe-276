@@ -2,6 +2,11 @@ package com.vibeapp.vibe;
 
 import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.when;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+
+import java.time.Duration;
+import java.time.Instant;
+import java.util.Date;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -64,20 +69,6 @@ public class UsersControllerTest {
     }
 
     @Test
-    public void testRegisterNewUser() throws Exception {
-        when(userRepository.findByEmail(anyString())).thenReturn(null);
-        when(userRepository.findByName(anyString())).thenReturn(null);
-        when(tokenRepo.findByToken(anyString())).thenReturn(new Token("testuser@example.com", "123456"));
-    
-        mockMvc.perform(MockMvcRequestBuilders.post("/users/register")
-                .param("email", "testuser@example.com")
-                .param("token", "123456")
-                .param("username", "testuser")
-                .param("password", "Test@123"))
-                .andExpect(MockMvcResultMatchers.status().isCreated());
-    }
-
-    @Test
     public void testRegisterEmailSuccess() throws Exception {
         when(userRepository.findByEmail(anyString())).thenReturn(null);
 
@@ -95,5 +86,70 @@ public class UsersControllerTest {
                 .param("email", "testuser@example.com"))
                 .andExpect(MockMvcResultMatchers.view().name("redirect:/registerEmailFailed.html"));
 
+    }
+
+    @Test
+    public void addUserSuccess() throws Exception {
+        when(userRepository.findByEmail(anyString())).thenReturn(null);
+        when(userRepository.findByName(anyString())).thenReturn(null);
+        when(tokenRepo.findByToken(anyString())).thenReturn(new Token("testuser@example.com", "123456"));
+    
+        mockMvc.perform(MockMvcRequestBuilders.post("/users/register")
+                .param("email", "testuser@example.com")
+                .param("token", "123456")
+                .param("username", "testuser")
+                .param("password", "Test@123"))
+                .andExpect(status().is(201))
+                .andExpect(MockMvcResultMatchers.view().name("users/registerSuccess"))
+                .andExpect(MockMvcResultMatchers.status().isCreated());
+    }
+
+    @Test
+    public void addUserRegisterFailed() throws Exception {
+        when(userRepository.findByEmail(anyString())).thenReturn(new User());
+        when(userRepository.findByName(anyString())).thenReturn(new User());
+        when(tokenRepo.findByToken(anyString())).thenReturn(new Token());
+    
+        mockMvc.perform(MockMvcRequestBuilders.post("/users/register")
+                .param("email", "existingUser@gmail.com")
+                .param("token", "000000")
+                .param("username", "testuser")
+                .param("password", "Test@123"))
+                .andExpect(status().is(409))
+                .andExpect(MockMvcResultMatchers.view().name("users/registerFailed"));
+
+    }
+
+    @Test
+    public void addUserEmailInvalid() throws Exception {
+        when(userRepository.findByEmail(anyString())).thenReturn(null);
+        when(userRepository.findByName(anyString())).thenReturn(null);
+        when(tokenRepo.findByToken(anyString())).thenReturn(new Token("none@example.com", "123456"));
+    
+        mockMvc.perform(MockMvcRequestBuilders.post("/users/register")
+                .param("email", "testuser@example.com")
+                .param("token", "123456")
+                .param("username", "testuser")
+                .param("password", "Test@123"))
+                .andExpect(status().is(409))
+                .andExpect(MockMvcResultMatchers.view().name("users/registerEmailInvalid"));
+
+    }
+
+    @Test
+    public void addUserTokenExpired() throws Exception {
+        when(userRepository.findByEmail(anyString())).thenReturn(null);
+        when(userRepository.findByName(anyString())).thenReturn(null);
+        Token expiredToken = new Token("test@gmail.com", "123456");
+        expiredToken.setExpirationDate(Date.from(Instant.now().minus(Duration.ofDays(1))));
+        when(tokenRepo.findByToken(anyString())).thenReturn(expiredToken);
+    
+        mockMvc.perform(MockMvcRequestBuilders.post("/users/register")
+                .param("email", "test@gmail.com")
+                .param("token", "123456")
+                .param("username", "testuser")
+                .param("password", "Test@123"))
+                .andExpect(status().is(410))
+                .andExpect(MockMvcResultMatchers.view().name("users/tokenExpired"));
     }
 }
