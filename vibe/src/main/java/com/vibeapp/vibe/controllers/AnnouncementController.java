@@ -127,7 +127,7 @@ public class AnnouncementController {
     // Post mapping to add new anouncement
     @Transactional
     @PostMapping("/users/addannounce")
-    public String addStudent(@RequestParam Map<String, String> newannouncement, HttpServletResponse response,
+    public String addAnnouncement(@RequestParam Map<String, String> newannouncement, HttpServletResponse response,
             HttpSession session) {
         System.out.println("Add announcement");
         String newTitle = newannouncement.get("title");

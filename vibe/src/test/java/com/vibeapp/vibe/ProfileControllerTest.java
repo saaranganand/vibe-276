@@ -2,6 +2,9 @@ package com.vibeapp.vibe;
 
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.view;
+
+import java.util.Optional;
+
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.multipart;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
@@ -21,7 +24,6 @@ import com.vibeapp.vibe.controllers.ProfileController;
 import com.vibeapp.vibe.models.Profile;
 import com.vibeapp.vibe.models.ProfileRepository;
 
-@ExtendWith(SpringExtension.class)
 @WebMvcTest(ProfileController.class)
 public class ProfileControllerTest {
 
@@ -34,7 +36,7 @@ public class ProfileControllerTest {
     @BeforeEach
     void setUp() {
         Profile mockProfile = new Profile("John Doe", "CityName", "Guitar", 30, "Beginner", "Artist 1", "Artist 2", "Artist 3", "Genre", true, new byte[0]);
-        when(profileRepository.save(any(Profile.class))).thenReturn(mockProfile);
+        when(profileRepository.findByName(any(String.class))).thenReturn(mockProfile);
     }
 
     @Test
@@ -53,6 +55,7 @@ public class ProfileControllerTest {
                 .param("top3Artist", "Artist 3")
                 .param("genres", "Genre")
                 .param("host", "true"))
+                .andExpect(status().isFound())
                 .andExpect(view().name("users/home-loggedin"));
     }
 }
