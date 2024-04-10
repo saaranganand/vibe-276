@@ -92,7 +92,7 @@ public class AnnouncementController {
             return "redirect:login.html";
         }
         model.addAttribute("sessionUser", sessionUser);
-        return "/users/edit-announcement";
+        return "users/edit-announcement";
     }
 
     @Transactional
