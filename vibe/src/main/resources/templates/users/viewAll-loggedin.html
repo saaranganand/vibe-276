@@ -92,6 +92,7 @@
                 <img src="/img/vibelogo.png" alt="Vibe Logo" id="vibelogo">
             </a>
             <h1><b>Let's Explore!</b></h1>
+
             <form th:action="@{/search}" th:method="post" id="search-bar">
                 <input type="text" id="search-bar-input" name="input" placeholder="Search Profiles">
                 <button type="submit">Search</button>
@@ -115,14 +116,14 @@
                 <div class="col-md-12 mb-5">
                     <div class="profiles-container d-flex flex-wrap justify-content-center">
                         <div th:each="musician : ${profiles}" class="col-md-2 mb-5" id="musician-container">
-                            <div style="background-color: blanchedalmond; border: 2px solid grey; padding: 30px; border-radius: 10px; width: 180px; text-align: left; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); ">  
+                            <div class="profile-tile" style="background-color: blanchedalmond; border: 2px solid grey; padding: 30px; border-radius: 10px; width: 180px; text-align: left; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);" data-tilt>  
                             <img th:src="@{/user/image/{userId}(userId=${musician.uid})}" id="user-pic"><br>
                             <b><p th:text="${musician.name}" style="font-size: larger; margin-bottom: 5px;"></p></b>
                             <b><p id="age_${musician.age}" th:text="'Age: ' + ${musician.age}" style="margin-bottom: 3px;"></p></b>                            
                             <p id="city" th:text="${musician.cityName}" style="margin-bottom: 3px; font: italic;"></p>
                             
                             <div th:each="genre : ${musician.genres}" style="margin-bottom: 4px;"></div><br>
-                            <p style="margin-bottom: 3px;"><b>Top 3 Artist: </b>
+                            <p style="margin-bottom: 3px;"><b><u>Top 3 Artists:</u></b>
                                 <p th:text="${musician.top1Artist}" style="margin-bottom: 3px;"></p>
                                 <p th:text="${musician.top2Artist}" style="margin-bottom: 3px;"></p>
                                 <p th:text="${musician.top3Artist}" style="margin-bottom: 3px;"></p>
@@ -183,5 +184,6 @@
     </footer>
 
     <script src="/js/exploreLogic.js"></script>
+    <script type="text/javascript" src="/js/tile-tilt.js"></script>
 </body>
 </html>
