@@ -13,9 +13,23 @@
 body {
     min-height: 100vh;
     font-family: Arial, sans-serif;
-    background-image: linear-gradient(beige, rgb(213, 213, 191));
+    background-size: 200% 200%;
+    background-image: linear-gradient(60deg, #f9daff, var(--bg-primary), var(--bg-secondary));
     color: #000000;
     text-align: center;
+    animation: gradient 10s ease infinite;
+}
+
+@keyframes gradient {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
 }
 
 footer {
