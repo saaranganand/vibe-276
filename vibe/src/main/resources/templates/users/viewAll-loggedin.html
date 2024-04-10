@@ -46,12 +46,18 @@
             </li>
             
             <li>
-                <a href="/users/announcements" class="nav-link">
-                    <i class="fa-solid fa-scroll fa-2xl"></i>
-                    <br>
-                    <span class="barlink-text">Bulletin</span>
-                </a>
+                <form action="/users/announcements" method="post" style="display:inline;">
+                    <div th:each="user:${username}">
+                        <input type="hidden" id="username" name="username" th:value="${user.name}">
+                    </div>
+                    <button type="submit" class="nav-link">
+                        <i class="fa-solid fa-scroll fa-2xl"></i>
+                        <br>
+                        <span class="barlink-text">Bulletin</span>
+                    </button>
+                </form>
             </li>
+
 
             <div class="nav-items-bottom">
                 <li class="nav-item">
@@ -93,6 +99,19 @@
             </a>
             <h1><b>Let's Explore!</b></h1>
 
+            <div class="dropdown">
+                <button class="slider-btn"><i class="fa-solid fa-sliders" id="dropbtn" onclick="toggleDropdown()" style="cursor: pointer;"></i></button>
+                <div class="dropdown-content" id="dropdown-content">
+                    <div>
+                        Min Age: <input type="number" id="min-age-input" placeholder="Min Age" value="0">
+                    </div>
+                    <div>
+                        Max Age: <input type="number" id="max-age-input" placeholder="Max Age" value="100">
+                    </div><br>
+                    <button onclick="filter()" id="applybtn">Apply</button>
+                </div>
+            </div>
+
             <form th:action="@{/search}" th:method="post" id="search-bar">
                 <input type="text" id="search-bar-input" name="input" placeholder="Search Profiles">
                 <button type="submit">Search</button>
@@ -119,7 +138,8 @@
                             <div class="profile-tile" style="background-color: blanchedalmond; border: 2px solid grey; padding: 30px; border-radius: 10px; width: 180px; text-align: left; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);" data-tilt>  
                             <img th:src="@{/user/image/{userId}(userId=${musician.uid})}" id="user-pic"><br>
                             <b><p th:text="${musician.name}" style="font-size: larger; margin-bottom: 5px;"></p></b>
-                            <b><p id="age_${musician.age}" th:text="'Age: ' + ${musician.age}" style="margin-bottom: 3px;"></p></b>                            
+                            <b><p id="age" th:text="'Age: ' + ${musician.age}" style="margin-bottom: 3px;"></p></b>
+                            <p style="display:none;" id="profAge" th:text="${musician.age}"></p>                           
                             <p id="city" th:text="${musician.cityName}" style="margin-bottom: 3px; font: italic;"></p>
                             
                             <div th:each="genre : ${musician.genres}" style="margin-bottom: 4px;"></div><br>
@@ -151,28 +171,47 @@
     </main>
 
     <script>
+        function toggleDropdown() {
+            var dropdownContent = document.getElementById("dropdown-content");
+            dropdownContent.style.display = dropdownContent.style.display === "block" ? "none" : "block";
+        }
+
         function filter() {
             var checkBoxes = document.querySelectorAll('.locations input[type="checkbox"]');
             var selectedLocations = [];
-
+            
             checkBoxes.forEach(function(checkbox) {
                 if (checkbox.checked) {
                     selectedLocations.push(checkbox.getAttribute('rel'));
                 }
             });
 
-            display(selectedLocations);
+            var minAgeInput = document.getElementById("min-age-input").value;
+            var maxAgeInput = document.getElementById("max-age-input").value;
+            var minAge = parseInt(minAgeInput);
+            var maxAge = parseInt(maxAgeInput);
+
+            if (isNaN(minAge) || isNaN(maxAge) || minAge > maxAge) {
+                alert("Please enter valid age range.");
+                return; 
+            }
+            display(selectedLocations, minAge, maxAge);
         }
 
-        function display(selectedLocations) {
+        function display(selectedLocations, minAge, maxAge) {
             var profiles = document.querySelectorAll('.profiles-container #musician-container');
+            
             profiles.forEach(function(profile) {
                 var city = profile.querySelector('#city').textContent.trim();
-                // length == 0 means nothing selected
-                if (selectedLocations.length === 0 || selectedLocations.includes(city)) {
-                    profile.style.display = 'block'; // profile is block-level element 
+                var age = parseInt(profile.querySelector('#profAge').textContent.trim());
+
+                var locationMatch = selectedLocations.length === 0 || selectedLocations.includes(city);
+                var ageMatch = age >= minAge && age <= maxAge;
+
+                if (locationMatch && ageMatch) {
+                    profile.style.display = 'block';
                 } else {
-                    profile.style.display = 'none'; // hides profile
+                    profile.style.display = 'none';
                 }
             });
         }

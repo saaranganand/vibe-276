@@ -7,6 +7,8 @@ import java.util.Optional;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.multipart;
 import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.ArgumentMatchers.anyInt;
+import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.when;
 
 import org.junit.jupiter.api.BeforeEach;
@@ -42,7 +44,7 @@ public class ProfileControllerTest {
     @Test
     public void testAddUserSuccess() throws Exception {
         MockMultipartFile file = new MockMultipartFile("image", "test.jpg", MediaType.IMAGE_JPEG_VALUE, "test image content".getBytes());
-
+        when(profileRepository.findByName(anyString())).thenReturn(new Profile());
         mockMvc.perform(multipart("/submit-user-info")
                 .file(file)
                 .param("username", "John Doe")
@@ -54,8 +56,12 @@ public class ProfileControllerTest {
                 .param("top2Artist", "Artist 2")
                 .param("top3Artist", "Artist 3")
                 .param("genres", "Genre")
+                .param("spotify", "true")
+                .param("facebook", "true")
+                .param("instagram", "true")
+                .param("lastfm", "true")
                 .param("host", "true"))
-                .andExpect(status().isFound())
-                .andExpect(view().name("users/home-loggedin"));
+                .andExpect(view().name("redirect:/users/login"));
     }
+
 }

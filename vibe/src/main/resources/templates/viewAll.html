@@ -65,19 +65,16 @@
             <div class="dropdown">
                 <button class="slider-btn"><i class="fa-solid fa-sliders" id="dropbtn" onclick="toggleDropdown()" style="cursor: pointer;"></i></button>
                 <div class="dropdown-content" id="dropdown-content">
-                    <div class="slider">
-                        <div class="slider-bar"></div>
-                        <div class="slider-handle" id="handle-min" value="0"></div>
-                        <div class="slider-handle" id="handle-max" value="100"></div>
+                    <div>
+                        Min Age: <input type="number" id="min-age-input" placeholder="Min Age" value="0">
                     </div>
                     <div>
-                        Min Age: <span id="min-age">0</span><br>
-                        Max Age: <span id="max-age">100</span>
-                    </div>
-                </div> 
-            </div>            
-
-
+                        Max Age: <input type="number" id="max-age-input" placeholder="Max Age" value="100">
+                    </div><br>
+                    <button onclick="filter()" id="applybtn">Apply</button>
+                </div>
+            </div>
+                        
             <form th:action="@{/search}" th:method="post" id="search-bar">
                 <input type="text" id="search-bar-input" name="input" placeholder="Search Profiles">
                 <button type="submit" id="searchbtn">Search</button>
@@ -105,7 +102,8 @@
                             <div class="profile-tile" style="background-color: blanchedalmond; border: 2px solid grey; padding: 30px; border-radius: 10px; width: 180px; text-align: left; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); ">  
                             <img th:src="@{/user/image/{userId}(userId=${musician.uid})}" id="user-pic"><br>
                             <b><p th:text="${musician.name}" style="font-size: larger; margin-bottom: 5px;"></p></b>
-                            <b><p id="age_${musician.age}" th:text="'Age: ' + ${musician.age}" style="margin-bottom: 3px;"></p></b>                            
+                            <b><p id="age" th:text="'Age: ' + ${musician.age}" style="margin-bottom: 3px;"></p></b>
+                            <p style="display:none;" id="profAge" th:text="${musician.age}"></p>                            
                             <p id="city" th:text="${musician.cityName}" style="margin-bottom: 3px; font: italic;"></p>
                             
                             <div th:each="genre : ${musician.genres}" style="margin-bottom: 4px;"></div><br>
@@ -128,53 +126,53 @@
     </main>
     
     <script>
-    
+        
         function toggleDropdown() {
             var dropdownContent = document.getElementById("dropdown-content");
             dropdownContent.style.display = dropdownContent.style.display === "block" ? "none" : "block";
         }
 
-        var lowerSlider = document.getElementById("#lowerAge");
-        var upperSlider = document.getElementById("#upperAge");
-        var lowerOutput = document.getElementById()
-        var upperOutput = parseInt(upperSlider.value);
-
-        var lowerVal = parseInt(lowerSlider.value);
-        var upperVal = parseInt(upperSlider.value);
-
-       lowerOutput.innerHTML = 
-
-        upperSlider.oninput = function (){
-            lowerVal = parseInt(lowerSlider.value);
-            upperVal = parseInt(upperSlider.value);
-        }
-
-
         function filter() {
             var checkBoxes = document.querySelectorAll('.locations input[type="checkbox"]');
             var selectedLocations = [];
-
+            
             checkBoxes.forEach(function(checkbox) {
                 if (checkbox.checked) {
                     selectedLocations.push(checkbox.getAttribute('rel'));
                 }
             });
 
-            display(selectedLocations);
+            var minAgeInput = document.getElementById("min-age-input").value;
+            var maxAgeInput = document.getElementById("max-age-input").value;
+            var minAge = parseInt(minAgeInput);
+            var maxAge = parseInt(maxAgeInput);
+
+            // Validates input values
+            if (isNaN(minAge) || isNaN(maxAge) || minAge > maxAge) {
+                alert("Please enter valid age range.");
+                return; // Stops execution if age range is invalid
+            }
+            display(selectedLocations, minAge, maxAge);
         }
 
-        function display(selectedLocations) {
+        function display(selectedLocations, minAge, maxAge) {
             var profiles = document.querySelectorAll('.profiles-container #musician-container');
+            
             profiles.forEach(function(profile) {
                 var city = profile.querySelector('#city').textContent.trim();
-                // length == 0 means nothing selected
-                if (selectedLocations.length === 0 || selectedLocations.includes(city)) {
-                    profile.style.display = 'block'; // profile is block-level element 
+                var age = parseInt(profile.querySelector('#profAge').textContent.trim());
+
+                var locationMatch = selectedLocations.length === 0 || selectedLocations.includes(city);
+                var ageMatch = age >= minAge && age <= maxAge;
+
+                if (locationMatch && ageMatch) {
+                    profile.style.display = 'block';
                 } else {
-                    profile.style.display = 'none'; // hides profile
+                    profile.style.display = 'none';
                 }
             });
         }
+
     </script>
 
     <footer>
