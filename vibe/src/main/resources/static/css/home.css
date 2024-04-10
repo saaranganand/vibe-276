@@ -135,6 +135,16 @@ a {
     color: var(--bg-secondary);
 }
 
+
+img[alt="Extended Example"] {
+    transition: box-shadow 0.3s ease-in-out;
+}
+
+img[alt="Extended Example"]:hover {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+
 @media screen and (max-width: 861px) {
     #homebody {
         margin-bottom: 30px;
