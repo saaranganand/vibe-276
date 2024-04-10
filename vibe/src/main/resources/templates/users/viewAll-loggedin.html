@@ -46,12 +46,18 @@
             </li>
             
             <li>
-                <a href="/users/announcements" class="nav-link">
-                    <i class="fa-solid fa-scroll fa-2xl"></i>
-                    <br>
-                    <span class="barlink-text">Bulletin</span>
-                </a>
+                <form action="/users/announcements" method="post" style="display:inline;">
+                    <div th:each="user:${username}">
+                        <input type="hidden" id="username" name="username" th:value="${user.name}">
+                    </div>
+                    <button type="submit" class="nav-link">
+                        <i class="fa-solid fa-scroll fa-2xl"></i>
+                        <br>
+                        <span class="barlink-text">Bulletin</span>
+                    </button>
+                </form>
             </li>
+
 
             <div class="nav-items-bottom">
                 <li class="nav-item">
