@@ -5,10 +5,11 @@
     right: 1rem;
     top: 4rem;
     z-index: 1;
-    background-color: #9fc5ff;
+    background-color: #c3b7f2;
     width: 300px;
     padding: 20px 20px;
     border-radius: 6px;
+    border: 2px #937fe0; 
     font-weight: bold;
     
 }
@@ -16,7 +17,7 @@
 #applybtn {
     width: 50%; 
     padding: 10px 0; 
-    background-color: #ffe600;
+    background-color: #741eff;
     color: white; 
     border: none; 
     border-radius: 4px; 
@@ -25,7 +26,7 @@
 
 
 #applybtn:hover {
-    background-color: #e66d27;
+    background-color: #5922ff;;
 }
 
 
@@ -113,10 +114,10 @@ main {
 #host-label {
     display: inline-block;
     padding: 5px 10px; 
-    border: 1px solid #ccc; 
+    border: 2px solid #ffffffea; 
     border-radius: 5px; 
-    background-color: #eae6ff;
     cursor: default;
+    background-color: #c3b7f2;
 }
 
 body {
@@ -186,7 +187,6 @@ a {
 
 .profile-tile {
     width: 45%;
-    padding: 20px;
     margin: 2.5%;
     border-radius: 15px;
     transition: transform .2s;
