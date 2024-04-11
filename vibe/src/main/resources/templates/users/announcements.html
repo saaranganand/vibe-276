@@ -31,12 +31,11 @@
 
             <li class="nav-item">
                 <form action="/users/profile" method="post" style="display:inline;">
-                    <div th:each="user:${username}">
-                        <input type="hidden" id="username" name="username" th:value="${username.name}">
-                    </div>
+                    <input type="hidden" id="username" name="username" th:value="${sessionUser.name}">
                     <button type="submit" class="nav-link">
                         <i class="fa-solid fa-circle-user fa-2xl"></i>
                         <br>
+                       
                         <span class="barlink-text">Profile</span>
                     </button>
                 </form>
@@ -44,9 +43,7 @@
 
             <li class="nav-item">
                 <form action="/users/explore" method="post">
-                    <div th:each="user:${username}">
-                        <input type="hidden" id="username" name="username" th:value="${username.name}"></a>
-                    </div>
+                    <input type="hidden" id="username" name="username" th:value="${sessionUser.name}">
                     <button type="submit" class="nav-link">
                         <i class="fa-solid fa-compass fa-2xl"></i>
                         <br>
@@ -57,9 +54,7 @@
 
             <li>
                 <form action="/users/announcements" method="post" style="display:inline;">
-                    <div th:each="user:${username}">
-                        <input type="hidden" id="username" name="username" th:value="${user.name}">
-                    </div>
+                    <input type="hidden" id="username" name="username" th:value="${sessionUser.name}">
                     <button type="submit" class="nav-link">
                         <i class="fa-solid fa-scroll fa-2xl"></i>
                         <br>
