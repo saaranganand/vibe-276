@@ -109,19 +109,14 @@
                                 </div>
                                 <div class = "col-md-6 text-right">
                                     <div class="message">
-                                        <button th:data-email="${user1.email}" onclick="openEmail(this.getAttribute('data-email'))" class="btn btn-primary">
-                                            <i class="fa-solid fa-envelope fa-2xl"></i>
-                                            <br>
-                                            <span class="barlink-text1">Message</span>
-                                        </button>
+                                        <a th:href="'mailto:' + ${user1.email}" target ="_blank">
+                                            <button class="btn btn-primary">
+                                                <i class="fa-solid fa-envelope fa-2xl"></i>
+                                                <br>
+                                                <span class="barlink-text1">Message</span>
+                                            </button>
+                                        </a>
                                     </div>
-                                    <script>
-                                        function openEmail(email) {
-                                            window.open('about:blank', '_blank');
-                                            window.location.href = 'mailto:' + email;
-                                        }
-                                    </script>
-                                </div>
                             </div>
                             
                             
@@ -240,6 +235,8 @@
             
         </div>
     </main>
-            
+    <footer>
+        © Vibe 2024
+    </footer>
 </body>
 </html>

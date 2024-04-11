@@ -142,7 +142,7 @@
                 <div class="example-profile-slideshow">
                     <div class="profile-slide-container">
 
-                        <div th:each="user : ${profiles}" id="slide-container">
+                        <!-- <div th:each="user : ${profiles}" id="slide-container">
                             <div style="background-color: blanchedalmond; border: 2px solid grey; padding: 40px; border-radius: 10px; width: 250px; text-align: left; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);">
                                 <div style="display: flex; justify-content: center; align-items: center; margin-bottom: 5px;">
                                     <img th:src="@{/user/image/{userId}(userId=${user.uid})}" id="user-pic" style="max-width: 100%; max-height: 100%; border-radius: 50%; object-fit: cover;">
@@ -154,13 +154,13 @@
                                     <p th:text="${user.top1Artist}" style="margin-bottom: 2px;"></p>
                                     <p th:text="${user.top2Artist}" style="margin-bottom: 2px;"></p>
                                     <p th:text="${user.top3Artist}" style="margin-bottom: 2px;"></p>
-                                </p>
+                                </p> -->
                         <form action="/extendedView" method="post" style="display:inline;">
                             <div th:each="otheruser:${user}">
                                 <input type="hidden" id="username" name="username" th:value="${otheruser.name}">
                             </div>
                             <div th:each="user : ${profiles}" id="slide-container">
-                                <div style="background-color: blanchedalmond; border: 2px solid grey; padding: 15px; border-radius: 10px; width: 180px; text-align: left; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); ">
+                                <div style="background-color: blanchedalmond; border: 2px solid grey; padding: 15px; border-radius: 10px; width: 250px; text-align: left; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); ">
                                     <img th:src="@{/user/image/{userId}(userId=${user.uid})}" id="user-pic"><br>
                                     <b><p th:text="${user.name}" style="font-size: larger;"></p></b>
                                     <p id = city th:text="${user.cityName}"></p>
