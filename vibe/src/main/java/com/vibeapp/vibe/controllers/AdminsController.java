@@ -4,11 +4,8 @@ import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.actuate.autoconfigure.observation.ObservationProperties.Http;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -18,6 +15,8 @@ import com.vibeapp.vibe.models.Admin;
 import com.vibeapp.vibe.models.AdminRepository;
 import com.vibeapp.vibe.models.Announcement;
 import com.vibeapp.vibe.models.AnnouncementRepository;
+import com.vibeapp.vibe.models.Profile;
+import com.vibeapp.vibe.models.ProfileRepository;
 import com.vibeapp.vibe.models.User;
 import com.vibeapp.vibe.models.UserRepository;
 
@@ -37,6 +36,9 @@ public class AdminsController {
 
     @Autowired
     private AnnouncementRepository announceRepo;
+
+    @Autowired
+    private ProfileRepository profileRepo;
 
     @GetMapping("/admins/login")
     public String getAdminLogin(Model model, HttpServletRequest request, HttpSession session) {
@@ -77,14 +79,24 @@ public class AdminsController {
         }
     }
 
+    @Transactional
     @PostMapping("/admins/del")
-    public String delStudents(@RequestParam("userIds") List<Integer> userIds, HttpServletResponse response) {
+    public String delUsers(@RequestParam("userIds") List<Integer> userIds, HttpServletResponse response) {
         if (userIds == null) {
             response.setStatus(400);
             return "admins/noUsersSelected";
         } else {
             System.out.println("Delete user");
-            userRepo.deleteAllById(userIds);
+            for(Integer userId : userIds) {
+                User user = userRepo.findById(userId).orElse(null);
+                if(user!=null) {
+                    Profile profile = profileRepo.findByName(user.getName());
+                    if(profile!=null) {
+                        profileRepo.delete(profile);
+                    }
+                    userRepo.delete(user);
+                }
+            }
             response.setStatus(201);
             return "admins/deleted";
         }
