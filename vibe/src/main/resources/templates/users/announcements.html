@@ -123,7 +123,6 @@
             </div>
 
             <div th:each="announcement:${anno}" class="announcement" id="indiv-anno">
-                <!-- <h2 th:if="${announcement.uploader == sessionUser.name}" th:text="${sessionUser.name}"></h2> -->
                 <h2 th:text="${announcement.title}" id="anno-title"></h2>
                 <p th:text="${announcement.content}" id="anno-text"></p>
                 <div th:if="${announcement.image != null and !#strings.isEmpty(announcement.image)}" id="anno-image-container">
