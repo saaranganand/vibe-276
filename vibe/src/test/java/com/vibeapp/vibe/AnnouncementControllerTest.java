@@ -61,7 +61,7 @@ public class AnnouncementControllerTest {
 
         mockMvc.perform(get("/users/announcements/edit/1").session(session))
             .andExpect(status().isOk())
-            .andExpect(view().name("/users/edit-announcement"))
+            .andExpect(view().name("users/edit-announcement"))
             .andExpect(model().attribute("editanno", mockAnnouncement))
             .andExpect(model().attribute("sessionUser", mockUser));
     }
