@@ -53,6 +53,25 @@ public class ExploreController {
     }
 
     @Transactional
+    @PostMapping("/users/search")
+    public String searchProf(@RequestParam String input, Model model) {
+        System.out.println("Searching profiles: " + input);
+
+        Set<Profile> filteredProfiles = new HashSet<>();
+
+        if (input != null && !input.trim().isEmpty()){
+            filteredProfiles.addAll(proRepo.findByNameContainingIgnoreCase(input));
+            filteredProfiles.addAll(proRepo.findByInstrumentContainingIgnoreCase(input));
+            filteredProfiles.addAll(proRepo.findByGenresContainingIgnoreCase(input));
+        } else {
+            filteredProfiles.addAll(proRepo.findAll());
+        }
+    
+        model.addAttribute("profiles", filteredProfiles);
+        return "users/viewAll-loggedin";
+    }
+
+    @Transactional
     @PostMapping("/users/explore")
     public String profle(@RequestParam Map<String, String> formData,Model model){
         String username = formData.get("username");
