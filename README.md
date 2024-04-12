@@ -6,7 +6,7 @@
 <br />
 <div align="center">
   <a href="https://github.com/saaranganand/vibe-276">
-    <img src="images/rmlogo.png" alt="Logo" width="80" height="80">
+    <img src="images/rmlogo.png" alt="Logo" width="300" height="170">
   </a>
 
   ### [Vibe](https://vibe-music.onrender.com/)
@@ -47,7 +47,7 @@
         <li>
         <a href="#about-vibe">About Vibe</a>
         </li>
-    <li><a href="#screenshots">Screenshots</a></li>
+    <li><a href="#gallery">Gallery</a></li>
     <li><a href="#license">License</a></li>
     <li><a href="#contact">Contact</a></li>
     <li><a href="#the-team">The Team</a></li>
@@ -82,9 +82,17 @@ Should you like to share your thoughts with us, please send us feedback via the 
 (Vibe is currently operating in the Metro Vancouver region exclusively.)
 
 
-<!-- USAGE EXAMPLES -->
-## Screenshots
-
+<!-- GALLERY -->
+## Gallery
+<p float="left">
+  <img src="images/home-loggedin.png" width="1000" height="600" />
+  <img src="images/explore.png" width="1000" height="600" />
+  <img src="images/editprofile.png" width="500" height="450" /> 
+  <img src="images/extendedview.png" width="500" height="450" /> 
+  <img src="images/instrument.png" width="500" height="300" />
+  <img src="images/genre.png" width="500" height="300" />
+  <img src="images/announcements.png" width="1000" height="600" />
+</p>
 
 <!-- LICENSE -->
 ## License
