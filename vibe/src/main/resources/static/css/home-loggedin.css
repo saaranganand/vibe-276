@@ -152,6 +152,21 @@ a {
     column-gap: 20px;
 }
 
+.profile-tile {
+    width: 45%;
+    margin: 2.5%;
+    border-radius: 15px;
+    transition: transform .2s;
+    overflow: hidden;
+    position: relative;
+    box-shadow: 0 10px 30px 10px rgba(0,0,0,0.2);
+    background: linear-gradient(45deg, rgb(222, 204, 177), blanchedalmond);
+    perspective: 1000px;
+}
+.profile-tile:hover {
+    transform: scale(1.05);
+}
+
 #hereyoucan {
     margin: 20px 20px auto;
     padding: 20px;

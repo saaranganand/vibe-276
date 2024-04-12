@@ -139,44 +139,28 @@
 
             <div style="margin-left: 70%; height: 100px; border: 10px black;" id="right-container">
                 <div class="example-profile-slideshow">
-                    <div class="profile-slide-container">
-
-                        <!-- <div th:each="user : ${profiles}" id="slide-container">
-                            <div style="background-color: blanchedalmond; border: 2px solid grey; padding: 40px; border-radius: 10px; width: 250px; text-align: left; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);">
-                                <div style="display: flex; justify-content: center; align-items: center; margin-bottom: 5px;">
-                                    <img th:src="@{/user/image/{userId}(userId=${user.uid})}" id="user-pic" style="max-width: 100%; max-height: 100%; border-radius: 50%; object-fit: cover;">
-                                </div><br>
-                                <b><p th:text="${user.name}" style="margin-bottom: 3px;"></p></b>
-                                <p id = city th:text="${user.cityName}" style="margin-bottom: 2px;"></p>
-                                <div th:each="genre : ${user.genres}" style="margin-bottom: 3px;"></div>
-                                <p>Top 3 Artist: 
-                                    <p th:text="${user.top1Artist}" style="margin-bottom: 2px;"></p>
-                                    <p th:text="${user.top2Artist}" style="margin-bottom: 2px;"></p>
-                                    <p th:text="${user.top3Artist}" style="margin-bottom: 2px;"></p>
-                                </p> -->
-                        <form action="/extendedView" method="post" style="display:inline;">
-                            <div th:each="otheruser:${user}">
-                                <input type="hidden" id="username" name="username" th:value="${otheruser.name}">
-                            </div>
-                            <div th:each="user : ${profiles}" id="slide-container">
-                                <div style="background-color: blanchedalmond; border: 2px solid grey; padding: 15px; border-radius: 10px; width: 250px; text-align: left; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); ">
-                                    <img th:src="@{/user/image/{userId}(userId=${user.uid})}" id="user-pic"><br>
-                                    <b><p th:text="${user.name}" style="font-size: larger;"></p></b>
-                                    <p id = city th:text="${user.cityName}"></p>
-                                    <div th:each="genre : ${user.genres}"></div><br>
-                                    <p>Top 3 Artist: 
-                                        <p th:text="${user.top1Artist}"></p><br>
-                                        <p th:text="${user.top2Artist}"></p><br>
-                                        <p th:text="${user.top3Artist}"></p>
-                                    </p>
-                                <!--    <div class = "extendedBtn">
-
-                                        <input type="hidden" id="explorename" name="explorename" th:value="${user.name}"></a>
-                                        <button type="submit" class="btn" id="extendedBtn">Visit Profile</button>
-                                    </div> -->
+                    <div class="profile-slide-container" style="margin-bottom: 100px;">
+                        <div th:each="otheruser:${user}">
+                            <input type="hidden" id="username" name="username" th:value="${otheruser.name}">
+                        </div>
+                        <div th:each="musician : ${profiles}" id="slide-container">
+                            <div class="profile-tile" style="background-color: blanchedalmond; border: 2px solid grey; padding: 40px; border-radius: 10px; width: 230px; text-align: left; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);" data-tilt>  
+                                <div style="display: flex; justify-content: center; align-items: center; margin-bottom: 10px;">
+                                    <img th:src="@{/user/image/{userId}(userId=${musician.uid})}" id="user-pic" style="max-width: 100%; max-height: 100%; border-radius: 50%; object-fit: cover;">
                                 </div>
-                            </div>
-                        </form>
+                            <b><p th:text="${musician.name}" style="font-size: larger; margin-bottom: 5px;"></p></b>
+                            <b><p id="age" th:text="'Age: ' + ${musician.age}" style="margin-bottom: 3px;"></p></b>
+                            <p style="display:none;" id="profAge" th:text="${musician.age}"></p>                           
+                            <p id="city" th:text="${musician.cityName}" style="margin-bottom: 3px; font-style: italic;"></p>
+                            <p id="instrument" th:text="'Instrument: ' + ${musician.instrument}" style="margin-bottom: 3px;"></p>
+                            
+                            <div th:each="genre : ${musician.genres}" style="margin-bottom: 4px;"></div><br>
+                            <p style="margin-bottom: 3px;"><b><u>Top 3 Artists:</u></b>
+                                <p th:text="${musician.top1Artist}" style="margin-bottom: 3px;"></p>
+                                <p th:text="${musician.top2Artist}" style="margin-bottom: 3px;"></p>
+                                <p th:text="${musician.top3Artist}" style="margin-bottom: 3px;"></p>
+                            </p>
+                        </div>
                     </div>
                 </div>
             </div>

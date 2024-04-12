@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, upgrade-insecure-requests" http-equiv="Content-Security-Policy">
-<title>User Information Form</title>
+<title>User Profile</title>
 <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon" />
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 <link rel="stylesheet" href="/css/home-loggedin.css">
@@ -109,7 +109,7 @@
             <div class="group">
                 <div class="detailed">
                     <div class="form-group">
-                        <label for="cityName">City Name</label>
+                        <label for="cityName">City:*</label>
                         <select class="form-control" id="cityName" name="cityName">
                             <option value="" disabled selected hidden>Please Select Your City</option>
                             <option value = "Surrey" th:selected="${username != null and username.cityName == 'Surrey'}">Surrey</option>
@@ -121,19 +121,19 @@
                             <option value = "Abbotsford" th:selected="${username != null and username.cityName == 'Abbotsford'}">Abbotsford</option>
                         </select>
     
-                        <label for="instrument">Instrument</label>
+                        <label for="instrument">Instrument:*</label>
                         <input type="text" class="form-control" id="instrument" name="instrument" th:value="${username.instrument}" oninput="fetchInstruments(this.value)" autocomplete="off" required>
                         <div id="instrumentDropdown" class="dropdown-content"></div>
                         
-                        <label for="age" >Age</label>
+                        <label for="age" >Age:*</label>
                         <input type="number" class="form-control" id="age" name="age" th:value="${username.age != 0 ? username.age : ''}" placeholder="Enter age" required>
 
     
-                        <label for="genres" >Genres</label>
+                        <label for="genres" >Favorite Genre:*</label>
                         <input type="text" class="form-control" id="genres" name="genres" th:value="${username.genres}" oninput="fetchGenres(this.value)" autocomplete="off" required>
                         <div id="genreDropdown" class="dropdown-content"></div>
     
-                        <label for="skilllevel" >skilllevel</label>
+                        <label for="skilllevel" >Skill Level:</label>
                         <!-- <input type="text" class = "form-control" id="skilllevel" name="skilllevel" th:value="${username.skilllevel}" required>  -->
                         <select class="form-control" id="skilllevel" name="skilllevel">
                             <option value="" disabled selected hidden>Please Select Your Skill Level</option>
@@ -145,26 +145,25 @@
                         </select>
 
                         <div class = "links">
-                            <label for="spotify" >Spotify link</label>
+                            <label for="spotify" >Spotify link:</label>
                                 <input type="text" class = "form-control" id="spotify" name="spotify" th:value="${username.spotify}" > 
-                            <label for="lastfm" >LastFM link</label>
+                            <label for="lastfm" >LastFM link:</label>
                                 <input type="text" class = "form-control" id="lastfm" name="lastfm" th:value="${username.lastfm}" >
-                            <label for="facebook" >Facebook links</label>
+                            <label for="facebook" >Facebook link:</label>
                                 <input type="text" class = "form-control" id="facebook" name="facebook" th:value="${username.facebook}" >
-                            <label for="instagram" >Instagram links</label>
+                            <label for="instagram" >Instagram link:</label>
                                 <input type="text" class = "form-control" id="instagram" name="instagram" th:value="${username.instagram}" >
                         </div>
                     </div>
                  </div>
                  <div class="profileimage">
                     <img th:src="@{/user/image/{userId}(userId=${username.uid})}" id="profile-pic"><br>
-                    <!-- <img src="/img/profile.png" id="profile-pic"><br> -->
                     <label for="userImage" class = "uploadimage">Upload Image</label>
                     <input type="file" class = "imagefile" accept ="image/jpeg, image/png, image/jpg"  id="userImage" name="image"> 
                 </div>
                 <div class="artist">
                     <div class="form-group">
-                        <label for="top3Artist" class="info">Top 3 Artist</label><br>
+                        <label for="top3Artist" class="info">Top 3 Artists:*</label><br>
                         <div class="row">
                             <div class="col">
                                 <input type="text" class="form-control" id="top1Artist" name="top1Artist" th:value="${username.top1Artist}" required>

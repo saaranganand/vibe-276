@@ -42,6 +42,10 @@
 
 .profileimage{
     grid-area: image;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 .artist{
@@ -69,16 +73,25 @@
 
 }
 
-.uploadimage{
+.uploadimage {
     width: 230px;
-    background: #e3362c;
-    color: #fff;
+    background: linear-gradient(to right, var(--bg-secondary) 50%, white 50%);
+    background-size: 200% 100%;
+    background-position: right bottom;
+    transition: all 0.2s ease-out;
+    border: solid 5px var(--bg-secondary);
+    color: var(--bg-secondary);
     padding: 12px;
-    margin: 10px auto;
+    margin: 10px;
     border-radius: 5px;
     cursor: pointer;
     text-align: center; 
     margin-left: 5px;
+}
+
+.uploadimage:hover {
+    background-position: left bottom;
+    color: white;
 }
 
 .imagefile{
