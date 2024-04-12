@@ -6,7 +6,7 @@
 <br />
 <div align="center">
   <a href="https://github.com/saaranganand/vibe-276">
-    <img src="images/rmlogo.png" alt="Logo" width="300" height="170">
+    <img src="images/rmlogo_s.png" alt="Logo" width="300" height="170">
   </a>
 
   ### [Vibe](https://vibe-music.onrender.com/)
