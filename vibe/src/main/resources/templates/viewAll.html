@@ -106,7 +106,8 @@
                             <b><p th:text="${musician.name}" style="font-size: larger; margin-bottom: 5px;"></p></b>
                             <b><p id="age" th:text="'Age: ' + ${musician.age}" style="margin-bottom: 3px;"></p></b>
                             <p style="display:none;" id="profAge" th:text="${musician.age}"></p>                            
-                            <p id="city" th:text="${musician.cityName}" style="margin-bottom: 3px; font: italic;"></p>
+                            <p id="city" th:text="${musician.cityName}" style="margin-bottom: 3px; font-style: italic;"></p>
+                            <p id="instrument" th:text="'Instrument: ' + ${musician.instrument}" style="margin-bottom: 3px;"></p>
                             
                             <div th:each="genre : ${musician.genres}" style="margin-bottom: 4px;"></div><br>
                               <p style="margin-bottom: 3px;"><b><u>Top 3 Artists:</u></b>
