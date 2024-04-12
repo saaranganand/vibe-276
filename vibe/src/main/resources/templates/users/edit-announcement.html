@@ -27,7 +27,7 @@
                                 <div class="error"></div>
                         </div>
                         <div class="input-control mb-3">
-                            <div class="textareaElement form-control form-control-lg" id="content" contenteditable></div>
+                            <div class="textareaElement form-control form-control-lg" id="content" contenteditable th:text="${editanno.content}"></div>
                             <input type="hidden" id="hiddenContent" name="content" th:value="${editanno.content}">
                             <div class="error"></div>
                         </div>

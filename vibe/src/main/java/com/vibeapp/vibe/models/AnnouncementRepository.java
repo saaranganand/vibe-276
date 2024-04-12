@@ -8,4 +8,5 @@ public interface AnnouncementRepository extends JpaRepository<Announcement, Inte
     List<Announcement> findAllByOrderByAidDesc();
     List<Announcement> findAllByOrderByAidAsc();
     Announcement findByAid(int aid);
+    List<Announcement> findAllByUploader(String uploader);
 }

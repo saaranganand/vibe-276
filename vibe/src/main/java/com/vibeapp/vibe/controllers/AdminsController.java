@@ -90,6 +90,10 @@ public class AdminsController {
             for(Integer userId : userIds) {
                 User user = userRepo.findById(userId).orElse(null);
                 if(user!=null) {
+                    List<Announcement> announcements = announceRepo.findAllByUploader(user.getName());
+                    for (Announcement announcement : announcements) {
+                        announceRepo.delete(announcement);
+                    }
                     Profile profile = profileRepo.findByName(user.getName());
                     if(profile!=null) {
                         profileRepo.delete(profile);
